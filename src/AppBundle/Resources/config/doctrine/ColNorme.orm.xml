@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ColNorme" table="col_norme">
+    <indexes>
+      <index name="FK_col_norme_collection" columns="id_collection"/>
+      <index name="FK_col_norme_norme" columns="id_norme"/>
+    </indexes>
+    <id name="idColNorme" type="integer" column="id_col_norme">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="description" type="string" column="description" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idCollection" target-entity="Collection" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_collection" referenced-column-name="id_collection"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idNorme" target-entity="Norme" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_norme" referenced-column-name="id_norme"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

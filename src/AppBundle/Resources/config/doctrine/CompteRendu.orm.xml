@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CompteRendu" table="compte_rendu">
+    <indexes>
+      <index name="FK_compte_rendu_bibliographie_v2" columns="id_bibliographie"/>
+      <index name="FK_auteur" columns="id_auteur"/>
+    </indexes>
+    <id name="idCompteRendu" type="integer" column="id_compte-rendu">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="lien" type="string" column="lien" length="1024" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idAuteur" target-entity="Personne" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_auteur" referenced-column-name="id_personne"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBibliographie" target-entity="BibliographieV2" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_bibliographie" referenced-column-name="id_bibliographie"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

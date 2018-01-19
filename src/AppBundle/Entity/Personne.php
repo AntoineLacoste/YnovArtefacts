@@ -57,7 +57,7 @@ class Personne
      *   @ORM\JoinColumn(name="id_nationalite", referencedColumnName="id_nationalite")
      * })
      */
-    private $idNationalite;
+    private $Nationalite;
 
     /**
      * @var \AppBundle\Entity\Organisme
@@ -67,7 +67,7 @@ class Personne
      *   @ORM\JoinColumn(name="id_organisme", referencedColumnName="id_organisme")
      * })
      */
-    private $idOrganisme;
+    private $Organisme;
 
     /**
      * @var \AppBundle\Entity\Personne
@@ -77,7 +77,7 @@ class Personne
      *   @ORM\JoinColumn(name="id_directeur", referencedColumnName="id_personne")
      * })
      */
-    private $idDirecteur;
+    private $Directeur;
 
     /**
      * @return string

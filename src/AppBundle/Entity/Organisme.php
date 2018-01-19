@@ -36,7 +36,7 @@ class Organisme
      *   @ORM\JoinColumn(name="id_type_organisme", referencedColumnName="id_type_organisme")
      * })
      */
-    private $idTypeOrganisme;
+    private $typeOrganisme;
 
     /**
      * @return string
@@ -69,15 +69,15 @@ class Organisme
     /**
      * @return TypeOrganisme
      */
-    public function getIdTypeOrganisme() {
-        return $this->idTypeOrganisme;
+    public function getTypeOrganisme() {
+        return $this->TypeOrganisme;
     }
 
     /**
-     * @param TypeOrganisme $idTypeOrganisme
+     * @param TypeOrganisme $typeOrganisme
      */
-    public function setIdTypeOrganisme($idTypeOrganisme) {
-        $this->idTypeOrganisme = $idTypeOrganisme;
+    public function setTypeOrganisme($typeOrganisme) {
+        $this->TypeOrganisme = $typeOrganisme;
     }
 
 

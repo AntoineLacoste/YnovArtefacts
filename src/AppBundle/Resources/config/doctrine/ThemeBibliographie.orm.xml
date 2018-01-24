@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ThemeBibliographie" table="theme_bibliographie">
+    <indexes>
+      <index name="FK_theme_bibliographie_theme" columns="id_theme"/>
+      <index name="FK_theme_bibliographie_bibliographie_v2" columns="id_bibliographie"/>
+    </indexes>
+    <id name="idThemeBibliographie" type="integer" column="id_theme_bibliographie">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idBibliographie" target-entity="BibliographieV2" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_bibliographie" referenced-column-name="id_bibliographie"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTheme" target-entity="Theme" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_theme" referenced-column-name="id_theme"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

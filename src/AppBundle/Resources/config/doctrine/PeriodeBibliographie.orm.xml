@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PeriodeBibliographie" table="periode_bibliographie">
+    <indexes>
+      <index name="FK_periode_bibliographie_bibliographie" columns="id_bibliographie"/>
+      <index name="FK_periode_bibliographie_periodes" columns="id_periode"/>
+    </indexes>
+    <id name="idPeriodesBibliographie" type="integer" column="id_periodes_bibliographie">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idBibliographie" target-entity="BibliographieV2" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_bibliographie" referenced-column-name="id_bibliographie"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPeriode" target-entity="Periodes" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_periode" referenced-column-name="id_periode"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

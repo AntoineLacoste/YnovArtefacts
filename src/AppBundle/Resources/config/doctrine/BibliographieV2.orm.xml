@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\BibliographieV2" table="bibliographie_v2">
+    <indexes>
+      <index name="id_bibliographie" columns="id_bibliographie"/>
+      <index name="FK_bibliographie_v2_editeur" columns="id_editeur"/>
+      <index name="FK_bibliographie_v2_bibliographie_v2" columns="id_bibliographie_parent"/>
+      <index name="FK_bibliographie_v2_ville" columns="id_ville_edition"/>
+      <index name="FK_bibliographie_v2_type_bib" columns="id_type_bib"/>
+      <index name="FK_bibliographie_v2_collection" columns="id_collection"/>
+      <index name="FK_bibliographie_v2_periodique" columns="id_periodique"/>
+    </indexes>
+    <id name="idBibliographie" type="integer" column="id_bibliographie">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="confirmed" type="boolean" column="confirmed" nullable="false"/>
+    <field name="titreRef" type="string" column="titre_ref" length="1024" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="abvSiteMarchande" type="string" column="abv_site_marchande" length="12" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tome" type="string" column="tome" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="volume" type="string" column="volume" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numCollection" type="string" column="num_collection" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pagination" type="string" column="pagination" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateEdition" type="date" column="date_edition" nullable="false"/>
+    <field name="isbn" type="string" column="ISBN" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="issn" type="string" column="ISSN" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idBibliographieParent" target-entity="BibliographieV2" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_bibliographie_parent" referenced-column-name="id_bibliographie"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCollection" target-entity="Collection" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_collection" referenced-column-name="id_collection"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEditeur" target-entity="Editeur" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_editeur" referenced-column-name="id_editeur"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPeriodique" target-entity="Periodique" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_periodique" referenced-column-name="id_periodique"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeBib" target-entity="TypeBib" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_type_bib" referenced-column-name="id_type"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idVilleEdition" target-entity="Ville" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_ville_edition" referenced-column-name="id_ville"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

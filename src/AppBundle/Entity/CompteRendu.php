@@ -22,7 +22,7 @@ class CompteRendu
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_compte-rendu", type="integer")
+     * @ORM\Column(name="id_compte_rendu", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

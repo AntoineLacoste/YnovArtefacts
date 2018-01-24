@@ -30,13 +30,26 @@ class Organisme
 
     /**
      * @var \AppBundle\Entity\TypeOrganisme
-     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeOrganisme")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_organisme", referencedColumnName="id_type_organisme")
-     * })
+     * @ORM\JoinColumn(name="id_type_organisme", referencedColumnName="id_type_organisme")
      */
     private $typeOrganisme;
+
+    /**
+     * @return TypeOrganisme
+     */
+    public function getTypeOrganisme(): TypeOrganisme
+    {
+        return $this->typeOrganisme;
+    }
+
+    /**
+     * @param TypeOrganisme $typeOrganisme
+     */
+    public function setTypeOrganisme(TypeOrganisme $typeOrganisme): void
+    {
+        $this->typeOrganisme = $typeOrganisme;
+    }
 
     /**
      * @return string
@@ -66,19 +79,7 @@ class Organisme
         $this->idOrganisme = $idOrganisme;
     }
 
-    /**
-     * @return TypeOrganisme
-     */
-    public function getTypeOrganisme() {
-        return $this->TypeOrganisme;
-    }
 
-    /**
-     * @param TypeOrganisme $typeOrganisme
-     */
-    public function setTypeOrganisme($typeOrganisme) {
-        $this->TypeOrganisme = $typeOrganisme;
-    }
 
 
 }

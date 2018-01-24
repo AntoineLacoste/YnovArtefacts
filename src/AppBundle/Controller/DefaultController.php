@@ -11,21 +11,39 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/add", name="createVille")
      */
-    public function indexAction(Request $request)
-    {
-        //$em = $this->getDoctrine()->getManager();
-        //$bibliogrpahie = new BibliographieV2();
+    public function addAction(Request $request) {
+        $session      = new Session();
+        $bibliographieManager = $this->get('BibliographieManager');
+
         $form = $this->createForm(BibliographieType::class);
 
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $charge = $form->getData();
+            $data = $form->getData();
 
-           // $chargeManager->updateCharge($charge);
+            $newBibliogrpahie = new BibliographieV2();
+            $newBibliogrpahie->setTitreRef($data["titreRef"]);
+            $newBibliogrpahie->setAbvSiteMarchande($data["abvSiteMarchande"]);
+            $newBibliogrpahie->setTome($data["tome"]);
+            $newBibliogrpahie->setVolume($data["volume"]);
+            $newBibliogrpahie->setNumCollection($data["numCollection"]);
+            $newBibliogrpahie->setPagination($data["pagination"]);
+            $newBibliogrpahie->setDateEdition($data["dateEdition"]);
+            $newBibliogrpahie->setIsbn($data["isbn"]);
+            $newBibliogrpahie->setIssn($data["issn"]);
 
+            $bibliographieManager->addVille($newBibliogrpahie);
+
+            $session->getFlashBag()->add('success', 'Le sujet a été publié.');
             return $this->redirectToRoute('homepage');
+        } else {
+            if ($form->isSubmitted()) {
+                $session->getFlashBag()->add('error', 'Vérifiez que le sujet est été remplis correctement.');
+            }
+
         }
 
         return $this->render('default/list.html.twig', array('form' => $form->createView()));

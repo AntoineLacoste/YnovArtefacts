@@ -11,11 +11,33 @@ use Symfony\Component\HttpFoundation\Request;
 class EditeurController extends Controller
 {
     /**
-     * @Route("/", name="editeur")
+     * @Route("/add", name="createEditeur")
      */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/editeur.html.twig');
+    public function addAction(Request $request) {
+        $session = new Session();
+        $editeurManager = $this->get('EditeurManager');
+
+        $form = $this->createForm(PeriodiqueType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            $newPeriodique = new Periodique();
+            $newPeriodique->setName($data["nom"]);
+
+            $editeurManager->addPeriodique($newPeriodique);
+
+            $session->getFlashBag()->add('success', 'L\'élement a été ajouté');
+            return $this->redirectToRoute('homepage');
+        } else {
+            if ($form->isSubmitted()) {
+                $session->getFlashBag()->add('error', 'Vérifiez que l\'élément a été remplis correctement.');
+            }
+
+        }
+
+        return $this->render('default/list.html.twig', array('form' => $form->createView()));
     }
 }

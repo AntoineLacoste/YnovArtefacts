@@ -99,7 +99,7 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_bibliographie_parent", referencedColumnName="id_bibliographie")
      * })
      */
-    private $idBibliographieParent;
+    private $bibliographieParent;
 
     /**
      * @var \AppBundle\Entity\Collection
@@ -109,7 +109,7 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_collection", referencedColumnName="id_collection")
      * })
      */
-    private $idCollection;
+    private $collection;
 
     /**
      * @var \AppBundle\Entity\Editeur
@@ -119,7 +119,7 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_editeur", referencedColumnName="id_editeur")
      * })
      */
-    private $idEditeur;
+    private $editeur;
 
     /**
      * @var \AppBundle\Entity\Periodique
@@ -129,7 +129,7 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_periodique", referencedColumnName="id_periodique")
      * })
      */
-    private $idPeriodique;
+    private $periodique;
 
     /**
      * @var \AppBundle\Entity\TypeBib
@@ -139,7 +139,7 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_type_bib", referencedColumnName="id_type")
      * })
      */
-    private $idTypeBib;
+    private $typeBib;
 
     /**
      * @var \AppBundle\Entity\Ville
@@ -149,246 +149,283 @@ class BibliographieV2
      *   @ORM\JoinColumn(name="id_ville_edition", referencedColumnName="id_ville")
      * })
      */
-    private $idVilleEdition;
+    private $villeEdition;
+
+
 
     /**
      * @return bool
      */
-    public function isConfirmed() {
+    public function isConfirmed(): bool
+    {
         return $this->confirmed;
     }
 
     /**
      * @param bool $confirmed
      */
-    public function setConfirmed($confirmed) {
+    public function setConfirmed(bool $confirmed): void
+    {
         $this->confirmed = $confirmed;
     }
 
     /**
      * @return string
      */
-    public function getTitreRef() {
+    public function getTitreRef(): string
+    {
         return $this->titreRef;
     }
 
     /**
      * @param string $titreRef
      */
-    public function setTitreRef($titreRef) {
+    public function setTitreRef(string $titreRef): void
+    {
         $this->titreRef = $titreRef;
     }
 
     /**
      * @return string
      */
-    public function getAbvSiteMarchande() {
+    public function getAbvSiteMarchande(): string
+    {
         return $this->abvSiteMarchande;
     }
 
     /**
      * @param string $abvSiteMarchande
      */
-    public function setAbvSiteMarchande($abvSiteMarchande) {
+    public function setAbvSiteMarchande(string $abvSiteMarchande): void
+    {
         $this->abvSiteMarchande = $abvSiteMarchande;
     }
 
     /**
      * @return string
      */
-    public function getTome() {
+    public function getTome(): string
+    {
         return $this->tome;
     }
 
     /**
      * @param string $tome
      */
-    public function setTome($tome) {
+    public function setTome(string $tome): void
+    {
         $this->tome = $tome;
     }
 
     /**
      * @return string
      */
-    public function getVolume() {
+    public function getVolume(): string
+    {
         return $this->volume;
     }
 
     /**
      * @param string $volume
      */
-    public function setVolume($volume) {
+    public function setVolume(string $volume): void
+    {
         $this->volume = $volume;
     }
 
     /**
      * @return string
      */
-    public function getNumCollection() {
+    public function getNumCollection(): string
+    {
         return $this->numCollection;
     }
 
     /**
      * @param string $numCollection
      */
-    public function setNumCollection($numCollection) {
+    public function setNumCollection(string $numCollection): void
+    {
         $this->numCollection = $numCollection;
     }
 
     /**
      * @return string
      */
-    public function getPagination() {
+    public function getPagination(): string
+    {
         return $this->pagination;
     }
 
     /**
      * @param string $pagination
      */
-    public function setPagination($pagination) {
+    public function setPagination(string $pagination): void
+    {
         $this->pagination = $pagination;
     }
 
     /**
      * @return \DateTime
      */
-    public function getDateEdition() {
+    public function getDateEdition(): \DateTime
+    {
         return $this->dateEdition;
     }
 
     /**
      * @param \DateTime $dateEdition
      */
-    public function setDateEdition($dateEdition) {
+    public function setDateEdition(\DateTime $dateEdition): void
+    {
         $this->dateEdition = $dateEdition;
     }
 
     /**
      * @return string
      */
-    public function getIsbn() {
+    public function getIsbn(): string
+    {
         return $this->isbn;
     }
 
     /**
      * @param string $isbn
      */
-    public function setIsbn($isbn) {
+    public function setIsbn(string $isbn): void
+    {
         $this->isbn = $isbn;
     }
 
     /**
      * @return string
      */
-    public function getIssn() {
+    public function getIssn(): string
+    {
         return $this->issn;
     }
 
     /**
      * @param string $issn
      */
-    public function setIssn($issn) {
+    public function setIssn(string $issn): void
+    {
         $this->issn = $issn;
     }
 
     /**
      * @return int
      */
-    public function getIdBibliographie() {
+    public function getIdBibliographie(): int
+    {
         return $this->idBibliographie;
     }
 
     /**
      * @param int $idBibliographie
      */
-    public function setIdBibliographie($idBibliographie) {
+    public function setIdBibliographie(int $idBibliographie): void
+    {
         $this->idBibliographie = $idBibliographie;
     }
 
     /**
      * @return BibliographieV2
      */
-    public function getIdBibliographieParent() {
-        return $this->idBibliographieParent;
+    public function getBibliographieParent(): BibliographieV2
+    {
+        return $this->bibliographieParent;
     }
 
     /**
-     * @param BibliographieV2 $idBibliographieParent
+     * @param BibliographieV2 $bibliographieParent
      */
-    public function setIdBibliographieParent($idBibliographieParent) {
-        $this->idBibliographieParent = $idBibliographieParent;
+    public function setBibliographieParent(BibliographieV2 $bibliographieParent): void
+    {
+        $this->bibliographieParent = $bibliographieParent;
     }
 
     /**
      * @return Collection
      */
-    public function getIdCollection() {
-        return $this->idCollection;
+    public function getCollection(): Collection
+    {
+        return $this->collection;
     }
 
     /**
-     * @param Collection $idCollection
+     * @param Collection $collection
      */
-    public function setIdCollection($idCollection) {
-        $this->idCollection = $idCollection;
+    public function setCollection(Collection $collection): void
+    {
+        $this->collection = $collection;
     }
 
     /**
      * @return Editeur
      */
-    public function getIdEditeur() {
-        return $this->idEditeur;
+    public function getEditeur(): Editeur
+    {
+        return $this->editeur;
     }
 
     /**
-     * @param Editeur $idEditeur
+     * @param Editeur $editeur
      */
-    public function setIdEditeur($idEditeur) {
-        $this->idEditeur = $idEditeur;
+    public function setEditeur(Editeur $editeur): void
+    {
+        $this->editeur = $editeur;
     }
 
     /**
      * @return Periodique
      */
-    public function getIdPeriodique() {
-        return $this->idPeriodique;
+    public function getPeriodique(): Periodique
+    {
+        return $this->periodique;
     }
 
     /**
-     * @param Periodique $idPeriodique
+     * @param Periodique $periodique
      */
-    public function setIdPeriodique($idPeriodique) {
-        $this->idPeriodique = $idPeriodique;
+    public function setPeriodique(Periodique $periodique): void
+    {
+        $this->periodique = $periodique;
     }
 
     /**
      * @return TypeBib
      */
-    public function getIdTypeBib() {
-        return $this->idTypeBib;
+    public function getTypeBib(): TypeBib
+    {
+        return $this->typeBib;
     }
 
     /**
-     * @param TypeBib $idTypeBib
+     * @param TypeBib $typeBib
      */
-    public function setIdTypeBib($idTypeBib) {
-        $this->idTypeBib = $idTypeBib;
+    public function setTypeBib(TypeBib $typeBib): void
+    {
+        $this->typeBib = $typeBib;
     }
 
     /**
      * @return Ville
      */
-    public function getIdVilleEdition() {
-        return $this->idVilleEdition;
+    public function getVilleEdition(): Ville
+    {
+        return $this->villeEdition;
     }
 
     /**
-     * @param Ville $idVilleEdition
+     * @param Ville $villeEdition
      */
-    public function setIdVilleEdition($idVilleEdition) {
-        $this->idVilleEdition = $idVilleEdition;
+    public function setVilleEdition(Ville $villeEdition): void
+    {
+        $this->villeEdition = $villeEdition;
     }
 
-
 }
+
+
 

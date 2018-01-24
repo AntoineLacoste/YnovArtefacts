@@ -25,98 +25,25 @@
         <!-- begin panel -->
         <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
             <div class="panel-body">
-                <form class="form-horizontal" method="POST">
-                    <input type="hidden" name="id_bibliographie" value="{{ bibliographie.idBibliographie }}">
-                    Document édité le <input id="date" name="date_edition" type="date" data="{{ bibliographie.dateEdition }}"> :
+                {{ form_start(form, {'method': 'post'}) }}
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Titre</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="titre_ref" name="titre_ref" value="{{ bibliographie.titreRef }}">
-                        </div>
-                    </div>
+                {{ form_widget(form.TypeBib) }}
+                {{ form_widget(form.titreRef) }}
+                {{ form_widget(form.villeEdition) }}
+                {{ form_widget(form.abvSiteMarchande) }}
+                {{ form_widget(form.tome) }}
+                {{ form_widget(form.volume) }}
+                {{ form_widget(form.pagination) }}
+                {{ form_widget(form.dateEdition) }}
+                {{ form_widget(form.isbn) }}
+                {{ form_widget(form.issn) }}
+                {{ form_widget(form.villeEdition) }}
+                {{ form_widget(form.editeur) }}
+                {{ form_widget(form.collection) }}
+                {{ form_widget(form.periodique) }}
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Ville</label>
-                        <div class="col-md-9">
-                            <select class="form-control" id="ville" name="ville">
-                                {% for id,ville in villes %}
-                                    <option value="{{ id }}" {% if bibliographie.idVilleEdition == id %} selected {% endif %}>{{ ville }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Autre ville</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="autre_ville" name="autre_ville" value="">
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Éditeur</label>
-                        <div class="col-md-9">
-                            <select class="form-control" id="editeur" name="editeur">
-                                {% for id,editeur in editeurs %}
-                                    <option value="{{ id }}" {% if bibliographie.idEditeur == id %} selected {% endif %}>{{ editeur }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Autre éditeur</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="autre_edtieur" name="autre_edtieur" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Type de document</label>
-                        <div class="col-md-9">
-                            <select class="form-control" id="type_bib" name="type_bib">
-                                {% for id,type_bib in type_bibs %}
-                                    <option value="{{ id }}" {% if bibliographie.idTypeBib == id %} selected {% endif %}>{{ type_bib }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Collection</label>
-                        <div class="col-md-9">
-                            <select class="form-control" id="collection" name="collection">
-                                {% for id,collection in collections %}
-                                    <option value="{{ id }}" {% if bibliographie.idCollection == id %} selected {% endif %}>{{ collection }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Autre collection</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="autre_collection" name="autre_collection" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Périodique</label>
-                        <div class="col-md-9">
-                            <select class="form-control" id="periodique" name="periodique">
-                                {% for id,periodique in periodiques %}
-                                    <option value="{{ id }}" {% if bibliographie.idPeriodique == id %} selected {% endif %}>{{ periodique }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Autre périodique</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="autre_périodique" name="autre_périodique" value="">
-                        </div>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-sm btn-inverse">Confirmer</button>
-                </form>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

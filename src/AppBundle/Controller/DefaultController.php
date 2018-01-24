@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\BibliographieV2;
+use AppBundle\Form\BibliographieType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,42 +15,19 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
+        //$bibliogrpahie = new BibliographieV2();
+        $form = $this->createForm(BibliographieType::class);
 
-        $bibliographieRepo = $em->getRepository("AppBundle:BibliographieV2");
-        $collectionRepo    = $em->getRepository("AppBundle:Collection");
-        $diplomeRepo       = $em->getRepository("AppBundle:Diplome");
-        $editeurRepo       = $em->getRepository("AppBundle:Editeur");
-        $organismeRepo     = $em->getRepository("AppBundle:Organisme");
-        $periodesRepo       = $em->getRepository("AppBundle:Periodes");
-        $periodiqueRepo    = $em->getRepository("AppBundle:Periodique");
-        $themeRepo         = $em->getRepository("AppBundle:Theme");
-        $villeRepo         = $em->getRepository("AppBundle:Ville");
-        $typeBibRepo       = $em->getRepository("AppBundle:TypeBib");
 
-        $bibliographies = $bibliographieRepo->findAll();
-        $collections    = $collectionRepo->findAll();
-        $diplomes       = $diplomeRepo->findAll();
-        $editeurs       = $editeurRepo->findAll();
-        $organismes     = $organismeRepo->findAll();
-        $periodes       = $periodesRepo->findAll();
-        $periodiques    = $periodiqueRepo->findAll();
-        $themes         = $themeRepo->findAll();
-        $villes         = $villeRepo->findAll();
-        $typeBibs       = $typeBibRepo->findAll();
+        if ($form->isValid()) {
+            $charge = $form->getData();
 
-        dump($bibliographies);
-        return $this->render('default/list.html.twig', [
-            'bibliographie' => $bibliographies,
-            'collections' => $collections,
-            'diplomes' => $diplomes,
-            'editeurs' => $editeurs,
-            'organismes' => $organismes,
-            'periodes' => $periodes,
-            'periodiques' => $periodiques,
-            'themes' => $themes,
-            'villes' => $villes,
-            'type_bibs' => $typeBibs,
-        ]);
+           // $chargeManager->updateCharge($charge);
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('default/list.html.twig', array('form' => $form->createView()));
     }
 }

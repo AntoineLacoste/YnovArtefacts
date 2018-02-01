@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Editeur;
+use AppBundle\Entity\Location;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,30 +16,25 @@ class EditeurController extends Controller
      * @Route("/add", name="createEditeur")
      */
     public function addAction(Request $request) {
-        $session = new Session();
-        $editeurManager = $this->get('EditeurManager');
+        $editeur = new Editeur();
+        $EditeurManager = $this->get('EditeurManager');
 
-        $form = $this->createForm(PeriodiqueType::class);
+        //GET Datas
+        $data = $request->request->get("nom");
 
-        $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $data = $form->getData();
+        $location = new Location();
+        $location->setIdCommune($request->request->get("idCommune"));
 
-            $newPeriodique = new Periodique();
-            $newPeriodique->setName($data["nom"]);
+        //$d->setIdCommune();
+        $data = $request->request->get("idCommune");
 
-            $editeurManager->addPeriodique($newPeriodique);
+        //Setters
+        $editeur->setNom($data);
 
-            $session->getFlashBag()->add('success', 'L\'élement a été ajouté');
-            return $this->redirectToRoute('homepage');
-        } else {
-            if ($form->isSubmitted()) {
-                $session->getFlashBag()->add('error', 'Vérifiez que l\'élément a été remplis correctement.');
-            }
+        //add
+        $EditeurManager->addEditeur($editeur);
 
-        }
-
-        return $this->render('default/list.html.twig', array('form' => $form->createView()));
+        return $this->json(array('editeur'=>$editeur));
     }
 }

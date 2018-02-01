@@ -3,7 +3,11 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Collection;
+use AppBundle\Entity\Commune;
+use AppBundle\Entity\Departement;
 use AppBundle\Entity\Editeur;
+use AppBundle\Entity\LieuDits;
+use AppBundle\Entity\Pays;
 use AppBundle\Entity\Periodique;
 use AppBundle\Entity\TypeBib;
 use AppBundle\Entity\Ville;
@@ -82,11 +86,58 @@ class BibliographieType extends AbstractType {
 
             ->add('editeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control',
+                    'id' => 'editeur'),
                 'class' => Editeur::class,
                 'choice_label' => function ($editeur) {
                     return $editeur->getNom();
                 }))
+
+            ->add('paysEditeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'id' => 'paysEditeur'),
+                'class' => Pays::class,
+                'choice_label' => function ($pays) {
+                    return $pays->getPaysFr();
+                }))
+
+            ->add('villeEditeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'id' => 'villeEditeur'),
+                'class' => Ville::class,
+                'choice_label' => function ($ville) {
+                    return $ville->getNom();
+                }))
+
+            ->add('departementEditeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'id' => 'departementEditeur'),
+                'class' => Departement::class,
+                'choice_label' => function ($departement) {
+                    return $departement->getNom();
+                }))
+
+            ->add('communeEditeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'id' => 'communeEditeur'),
+                'class' => Commune::class,
+                'choice_label' => function ($commune) {
+                    return $commune->getNom();
+                }))
+
+            ->add('lieuDitsEditeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'id' => 'lieuDitsEditeur'),
+                'class' => LieuDits::class,
+                'choice_label' => function ($lieuDits) {
+                    return $lieuDits->getNom();
+                }))
+
             ->add('collection', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),

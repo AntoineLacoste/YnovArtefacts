@@ -22,7 +22,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.titreRef) }}
                             </label>
@@ -30,7 +30,7 @@
                                 {{ form_widget(form.titreRef) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.villeEdition) }}
                             </label>
@@ -38,7 +38,7 @@
                                 {{ form_widget(form.villeEdition) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.abvSiteMarchande) }}
                             </label>
@@ -46,7 +46,7 @@
                                 {{ form_widget(form.abvSiteMarchande) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.tome) }}
                             </label>
@@ -54,7 +54,7 @@
                                 {{ form_widget(form.tome) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.volume) }}
                             </label>
@@ -62,7 +62,7 @@
                                 {{ form_widget(form.volume) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.pagination) }}
                             </label>
@@ -70,7 +70,7 @@
                                 {{ form_widget(form.pagination) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.dateEdition) }}
                             </label>
@@ -78,7 +78,7 @@
                                 {{ form_widget(form.dateEdition) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.isbn) }}
                             </label>
@@ -86,7 +86,7 @@
                                 {{ form_widget(form.isbn) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.issn) }}
                             </label>
@@ -95,7 +95,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <hr/>
+                        <div class="form-group form-inline" id="editeur">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.editeur) }}
                             </label>
@@ -103,8 +104,49 @@
                                 {{ form_widget(form.editeur) }}
                             </div>
                         </div>
+                        <div class="form-group form-inline" id="paysEditeur">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.paysEditeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.paysEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="villeEditeur">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.villeEditeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.villeEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="departementEditeur">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.departementEditeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.departementEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="communeEditeur">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.communeEditeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.communeEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="lieuDitsEditeur">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.lieuDitsEditeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.lieuDitsEditeur) }}
+                            </div>
+                        </div>
 
-                        <div class="form-group">
+                        <hr/>
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.collection) }}
                             </label>
@@ -113,7 +155,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.periodique) }}
                             </label>

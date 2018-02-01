@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Organisme;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,18 @@ class OrganismeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/organisme.html.twig');
+        $organisme = new Organisme();
+        $OrganismeManager = $this->get('OrganismeManager');
+
+        //GET Datas
+        $data = $request->request->get("nom");
+
+        //Setters
+        $organisme->setNom($data);
+
+        //add
+        $OrganismeManager->addVille($organisme);
+
+        return $this->json(array('organisme'=>$organisme));
     }
 }

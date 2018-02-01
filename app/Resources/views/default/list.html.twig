@@ -11,25 +11,118 @@
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                 <div class="panel-body">
-                    {{ form_start(form, {'method': 'post'}) }}
+                    <form name="appbundle_collection" method="post" class="form-horizontal col-lg-offset-4 col-lg-12">
 
-                    {{ form_widget(form.TypeBib) }}
-                    {{ form_widget(form.titreRef) }}
-                    {{ form_widget(form.villeEdition) }}
-                    {{ form_widget(form.abvSiteMarchande) }}
-                    {{ form_widget(form.tome) }}
-                    {{ form_widget(form.volume) }}
-                    {{ form_widget(form.pagination) }}
-                    {{ form_widget(form.dateEdition) }}
-                    {{ form_widget(form.isbn) }}
-                    {{ form_widget(form.issn) }}
-                    {{ form_widget(form.villeEdition) }}
-                    {{ form_widget(form.editeur) }}
-                    {{ form_widget(form.collection) }}
-                    {{ form_widget(form.periodique) }}
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.TypeBib) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.TypeBib) }}
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.titreRef) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.titreRef) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.villeEdition) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.villeEdition) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.abvSiteMarchande) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.abvSiteMarchande) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.tome) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.tome) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.volume) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.volume) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.pagination) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.pagination) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.dateEdition) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.dateEdition) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.isbn) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.isbn) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.issn) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.issn) }}
+                            </div>
+                        </div>
 
-                    {{ form_end(form) }}
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.editeur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.editeur) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.collection) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.collection) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.periodique) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.periodique) }}
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>

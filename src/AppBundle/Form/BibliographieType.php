@@ -24,36 +24,79 @@ class BibliographieType extends AbstractType {
         $builder
             ->add('TypeBib', EntityType::class, array(
                 'class' => TypeBib::class,
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Type du document : ",
                 'choice_label' => function ($typeBib) {
                     return $typeBib->getType();
                 }))
             /* Titre ref */
-            ->add('titreRef', TextType::class)
-            ->add('abvSiteMarchande', TextType::class)
-            ->add('tome', TextType::class)
-            ->add('volume', TextType::class)
-            ->add('pagination', TextType::class)
-            ->add('dateEdition', DateType::class)
-            ->add('isbn', TextType::class)
-            ->add('issn', TextType::class)
+            ->add('titreRef', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Titre du document : "
+            ))
+            ->add('abvSiteMarchande', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Lien site marchand : "
+            ))
+            ->add('tome', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Tome : "
+            ))
+            ->add('volume', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Volume : "
+            ))
+            ->add('pagination', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Pagination : "
+            ))
+            ->add('dateEdition', DateType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Date d'édition : "
+            ))
+            ->add('isbn', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "ISBN : "
+            ))
+            ->add('issn', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "ISSN : "
+            ))
 
             ->add('villeEdition', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
                 'class' => Ville::class,
                 'choice_label' => function ($ville) {
                     return $ville->getNom();
                 }))
 
             ->add('editeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
                 'class' => Editeur::class,
                 'choice_label' => function ($editeur) {
                     return $editeur->getNom();
                 }))
             ->add('collection', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
                 'class' => Collection::class,
                 'choice_label' => function ($collection) {
                     return $collection->getNom();
                 }))
             ->add('periodique', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
                 'class' => Periodique::class,
                 'choice_label' => function ($periodique) {
                     return $periodique->getNom();

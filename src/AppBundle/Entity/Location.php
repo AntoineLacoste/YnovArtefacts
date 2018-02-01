@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="location", indexes={@ORM\Index(name="ind_pays_commune", columns={"id_commune", "id_pays"})})
  * @ORM\Entity
  */
-class Location
-{
+class Location {
     /**
      * @var integer
      *
@@ -64,87 +63,85 @@ class Location
     /**
      * @return int
      */
-    public function getIdPays() {
-        return $this->idPays;
+    public function getPays(): int {
+        return $this->Pays;
     }
 
     /**
-     * @param int $idPays
+     * @param int $Pays
      */
-    public function setIdPays($idPays) {
-        $this->idPays = $idPays;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdDepartement() {
-        return $this->idDepartement;
-    }
-
-    /**
-     * @param int $idDepartement
-     */
-    public function setIdDepartement($idDepartement) {
-        $this->idDepartement = $idDepartement;
+    public function setPays(int $Pays): void {
+        $this->Pays = $Pays;
     }
 
     /**
      * @return int
      */
-    public function getIdCommune() {
-        return $this->idCommune;
+    public function getDepartement(): int {
+        return $this->Departement;
     }
 
     /**
-     * @param int $idCommune
+     * @param int $Departement
      */
-    public function setIdCommune($idCommune) {
-        $this->idCommune = $idCommune;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdLieuDits() {
-        return $this->idLieuDits;
-    }
-
-    /**
-     * @param int $idLieuDits
-     */
-    public function setIdLieuDits($idLieuDits) {
-        $this->idLieuDits = $idLieuDits;
+    public function setDepartement(int $Departement): void {
+        $this->Departement = $Departement;
     }
 
     /**
      * @return int
      */
-    public function getIdCoords() {
-        return $this->idCoords;
+    public function getCommune(): int {
+        return $this->Commune;
     }
 
     /**
-     * @param int $idCoords
+     * @param int $Commune
      */
-    public function setIdCoords($idCoords) {
-        $this->idCoords = $idCoords;
+    public function setCommune(int $Commune): void {
+        $this->Commune = $Commune;
     }
 
     /**
      * @return int
      */
-    public function getId() {
+    public function getLieuDits(): int {
+        return $this->LieuDits;
+    }
+
+    /**
+     * @param int $LieuDits
+     */
+    public function setLieuDits(int $LieuDits): void {
+        $this->LieuDits = $LieuDits;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCoords(): int {
+        return $this->Coords;
+    }
+
+    /**
+     * @param int $Coords
+     */
+    public function setCoords(int $Coords): void {
+        $this->Coords = $Coords;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int {
         return $this->id;
     }
 
     /**
      * @param int $id
      */
-    public function setId($id) {
+    public function setId(int $id): void {
         $this->id = $id;
     }
-
-
 }
 

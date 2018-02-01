@@ -17,30 +17,18 @@ class VilleController extends Controller
      * @Route("/add", name="createVille")
      */
     public function addAction(Request $request) {
-        $session      = new Session();
-        $villeManager = $this->get('VilleManager');
+        $ville = new Ville();
+        $VilleManager = $this->get('VilleManager');
 
-        $form = $this->createForm(VilleType::class);
+        //GET Datas
+        $data = $request->request->get("nom");
 
-        $form->handleRequest($request);
+        //Setters
+        $ville->setNom($data);
 
-        if ($form->isValid()) {
-            $data = $form->getData();
+        //add
+        $VilleManager->addVille($ville);
 
-            $newVille = new Ville();
-            $newVille->setName($data["nom"]);
-
-            $villeManager->addVille($newVille);
-
-            $session->getFlashBag()->add('success', 'Le sujet a été publié.');
-            return $this->redirectToRoute('homepage');
-        } else {
-            if ($form->isSubmitted()) {
-                $session->getFlashBag()->add('error', 'Vérifiez que le sujet est été remplis correctement.');
-            }
-
-        }
-
-        return $this->render('default/list.html.twig', array('form' => $form->createView()));
+        return $this->json(array('ville'=>$ville));
     }
 }

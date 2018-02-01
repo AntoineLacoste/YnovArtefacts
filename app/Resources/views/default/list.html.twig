@@ -1,43 +1,38 @@
-<html>
-<head>
-    <script src="jquery.js"></script>
-    <script src="index.js"></script>
-    <meta charset="utf-8">
+{% extends 'base.html.twig' %}
 
-</head>
-
-<body>
-<h1 class="panel-header">Migration bibliographie V2</h1>
+{% block body %}
+    <body>
+    <h1 class="panel-header">Migration bibliographie V2</h1>
 
 
-<div class="row">
-    <!-- begin col-6 -->
-    <div class="col-md-6">
-        <!-- begin panel -->
-        <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
-            <div class="panel-body">
-                {{ form_start(form, {'method': 'post'}) }}
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-md-6">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-body">
+                    {{ form_start(form, {'method': 'post'}) }}
 
-                {{ form_widget(form.TypeBib) }}
-                {{ form_widget(form.titreRef) }}
-                {{ form_widget(form.villeEdition) }}
-                {{ form_widget(form.abvSiteMarchande) }}
-                {{ form_widget(form.tome) }}
-                {{ form_widget(form.volume) }}
-                {{ form_widget(form.pagination) }}
-                {{ form_widget(form.dateEdition) }}
-                {{ form_widget(form.isbn) }}
-                {{ form_widget(form.issn) }}
-                {{ form_widget(form.villeEdition) }}
-                {{ form_widget(form.editeur) }}
-                {{ form_widget(form.collection) }}
-                {{ form_widget(form.periodique) }}
+                    {{ form_widget(form.TypeBib) }}
+                    {{ form_widget(form.titreRef) }}
+                    {{ form_widget(form.villeEdition) }}
+                    {{ form_widget(form.abvSiteMarchande) }}
+                    {{ form_widget(form.tome) }}
+                    {{ form_widget(form.volume) }}
+                    {{ form_widget(form.pagination) }}
+                    {{ form_widget(form.dateEdition) }}
+                    {{ form_widget(form.isbn) }}
+                    {{ form_widget(form.issn) }}
+                    {{ form_widget(form.villeEdition) }}
+                    {{ form_widget(form.editeur) }}
+                    {{ form_widget(form.collection) }}
+                    {{ form_widget(form.periodique) }}
 
 
-                {{ form_end(form) }}
+                    {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+    </body>
+{% endblock %}

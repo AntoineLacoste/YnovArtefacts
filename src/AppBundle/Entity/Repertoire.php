@@ -40,10 +40,10 @@ class Repertoire
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personne")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
+     *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne", onDelete="CASCADE")
      * })
      */
-    private $idPersonne;
+    private $Personne;
 
     /**
      * @return string

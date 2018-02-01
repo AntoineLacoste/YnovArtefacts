@@ -15,28 +15,28 @@ class Personne
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=50, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=100, nullable=false)
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="date_vie", type="string", length=10, nullable=false)
+     * @ORM\Column(name="date_vie", type="string", length=10, nullable=true)
      */
     private $dateVie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="string", length=50, nullable=false)
+     * @ORM\Column(name="note", type="string", length=50, nullable=true)
      */
     private $note;
 

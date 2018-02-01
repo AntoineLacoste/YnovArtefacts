@@ -16,36 +16,41 @@ class Location
      * @var integer
      *
      * @ORM\Column(name="id_pays", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pays")
      */
-    private $idPays;
+    private $Pays;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_departement", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement")
      */
-    private $idDepartement = '0';
+    private $Departement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_commune", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commune")
      */
-    private $idCommune;
+    private $Commune;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_lieu_dits", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LieuDits")
      */
-    private $idLieuDits = '0';
+    private $LieuDits;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_coords", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Coordonnees")
      */
-    private $idCoords = '0';
+    private $Coords;
 
     /**
      * @var integer

@@ -18,7 +18,7 @@ class Location
      * @ORM\Column(name="id_pays", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pays")
      */
-    private $idPays;
+    private $Pays;
 
     /**
      * @var integer
@@ -26,7 +26,7 @@ class Location
      * @ORM\Column(name="id_departement", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement")
      */
-    private $idDepartement = '0';
+    private $Departement = '0';
 
     /**
      * @var integer
@@ -34,7 +34,7 @@ class Location
      * @ORM\Column(name="id_commune", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commune")
      */
-    private $idCommune;
+    private $Commune;
 
     /**
      * @var integer
@@ -42,7 +42,103 @@ class Location
      * @ORM\Column(name="id_lieu_dits", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LieuDits")
      */
-    private $idLieuDits = '0';
+    private $LieuDits = '0';
+
+    /**
+     * @return int
+     */
+    public function getPays(): int
+    {
+        return $this->Pays;
+    }
+
+    /**
+     * @param int $Pays
+     */
+    public function setPays(int $Pays): void
+    {
+        $this->Pays = $Pays;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDepartement(): int
+    {
+        return $this->Departement;
+    }
+
+    /**
+     * @param int $Departement
+     */
+    public function setDepartement(int $Departement): void
+    {
+        $this->Departement = $Departement;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCommune(): int
+    {
+        return $this->Commune;
+    }
+
+    /**
+     * @param int $Commune
+     */
+    public function setCommune(int $Commune): void
+    {
+        $this->Commune = $Commune;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLieuDits(): int
+    {
+        return $this->LieuDits;
+    }
+
+    /**
+     * @param int $LieuDits
+     */
+    public function setLieuDits(int $LieuDits): void
+    {
+        $this->LieuDits = $LieuDits;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCoords(): int
+    {
+        return $this->Coords;
+    }
+
+    /**
+     * @param int $Coords
+     */
+    public function setCoords(int $Coords): void
+    {
+        $this->Coords = $Coords;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
 
     /**
      * @var integer
@@ -50,7 +146,7 @@ class Location
      * @ORM\Column(name="id_coords", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Coordonnees")
      */
-    private $idCoords = '0';
+    private $Coords = '0';
 
     /**
      * @var integer
@@ -61,89 +157,6 @@ class Location
      */
     private $id;
 
-    /**
-     * @return int
-     */
-    public function getIdPays() {
-        return $this->idPays;
-    }
-
-    /**
-     * @param int $idPays
-     */
-    public function setIdPays($idPays) {
-        $this->idPays = $idPays;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdDepartement() {
-        return $this->idDepartement;
-    }
-
-    /**
-     * @param int $idDepartement
-     */
-    public function setIdDepartement($idDepartement) {
-        $this->idDepartement = $idDepartement;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdCommune() {
-        return $this->idCommune;
-    }
-
-    /**
-     * @param int $idCommune
-     */
-    public function setIdCommune($idCommune) {
-        $this->idCommune = $idCommune;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdLieuDits() {
-        return $this->idLieuDits;
-    }
-
-    /**
-     * @param int $idLieuDits
-     */
-    public function setIdLieuDits($idLieuDits) {
-        $this->idLieuDits = $idLieuDits;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdCoords() {
-        return $this->idCoords;
-    }
-
-    /**
-     * @param int $idCoords
-     */
-    public function setIdCoords($idCoords) {
-        $this->idCoords = $idCoords;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId() {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id) {
-        $this->id = $id;
-    }
 
 
 }

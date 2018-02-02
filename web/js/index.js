@@ -47,22 +47,45 @@ function addFieldPays() {
     addFieldText($("#paysEditeur"), "paysDEEditeur", "Pays en allemand");
     addFieldText($("#paysEditeur"), "paysESEditeur", "Pays en espagnol");
     addFieldText($("#paysEditeur"), "paysITEditeur", "Pays en italien");
+
+    addHr($("#appbundle_collection_editeur"), "hrPaysDebut");
+    addHr($("#codePaysEditeur"), "hrPaysFin");
+}
+
+function addHr(parent, name) {
+    var field = $('<hr>').attr({
+        id: name,
+    });
+
+    parent.after(field);
+    field.hide();
 }
 
 function addFieldVille() {
     addFieldText($("#villeEditeur"), "nomVilleEditeur", "Nom de la ville");
+
+    addHr($("#codePaysEditeur"), "hrVilleDebut");
+    addHr($("#nomVilleEditeur"), "hrVilleFin");
 }
 
 function addFieldDepartement() {
     addFieldText($("#departementEditeur"), "nomDepartementEditeur", "Nom du département");
+
+    addHr($("#villeEditeur"), "hrDepartementDebut");
+    addHr($("#nomDepartementEditeur"), "hrDepartementFin");
 }
 
 function addFieldCommune() {
     addFieldText($("#communeEditeur"), "nomCommuneEditeur", "Nom de la commune");
+
+    addHr($("#departementEditeur"), "hrCommuneDebut");
+    addHr($("#nomCommuneEditeur"), "hrCommuneFin");
 }
 
 function addFieldLieuDits() {
     addFieldText($("#lieuDitsEditeur"), "nomLieuDitsEditeur", "Nom du lieu dits");
+
+    addHr($("#communeEditeur"), "hrLieuDitsDebut");
 }
 
 function addFieldPlusEditeur() {
@@ -75,28 +98,16 @@ function addFieldPlusEditeur() {
 
     buttonAdd.click(function () {
         if ($("#appbundle_collection_paysEditeur").is(":visible")) {
-            $("#appbundle_collection_paysEditeur").parent().parent().hide();
-            $("#appbundle_collection_villeEditeur").parent().parent().hide();
-            $("#appbundle_collection_departementEditeur").parent().parent().hide();
-            $("#appbundle_collection_communeEditeur").parent().parent().hide();
-            $("#appbundle_collection_lieuDitsEditeur").parent().parent().hide();
+            editeurFieldHide();
         }
         else {
-            $("#appbundle_collection_paysEditeur").parent().parent().show();
-            $("#appbundle_collection_villeEditeur").parent().parent().show();
-            $("#appbundle_collection_departementEditeur").parent().parent().show();
-            $("#appbundle_collection_communeEditeur").parent().parent().show();
-            $("#appbundle_collection_lieuDitsEditeur").parent().parent().show();
+            editeurFieldShow();
         }
     });
 
     $("#appbundle_collection_editeur").after(buttonAdd);
 
-    $("#appbundle_collection_paysEditeur").parent().parent().hide();
-    $("#appbundle_collection_villeEditeur").parent().parent().hide();
-    $("#appbundle_collection_departementEditeur").parent().parent().hide();
-    $("#appbundle_collection_communeEditeur").parent().parent().hide();
-    $("#appbundle_collection_lieuDitsEditeur").parent().parent().hide();
+    editeurFieldHide();
 }
 
 function addFieldPlusPaysEditeur() {
@@ -109,31 +120,16 @@ function addFieldPlusPaysEditeur() {
 
     buttonAdd.click(function () {
         if ($("#codePaysEditeur").is(":visible")) {
-            $("#codePaysEditeur").parent().parent().hide();
-            $("#paysFREditeur").parent().parent().hide();
-            $("#paysGBEditeur").parent().parent().hide();
-            $("#paysDEEditeur").parent().parent().hide();
-            $("#paysESEditeur").parent().parent().hide();
-            $("#paysITEditeur").parent().parent().hide();
+            paysFieldHide();
         }
         else {
-            $("#codePaysEditeur").parent().parent().show();
-            $("#paysFREditeur").parent().parent().show();
-            $("#paysGBEditeur").parent().parent().show();
-            $("#paysDEEditeur").parent().parent().show();
-            $("#paysESEditeur").parent().parent().show();
-            $("#paysITEditeur").parent().parent().show();
+            paysFieldShow();
         }
     });
 
     $("#appbundle_collection_paysEditeur").after(buttonAdd);
 
-    $("#codePaysEditeur").parent().parent().hide();
-    $("#paysFREditeur").parent().parent().hide();
-    $("#paysGBEditeur").parent().parent().hide();
-    $("#paysDEEditeur").parent().parent().hide();
-    $("#paysESEditeur").parent().parent().hide();
-    $("#paysITEditeur").parent().parent().hide();
+    paysFieldHide();
 }
 
 function addFieldPlusVilleEditeur() {
@@ -146,16 +142,16 @@ function addFieldPlusVilleEditeur() {
 
     buttonAdd.click(function () {
         if ($("#nomVilleEditeur").is(":visible")) {
-            $("#nomVilleEditeur").parent().parent().hide();
+            villeFieldHide();
         }
         else {
-            $("#nomVilleEditeur").parent().parent().show();
+            villeFieldShow();
         }
     });
 
     $("#appbundle_collection_villeEditeur").after(buttonAdd);
 
-    $("#nomVilleEditeur").parent().parent().hide();
+    villeFieldHide();
 }
 
 function addFieldPlusDepartementEditeur() {
@@ -168,16 +164,16 @@ function addFieldPlusDepartementEditeur() {
 
     buttonAdd.click(function () {
         if ($("#nomDepartementEditeur").is(":visible")) {
-            $("#nomDepartementEditeur").parent().parent().hide();
+            departementFieldHide();
         }
         else {
-            $("#nomDepartementEditeur").parent().parent().show();
+            departementFieldShow();
         }
     });
 
     $("#appbundle_collection_departementEditeur").after(buttonAdd);
 
-    $("#nomDepartementEditeur").parent().parent().hide();
+    departementFieldHide();
 }
 
 function addFieldPlusCommuneEditeur() {
@@ -190,16 +186,16 @@ function addFieldPlusCommuneEditeur() {
 
     buttonAdd.click(function () {
         if ($("#nomCommuneEditeur").is(":visible")) {
-            $("#nomCommuneEditeur").parent().parent().hide();
+            communeFieldHide();
         }
         else {
-            $("#nomCommuneEditeur").parent().parent().show();
+            communeFieldShow();
         }
     });
 
     $("#appbundle_collection_communeEditeur").after(buttonAdd);
 
-    $("#nomCommuneEditeur").parent().parent().hide();
+    communeFieldHide();
 }
 
 function addFieldPlusLieuDitsEditeur() {
@@ -212,14 +208,141 @@ function addFieldPlusLieuDitsEditeur() {
 
     buttonAdd.click(function () {
         if ($("#nomLieuDitsEditeur").is(":visible")) {
-            $("#nomLieuDitsEditeur").parent().parent().hide();
+            lieuDitsFieldHide();
         }
         else {
-            $("#nomLieuDitsEditeur").parent().parent().show();
+            lieuDitsFieldShow();
         }
     });
 
     $("#appbundle_collection_lieuDitsEditeur").after(buttonAdd);
 
+    lieuDitsFieldHide();
+}
+
+function editeurFieldHide() {
+    $("#appbundle_collection_paysEditeur").parent().parent().hide();
+    $("#appbundle_collection_villeEditeur").parent().parent().hide();
+    $("#appbundle_collection_departementEditeur").parent().parent().hide();
+    $("#appbundle_collection_communeEditeur").parent().parent().hide();
+    $("#appbundle_collection_lieuDitsEditeur").parent().parent().hide();
+
+    paysFieldHide();
+    villeFieldHide();
+    departementFieldHide();
+    communeFieldHide();
+    lieuDitsFieldHide();
+
+    $("#hrEditeur1").hide();
+    $("#hrEditeur2").hide();
+}
+
+function editeurFieldShow() {
+    $("#appbundle_collection_paysEditeur").parent().parent().show();
+    $("#appbundle_collection_villeEditeur").parent().parent().show();
+    $("#appbundle_collection_departementEditeur").parent().parent().show();
+    $("#appbundle_collection_communeEditeur").parent().parent().show();
+    $("#appbundle_collection_lieuDitsEditeur").parent().parent().show();
+
+    $("#hrEditeur1").show();
+    $("#hrEditeur2").show();
+}
+
+function paysFieldHide() {
+    $("#codePaysEditeur").parent().parent().hide();
+    $("#paysFREditeur").parent().parent().hide();
+    $("#paysGBEditeur").parent().parent().hide();
+    $("#paysDEEditeur").parent().parent().hide();
+    $("#paysESEditeur").parent().parent().hide();
+    $("#paysITEditeur").parent().parent().hide();
+
+    $("#hrPaysDebut").hide();
+    $("#hrPaysFin").hide();
+}
+
+function paysFieldShow() {
+    $("#codePaysEditeur").parent().parent().show();
+    $("#paysFREditeur").parent().parent().show();
+    $("#paysGBEditeur").parent().parent().show();
+    $("#paysDEEditeur").parent().parent().show();
+    $("#paysESEditeur").parent().parent().show();
+    $("#paysITEditeur").parent().parent().show();
+
+    $("#hrPaysDebut").show();
+
+    if(! $("#hrVilleDebut").is(":visible")) {
+        $("#hrPaysFin").show();
+    }
+}
+
+function villeFieldHide() {
+    $("#nomVilleEditeur").parent().parent().hide();
+
+    $("#hrVilleDebut").hide();
+    $("#hrVilleFin").hide();
+}
+
+function villeFieldShow() {
+    $("#nomVilleEditeur").parent().parent().show();
+
+    if(! $("#hrPaysFin").is(":visible")) {
+        $("#hrVilleDebut").show();
+    }
+
+    if(! $("#hrDepartementDebut").is(":visible")) {
+        $("#hrVilleFin").show();
+    }
+}
+
+function departementFieldHide() {
+    $("#nomDepartementEditeur").parent().parent().hide();
+
+    $("#hrDepartementDebut").hide();
+    $("#hrDepartementFin").hide();
+}
+
+function departementFieldShow() {
+    $("#nomDepartementEditeur").parent().parent().show();
+
+    if(! $("#hrVilleFin").is(":visible")) {
+        $("#hrDepartementDebut").show();
+    }
+
+    if(! $("#hrCommuneDebut").is(":visible")) {
+        $("#hrDepartementFin").show();
+    }
+}
+
+function communeFieldHide() {
+    $("#nomCommuneEditeur").parent().parent().hide();
+
+    $("#hrCommuneDebut").hide();
+    $("#hrCommuneFin").hide();
+}
+
+function communeFieldShow() {
+    $("#nomCommuneEditeur").parent().parent().show();
+
+    if(! $("#hrDepartementFin").is(":visible")) {
+        $("#hrCommuneDebut").show();
+    }
+
+    if(! $("#hrLieuDitsDebut").is(":visible")) {
+        $("#hrCommuneFin").show();
+    }
+}
+
+function lieuDitsFieldHide() {
     $("#nomLieuDitsEditeur").parent().parent().hide();
+
+    $("#hrLieuDitsDebut").hide();
+    $("#hrLieuDitsFin").hide();
+}
+
+function lieuDitsFieldShow() {
+    $("#nomLieuDitsEditeur").parent().parent().show();
+
+    if(! $("#hrCommuneFin").is(":visible")) {
+        $("#hrLieuDitsDebut").show();
+    }
 }

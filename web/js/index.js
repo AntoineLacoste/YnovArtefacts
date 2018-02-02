@@ -40,6 +40,78 @@ function addFieldText(parent, name, labelStr) {
     parent.after(div);
 }
 
+function addVille() {
+    $.ajax({
+        url: window.location + "/pays/add",
+        type: 'POST',
+        data: {
+            nom: $("nomVilleEditeur").val()
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addCollection() {
+    $.ajax({
+        url: window.location + "/collection/add",
+        type: 'POST',
+        data: {
+            nom: $("nomCollectionEditeur").val()
+        }
+    });
+}
+
+function addCommune() {
+    $.ajax({
+        url: window.location + "/commune/add",
+        type: 'POST',
+        data: {
+            nom: $("nomCommuneEditeur").val()
+        }
+    });
+}
+
+function addLieuDits() {
+    $.ajax({
+        url: window.location + "/lieuDits/add",
+        type: 'POST',
+        data: {
+            nom: $("nomLieuDitsEditeur").val()
+        }
+    });
+}
+
+function addDepartement() {
+    $.ajax({
+        url: window.location + "/departement/add",
+        type: 'POST',
+        data: {
+            nom: $("nomDepartementEditeur").val()
+        }
+    });
+}
+
+function addButtonAjax(parent, name, label, callback) {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-primary",
+        style: "margin-left: 10px; margin-top: 10px;",
+        id: name
+    });
+
+    buttonAdd.append(label);
+
+    buttonAdd.click(callback);
+
+    parent.after(buttonAdd);
+    console.log(parent);
+    // buttonAdd.hide();
+}
+
 function addFieldPays() {
     addFieldText($("#paysEditeur"), "codePaysEditeur", "Code du pays");
     addFieldText($("#paysEditeur"), "paysFREditeur", "Pays en français");
@@ -50,6 +122,8 @@ function addFieldPays() {
 
     addHr($("#appbundle_collection_editeur"), "hrPaysDebut");
     addHr($("#codePaysEditeur"), "hrPaysFin");
+
+    addButtonAjax($("#codePaysEditeur"), "addPays", "Ajouter le pays", addVille());
 }
 
 function addHr(parent, name) {
@@ -270,9 +344,11 @@ function paysFieldShow() {
 
     $("#hrPaysDebut").show();
 
-    if(! $("#hrVilleDebut").is(":visible")) {
+    if (!$("#hrVilleDebut").is(":visible")) {
         $("#hrPaysFin").show();
     }
+
+    $("#addPays").show();
 }
 
 function villeFieldHide() {
@@ -285,11 +361,11 @@ function villeFieldHide() {
 function villeFieldShow() {
     $("#nomVilleEditeur").parent().parent().show();
 
-    if(! $("#hrPaysFin").is(":visible")) {
+    if (!$("#hrPaysFin").is(":visible")) {
         $("#hrVilleDebut").show();
     }
 
-    if(! $("#hrDepartementDebut").is(":visible")) {
+    if (!$("#hrDepartementDebut").is(":visible")) {
         $("#hrVilleFin").show();
     }
 }
@@ -304,11 +380,11 @@ function departementFieldHide() {
 function departementFieldShow() {
     $("#nomDepartementEditeur").parent().parent().show();
 
-    if(! $("#hrVilleFin").is(":visible")) {
+    if (!$("#hrVilleFin").is(":visible")) {
         $("#hrDepartementDebut").show();
     }
 
-    if(! $("#hrCommuneDebut").is(":visible")) {
+    if (!$("#hrCommuneDebut").is(":visible")) {
         $("#hrDepartementFin").show();
     }
 }
@@ -323,11 +399,11 @@ function communeFieldHide() {
 function communeFieldShow() {
     $("#nomCommuneEditeur").parent().parent().show();
 
-    if(! $("#hrDepartementFin").is(":visible")) {
+    if (!$("#hrDepartementFin").is(":visible")) {
         $("#hrCommuneDebut").show();
     }
 
-    if(! $("#hrLieuDitsDebut").is(":visible")) {
+    if (!$("#hrLieuDitsDebut").is(":visible")) {
         $("#hrCommuneFin").show();
     }
 }
@@ -342,7 +418,7 @@ function lieuDitsFieldHide() {
 function lieuDitsFieldShow() {
     $("#nomLieuDitsEditeur").parent().parent().show();
 
-    if(! $("#hrCommuneFin").is(":visible")) {
+    if (!$("#hrCommuneFin").is(":visible")) {
         $("#hrLieuDitsDebut").show();
     }
 }

@@ -30,6 +30,15 @@
                                 {{ form_widget(form.titreRef) }}
                             </div>
                         </div>
+
+                        <div class="form-group form-inline">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.bibliographieParent) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.bibliographieParent) }}
+                            </div>
+                        </div>
                         <div class="form-group form-inline" id ="villeEdition">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.villeEdition) }}
@@ -152,6 +161,14 @@
                             </label>
                             <div class="col-sm-8 col-sm-pad">
                                 {{ form_widget(form.collection) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.num_collection) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.num_collection) }}
                             </div>
                         </div>
 

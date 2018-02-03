@@ -12,42 +12,52 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Location {
     /**
-     * @var integer
+     * @var Pays
      *
-     * @ORM\Column(name="id_pays", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pays")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pays", referencedColumnName="id", nullable=true)
+     * })
      */
     private $Pays;
 
     /**
-     * @var integer
+     * @var Departement
      *
-     * @ORM\Column(name="id_departement", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_departement", referencedColumnName="id_departement", nullable=true)
+     * })
      */
     private $Departement;
 
     /**
-     * @var integer
+     * @var Commune
      *
-     * @ORM\Column(name="id_commune", type="integer", nullable=false)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commune")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commune", referencedColumnName="id_commune", nullable=true)
+     * })
      */
     private $Commune;
 
     /**
-     * @var integer
+     * @var LieuDits
      *
-     * @ORM\Column(name="id_lieu_dits", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LieuDits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_lieu_dits", referencedColumnName="id_lieu_dits", nullable=true)
+     * })
      */
     private $LieuDits;
 
     /**
-     * @var integer
+     * @var Coordonnees
      *
-     * @ORM\Column(name="id_coords", type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Coordonnees")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_coordonnee", referencedColumnName="id", nullable=true)
+     * })
      */
     private $Coords;
 
@@ -61,87 +71,88 @@ class Location {
     private $id;
 
     /**
-     * @return int
+     * @return Pays
      */
-    public function getPays(): int {
+    public function getPays() {
         return $this->Pays;
     }
 
     /**
-     * @param int $Pays
+     * @param Pays $Pays
      */
-    public function setPays(int $Pays): void {
+    public function setPays(Pays $Pays) {
         $this->Pays = $Pays;
     }
 
     /**
-     * @return int
+     * @return Departement
      */
-    public function getDepartement(): int {
+    public function getDepartement() {
         return $this->Departement;
     }
 
     /**
-     * @param int $Departement
+     * @param Departement $Departement
      */
-    public function setDepartement(int $Departement): void {
+    public function setDepartement(Departement $Departement) {
         $this->Departement = $Departement;
     }
 
     /**
-     * @return int
+     * @return Commune
      */
-    public function getCommune(): int {
+    public function getCommune() {
         return $this->Commune;
     }
 
     /**
-     * @param int $Commune
+     * @param Commune $Commune
      */
-    public function setCommune(int $Commune): void {
+    public function setCommune(Commune $Commune) {
         $this->Commune = $Commune;
     }
 
     /**
-     * @return int
+     * @return LieuDits
      */
-    public function getLieuDits(): int {
+    public function getLieuDits() {
         return $this->LieuDits;
     }
 
     /**
-     * @param int $LieuDits
+     * @param LieuDits $LieuDits
      */
-    public function setLieuDits(int $LieuDits): void {
+    public function setLieuDits(LieuDits $LieuDits) {
         $this->LieuDits = $LieuDits;
     }
 
     /**
-     * @return int
+     * @return Coordonnees
      */
-    public function getCoords(): int {
+    public function getCoords() {
         return $this->Coords;
     }
 
     /**
-     * @param int $Coords
+     * @param Coordonnees $Coords
      */
-    public function setCoords(int $Coords): void {
+    public function setCoords(Coordonnees $Coords) {
         $this->Coords = $Coords;
     }
 
     /**
      * @return int
      */
-    public function getId(): int {
+    public function getId() {
         return $this->id;
     }
 
     /**
      * @param int $id
      */
-    public function setId(int $id): void {
+    public function setId(int $id) {
         $this->id = $id;
     }
+
 }
 

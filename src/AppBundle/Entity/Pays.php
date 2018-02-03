@@ -150,15 +150,15 @@ class Pays
     /**
      * @return int
      */
-    public function getId() {
-        return $this->id;
+    public function getIdPays() {
+        return $this->idPays;
     }
 
     /**
-     * @param int $id
+     * @param int $idPays
      */
-    public function setId($id) {
-        $this->id = $id;
+    public function setIdPays($idPays) {
+        $this->idPays = $idPays;
     }
 
 

@@ -16,7 +16,5 @@ class PeriodiqueManager extends Manager {
 
     public function addPeriodique($entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 }

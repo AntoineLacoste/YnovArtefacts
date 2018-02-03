@@ -12,130 +12,55 @@ use AppBundle\Entity\Pays;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * @Route("/editeur")
  */
-class EditeurController extends Controller
-{
+class EditeurController extends Controller {
     /**
      * @Route("/add", name="createEditeur")
      */
     public function addAction(Request $request) {
         $editeur = new Editeur();
 
+        $editeurManager     = $this->get('EditeurManager');
+        $paysManager        = $this->get('PaysManager');
+        $communeManager     = $this->get('CommuneManager');
+        $lieuDitsManager    = $this->get('LieuDitsManager');
+        $departementManager = $this->get('DepartementManager');
+        $locationManager = $this->get('LocationManager');
+        $nom                = $request->request->get("nom");
 
-        $EditeurManager = $this->get('EditeurManager');
-        $PaysManager = $this->get('PaysManager');
-        $CommuneManager = $this->get('CommuneManager');
-        $LieuDitsManager = $this->get('LieuDitsManager');
-        $CoordonneesManager = $this->get('CoordonneesManager');
-        $DepartementManager = $this->get('DepartementManager');
-
-        //Decode json
-        $params = array();
-        $content = $this->get("request")->getContent();
-        if (!empty($content))
-        {
-            $params = json_decode($content, true); // 2nd param to get as array
-        }
-
-        //GET Datas
-        $nom = $params["nom"];
-
-        $locations = $params["location"];
-
-        $pays = $locations["pays"];
-        $commune = $locations["commune"];
-        $lieuDits = $locations["lieuDits"];
-        $coordonnees = $locations["coordonnees"];
-        $department = $locations["department"];
+        $pays        = $paysManager->getPays($request->request->get("pays"));
+        $commune     = $communeManager->getCommune($request->request->get("commune"));
+        $lieuDits    = $lieuDitsManager->getLieuDits($request->request->get("lieuDits"));
+        $coordonnees = new Coordonnees();
+        $departement = $departementManager->getDepartement($request->request->get("departement"));
 
         $location = new Location();
 
-        //PAYS
-        if(isset($pays["id"]))
-        {
-            $entityPays =  $PaysManager->getPays($pays["id"]);
-        }
-        else{
-            $entityPays = new Pays();
-            $entityPays->setCodePays($pays["codePays"]);
-            $entityPays->setPaysDe($pays["paysDe"]);
-            $entityPays->setPaysEs($pays["paysEs"]);
-            $entityPays->setPaysFr($pays["paysFr"]);
-            $entityPays->setPaysGb($pays["paysGb"]);
-            $entityPays->setPaysIt($pays["paysIt"]);
-
-            $PaysManager->addPays($entityPays);
-        }
-
-
-
-        //COMMUNE
-        if(isset($commune["id"]))
-        {
-            $entityCommune =  $CommuneManager->getCommune($commune["id"]);
-        }
-        else{
-            $entityCommune = new Commune();
-            $entityCommune->setCodePays($commune["nom"]);
-            $PaysManager->addPays($entityCommune);
-        }
-
-
-
-        //LIEUDITS
-        if(isset($lieudits["id"]))
-        {
-            $entityLieuDits =  $lieuDits->getCommune($lieuDits["id"]);
-        }
-        else{
-            $entityLieuDits = new LieuDits();
-            $entityLieuDits->setCodePays($lieuDits["nom"]);
-            $LieuDitsManager->addLieuDits($entityLieuDits);
-        }
-
-
-
-
-        //COORDONNES
-        if(isset($pays["id"]))
-        {
-            $entityCoordonnees =  $CoordonneesManager->getCoordonnees($coordonnees["id"]);
-        }
-        else{
-            $entityCoordonnees = new Coordonnees();
-            $entityCoordonnees->setCodePays($coordonnees["lon"]);
-            $entityCoordonnees->setPaysDe($coordonnees["lat"]);
-            $entityCoordonnees->setPaysEs($coordonnees["typeCoord"]);
-            $CoordonneesManager->addCoordonnees($entityCoordonnees);
-        }
-
-        //DEPARTEMENT
-        if(isset($department["id"]))
-        {
-            $entityDepartement =  $DepartementManager->getDepartement($department["id"]);
-        }
-        else{
-            $entityDepartement = new Departement();
-            $entityDepartement->setCodePays($department["nom"]);
-            $DepartementManager->addDepartement($entityDepartement);
-        }
-
         //Setters
-        $location->setPays($entityPays);
-        $location->setCommune($entityCommune);
-        $location->getCoords($entityCoordonnees);
-        $location->getLieuDits($entityLieuDits);
-        $location->getDepartement($entityCoordonnees);
+        $location->setPays($pays);
+        $location->setCommune($commune);
+//        $location->setCoords($coordonnees);
+        $location->setLieuDits($lieuDits);
+        $location->setDepartement($departement);
+
+        $locationManager->addLocation($location);
+
         $editeur->setLocation($location);
         $editeur->setNom($nom);
 
-
-
         //add
-        $EditeurManager->addEditeur($editeur);
+        $editeurManager->addEditeur($editeur);
 
-        return $this->json(array('editeur'=>$editeur));
+        $serializer = $this->get('SerializerJSON');
+        $editeurJson = $serializer->serializeJSON($editeur);
+
+        $response = new Response($editeurJson);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }

@@ -64,6 +64,11 @@ services:
       arguments: ["@doctrine.orm.entity_manager"]
       public: true
 
+    LocationManager:
+      class: AppBundle\Services\LocationManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
     PaysManager:
       class: AppBundle\Services\PaysManager
       arguments: ["@doctrine.orm.entity_manager"]

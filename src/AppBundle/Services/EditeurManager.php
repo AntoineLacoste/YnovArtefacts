@@ -16,7 +16,5 @@ class EditeurManager extends Manager {
 
     public function addEditeur($entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 }

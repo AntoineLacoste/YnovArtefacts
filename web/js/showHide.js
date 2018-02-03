@@ -4,6 +4,7 @@ function editeurFieldHide() {
     $("#appbundle_collection_departementEditeur").parent().parent().hide();
     $("#appbundle_collection_communeEditeur").parent().parent().hide();
     $("#appbundle_collection_lieuDitsEditeur").parent().parent().hide();
+    $("#nomEditeur").parent().parent().hide();
 
     paysFieldHide();
     villeEditeurFieldHide();
@@ -13,6 +14,8 @@ function editeurFieldHide() {
 
     $("#hrEditeur1").hide();
     $("#hrEditeur2").hide();
+
+    $("#addEditeur").hide();
 }
 
 function editeurFieldShow() {
@@ -21,9 +24,12 @@ function editeurFieldShow() {
     $("#appbundle_collection_departementEditeur").parent().parent().show();
     $("#appbundle_collection_communeEditeur").parent().parent().show();
     $("#appbundle_collection_lieuDitsEditeur").parent().parent().show();
+    $("#nomEditeur").parent().parent().show();
 
     $("#hrEditeur1").show();
     $("#hrEditeur2").show();
+
+    $("#addEditeur").show();
 }
 
 function paysFieldHide() {
@@ -159,4 +165,65 @@ function lieuDitsFieldShow() {
     }
 
     $("#addLieuDitsEditeur").show();
+}
+
+function hideAll() {
+    $("#appbundle_collection_tome").parent().parent().hide();
+    $("#appbundle_collection_editeur").parent().parent().hide();
+    $("#appbundle_collection_collection").parent().parent().hide();
+    $("#appbundle_collection_num_collection").parent().parent().hide();
+    $("#appbundle_collection_pagination").parent().parent().hide();
+    $("#appbundle_collection_periodique").parent().parent().hide();
+    $("#appbundle_collection_volume").parent().parent().hide();
+}
+function displayField() {
+    var typeBib = $("#appbundle_collection_TypeBib").val();
+
+    console.log(typeBib);
+    hideAll();
+    switch(typeBib){
+        case "1":
+            $("#appbundle_collection_tome").parent().parent().show();
+            $("#appbundle_collection_editeur").parent().parent().show();
+            $("#appbundle_collection_collection").parent().parent().show();
+            $("#appbundle_collection_num_collection").parent().parent().show();
+            break;
+        case "2":
+            $("#appbundle_collection_tome").parent().parent().show();
+            $("#appbundle_collection_pagination").parent().parent().show();
+            $("#appbundle_collection_editeur").parent().parent().show();
+            $("#appbundle_collection_collection").parent().parent().show();
+            $("#appbundle_collection_num_collection").parent().parent().show();
+            break;
+        case "3":
+            $("#appbundle_collection_editeur").parent().parent().show();
+            break;
+        case "4":
+            $("#appbundle_collection_editeur").parent().parent().show();
+            $("#appbundle_collection_collection").parent().parent().show();
+            $("#appbundle_collection_num_collection").parent().parent().show();
+            break;
+        case "5":
+            $("#appbundle_collection_pagination").parent().parent().show();
+            $("#appbundle_collection_editeur").parent().parent().show();
+            $("#appbundle_collection_collection").parent().parent().show();
+            $("#appbundle_collection_num_collection").parent().parent().show();
+            break;
+        case "6":
+            $("#appbundle_collection_pagination").parent().parent().show();
+            $("#appbundle_collection_periodique").parent().parent().show();
+            break;
+        case "7":
+            $("#appbundle_collection_tome").parent().parent().show();
+            $("#appbundle_collection_volume").parent().parent().show();
+            break;
+        case "8":
+            $("#appbundle_collection_volume").parent().parent().show();
+            break;
+        case "9":
+            $("#appbundle_collection_volume").parent().parent().show();
+            break;
+        case "10":
+            break;
+    }
 }

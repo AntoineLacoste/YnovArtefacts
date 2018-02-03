@@ -172,7 +172,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getTitreRef(): string
+    public function getTitreRef()
     {
         return $this->titreRef;
     }
@@ -188,7 +188,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getAbvSiteMarchande(): string
+    public function getAbvSiteMarchande()
     {
         return $this->abvSiteMarchande;
     }
@@ -204,7 +204,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getTome(): string
+    public function getTome()
     {
         return $this->tome;
     }
@@ -220,7 +220,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getVolume(): string
+    public function getVolume()
     {
         return $this->volume;
     }
@@ -236,7 +236,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getNumCollection(): string
+    public function getNumCollection()
     {
         return $this->numCollection;
     }
@@ -252,7 +252,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getPagination(): string
+    public function getPagination()
     {
         return $this->pagination;
     }
@@ -268,7 +268,7 @@ class BibliographieV2
     /**
      * @return \DateTime
      */
-    public function getDateEdition(): \DateTime
+    public function getDateEdition()
     {
         return $this->dateEdition;
     }
@@ -284,7 +284,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getIsbn(): string
+    public function getIsbn()
     {
         return $this->isbn;
     }
@@ -300,7 +300,7 @@ class BibliographieV2
     /**
      * @return string
      */
-    public function getIssn(): string
+    public function getIssn()
     {
         return $this->issn;
     }
@@ -316,7 +316,7 @@ class BibliographieV2
     /**
      * @return int
      */
-    public function getIdBibliographie(): int
+    public function getIdBibliographie()
     {
         return $this->idBibliographie;
     }
@@ -332,7 +332,7 @@ class BibliographieV2
     /**
      * @return BibliographieV2
      */
-    public function getBibliographieParent(): BibliographieV2
+    public function getBibliographieParent()
     {
         return $this->bibliographieParent;
     }
@@ -348,7 +348,7 @@ class BibliographieV2
     /**
      * @return Collection
      */
-    public function getCollection(): Collection
+    public function getCollection()
     {
         return $this->collection;
     }
@@ -364,7 +364,7 @@ class BibliographieV2
     /**
      * @return Editeur
      */
-    public function getEditeur(): Editeur
+    public function getEditeur()
     {
         return $this->editeur;
     }
@@ -380,7 +380,7 @@ class BibliographieV2
     /**
      * @return Periodique
      */
-    public function getPeriodique(): Periodique
+    public function getPeriodique()
     {
         return $this->periodique;
     }
@@ -396,7 +396,7 @@ class BibliographieV2
     /**
      * @return TypeBib
      */
-    public function getTypeBib(): TypeBib
+    public function getTypeBib()
     {
         return $this->typeBib;
     }
@@ -412,7 +412,7 @@ class BibliographieV2
     /**
      * @return Ville
      */
-    public function getVilleEdition(): Ville
+    public function getVilleEdition()
     {
         return $this->villeEdition;
     }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\BibliographieV2;
 use AppBundle\Entity\Collection;
 use AppBundle\Entity\Commune;
 use AppBundle\Entity\Departement;
@@ -40,6 +41,15 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control'),
                 'label' => "Titre du document : "
             ))
+            ->add('bibliographieParent', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'label' => "Document parent : ",
+                    'id' => 'editeur'),
+                'class' => BibliographieV2::class,
+                'choice_label' => function ($biblioParent) {
+                    return $biblioParent->getTitreRef();
+                }))
             ->add('abvSiteMarchande', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
@@ -75,7 +85,6 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control'),
                 'label' => "ISSN : "
             ))
-
             ->add('villeEdition', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
@@ -83,7 +92,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($ville) {
                     return $ville->getNom();
                 }))
-
             ->add('editeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -92,7 +100,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($editeur) {
                     return $editeur->getNom();
                 }))
-
             ->add('paysEditeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -101,7 +108,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($pays) {
                     return $pays->getPaysFr();
                 }))
-
             ->add('villeEditeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -110,7 +116,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($ville) {
                     return $ville->getNom();
                 }))
-
             ->add('departementEditeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -119,7 +124,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($departement) {
                     return $departement->getNom();
                 }))
-
             ->add('communeEditeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -128,7 +132,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($commune) {
                     return $commune->getNom();
                 }))
-
             ->add('lieuDitsEditeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -137,7 +140,6 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($lieuDits) {
                     return $lieuDits->getNom();
                 }))
-
             ->add('collection', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
@@ -145,14 +147,18 @@ class BibliographieType extends AbstractType {
                 'choice_label' => function ($collection) {
                     return $collection->getNom();
                 }))
+            ->add('num_collection', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'label' => "Numéro dans la collection : "
+            ))
             ->add('periodique', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Periodique::class,
                 'choice_label' => function ($periodique) {
                     return $periodique->getNom();
-                }))
-            ;
+                }));
     }
     /*->add('survey', CollectionType::class, array(
         'entry_type' => SurveyType::class,

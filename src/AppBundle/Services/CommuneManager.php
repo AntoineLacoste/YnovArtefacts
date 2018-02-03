@@ -16,13 +16,10 @@ class CommuneManager extends Manager {
 
     public function addCommune(Commune $entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 
     public function getCommune($id) {
-        $this->getOne($id);
+        return $this->getOne($id);
 
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 }

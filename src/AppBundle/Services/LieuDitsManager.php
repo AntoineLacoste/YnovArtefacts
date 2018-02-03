@@ -16,13 +16,9 @@ class LieuDitsManager extends Manager {
 
     public function addLieuDits(LieuDits $entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 
     public function getLieuDits($id) {
-        $this->getOne($id);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
+        return $this->getOne($id);
     }
 }

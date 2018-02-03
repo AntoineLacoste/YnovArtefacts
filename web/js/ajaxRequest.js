@@ -82,13 +82,44 @@ function addPaysEditeur() {
         success: function (response) {
             console.log(response);
             var opt = $('<option>').attr({
-                value: response.id
+                value: response.idPays
             });
 
             opt.append(response.paysFr);
 
             $("#appbundle_collection_paysEditeur").append(opt);
-            $("#appbundle_collection_paysEditeur").val(response.id);
+            $("#appbundle_collection_paysEditeur").val(response.idPays);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addEditeur() {
+    $.ajax({
+        url: window.location + "editeur/add",
+        type: 'POST',
+        data: {
+            pays: $("#appbundle_collection_paysEditeur").val(),
+            commune: $("#appbundle_collection_communeEditeur").val(),
+            lieuDits: $("#appbundle_collection_lieuDitsEditeur").val(),
+            coordonnees: "",
+            departement: $("#appbundle_collection_departementEditeur").val(),
+            nom: $("#nomEditeur").val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idEditeur
+            });
+
+            opt.append(response.nom);
+
+            $("#appbundle_collection_editeur").append(opt);
+            $("#appbundle_collection_editeur").val(response.idEditeur);
+
+            editeurFieldHide();
         },
         error: function (err) {
             console.log(err);

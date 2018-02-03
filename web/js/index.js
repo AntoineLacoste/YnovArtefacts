@@ -5,7 +5,9 @@ $(document).ready(function () {
     addFieldDepartementEditeur();
     addFieldCommuneEditeur();
     addFieldLieuDitsEditeur();
+    addFieldEditeur();
 
+    addEditeurButton();
     addFieldPlusVilleEdition();
     addFieldPlusEditeur();
     addFieldPlusPaysEditeur();
@@ -13,6 +15,9 @@ $(document).ready(function () {
     addFieldPlusDepartementEditeur();
     addFieldPlusCommuneEditeur();
     addFieldPlusLieuDitsEditeur();
+
+    hideAll();
+    $("#appbundle_collection_TypeBib").change(displayField);
 });
 
 function addFieldPaysEditeur() {
@@ -72,6 +77,12 @@ function addFieldLieuDitsEditeur() {
     addHr($("#appbundle_collection_communeEditeur"), "hrLieuDitsEditeurDebut");
 
     addButtonAjax($("#nomLieuDitsEditeur"), "addLieuDitsEditeur", "Ajouter le lieu-dit", addLieuDitsEditeur);
+}
+
+function addFieldEditeur() {
+    addFieldText($("#editeur"), "nomEditeur", "Nom de l'éditeur");
+
+    addButtonAjax($("#addLieuDitsEditeur"), "addEditeur", "Ajouter l'éditeur", addEditeur);
 }
 
 function addFieldPlusEditeur() {

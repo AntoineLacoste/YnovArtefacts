@@ -17,12 +17,8 @@ class DepartementManager extends Manager {
 
     public function addDepartement(Departement $entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
     public function getDepartement($id) {
-        $this->getOne($id);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
+        return $this->getOne($id);
     }
 }

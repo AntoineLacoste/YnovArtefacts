@@ -16,13 +16,9 @@ class CoordonneesManager extends Manager {
 
     public function addCoordonnees(Coordonnees $entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 
     public function getCoordonnees($id) {
-        $this->getOne($id);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
+        return $this->getOne($id);
     }
 }

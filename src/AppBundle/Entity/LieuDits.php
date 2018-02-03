@@ -28,4 +28,32 @@ class LieuDits {
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
+
+    /**
+     * @return int
+     */
+    public function getIdLieuDits(): int {
+        return $this->idLieuDits;
+    }
+
+    /**
+     * @param int $idLieuDits
+     */
+    public function setIdLieuDits(int $idLieuDits) {
+        $this->idLieuDits = $idLieuDits;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom) {
+        $this->nom = $nom;
+    }
 }

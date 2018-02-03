@@ -3,7 +3,6 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Entity\Payment;
 use Doctrine\ORM\EntityManager;
 
 
@@ -16,7 +15,5 @@ class VilleManager extends Manager {
 
     public function addVille($ville) {
         $this->add($ville);
-
-        $this->session->getFlashBag()->add('success', 'ville correctement ajouté !');
     }
 }

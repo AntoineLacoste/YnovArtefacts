@@ -61,7 +61,7 @@ class Pays
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idPays;
 
     /**
      * @return string

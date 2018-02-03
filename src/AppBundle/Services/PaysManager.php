@@ -17,13 +17,9 @@ class PaysManager extends Manager {
 
     public function addPays(Pays $entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 
     public function getPays($id) {
         $this->getOne($id);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 }

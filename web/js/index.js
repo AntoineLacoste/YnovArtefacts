@@ -1,10 +1,12 @@
 $(document).ready(function () {
-    addFieldPays();
-    addFieldVille();
-    addFieldDepartement();
-    addFieldCommune();
-    addFieldLieuDits();
+    addFieldVilleEdition();
+    addFieldPaysEditeur();
+    addFieldVilleEditeur();
+    addFieldDepartementEditeur();
+    addFieldCommuneEditeur();
+    addFieldLieuDitsEditeur();
 
+    addFieldPlusVilleEdition();
     addFieldPlusEditeur();
     addFieldPlusPaysEditeur();
     addFieldPlusVilleEditeur();
@@ -13,106 +15,7 @@ $(document).ready(function () {
     addFieldPlusLieuDitsEditeur();
 });
 
-function addFieldText(parent, name, labelStr) {
-    var div = $('<div>').attr({
-        class: "form-group"
-    });
-
-    var label = $('<label>').attr({
-        class: "col-md-3 control-label"
-    });
-
-    var divField = $('<div>').attr({
-        class: "col-sm-8 col-sm-pad"
-    });
-
-    var field = $('<input>').attr({
-        type: 'text',
-        id: name,
-        name: name,
-        class: "form-control"
-    });
-
-    label.append(labelStr);
-    div.append(label);
-    divField.append(field);
-    div.append(divField);
-    parent.after(div);
-}
-
-function addVille() {
-    $.ajax({
-        url: window.location + "/pays/add",
-        type: 'POST',
-        data: {
-            nom: $("nomVilleEditeur").val()
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (err) {
-            console.log(err);
-        }
-    });
-}
-
-function addCollection() {
-    $.ajax({
-        url: window.location + "/collection/add",
-        type: 'POST',
-        data: {
-            nom: $("nomCollectionEditeur").val()
-        }
-    });
-}
-
-function addCommune() {
-    $.ajax({
-        url: window.location + "/commune/add",
-        type: 'POST',
-        data: {
-            nom: $("nomCommuneEditeur").val()
-        }
-    });
-}
-
-function addLieuDits() {
-    $.ajax({
-        url: window.location + "/lieuDits/add",
-        type: 'POST',
-        data: {
-            nom: $("nomLieuDitsEditeur").val()
-        }
-    });
-}
-
-function addDepartement() {
-    $.ajax({
-        url: window.location + "/departement/add",
-        type: 'POST',
-        data: {
-            nom: $("nomDepartementEditeur").val()
-        }
-    });
-}
-
-function addButtonAjax(parent, name, label, callback) {
-    var buttonAdd = $('<div>').attr({
-        class: "btn btn-primary",
-        style: "margin-left: 10px; margin-top: 10px;",
-        id: name
-    });
-
-    buttonAdd.append(label);
-
-    buttonAdd.click(callback);
-
-    parent.after(buttonAdd);
-    console.log(parent);
-    // buttonAdd.hide();
-}
-
-function addFieldPays() {
+function addFieldPaysEditeur() {
     addFieldText($("#paysEditeur"), "codePaysEditeur", "Code du pays");
     addFieldText($("#paysEditeur"), "paysFREditeur", "Pays en français");
     addFieldText($("#paysEditeur"), "paysGBEditeur", "Pays en anglais");
@@ -120,46 +23,55 @@ function addFieldPays() {
     addFieldText($("#paysEditeur"), "paysESEditeur", "Pays en espagnol");
     addFieldText($("#paysEditeur"), "paysITEditeur", "Pays en italien");
 
-    addHr($("#appbundle_collection_editeur"), "hrPaysDebut");
-    addHr($("#codePaysEditeur"), "hrPaysFin");
+    addHr($("#appbundle_collection_editeur"), "hrPaysEditeurDebut");
+    addHr($("#codePaysEditeur"), "hrPaysEditeurFin");
 
-    addButtonAjax($("#codePaysEditeur"), "addPays", "Ajouter le pays", addVille());
+    addButtonAjax($("#codePaysEditeur"), "addPaysEditeur", "Ajouter le pays", addPaysEditeur);
 }
 
-function addHr(parent, name) {
-    var field = $('<hr>').attr({
-        id: name,
-    });
-
-    parent.after(field);
-    field.hide();
-}
-
-function addFieldVille() {
+function addFieldVilleEditeur() {
     addFieldText($("#villeEditeur"), "nomVilleEditeur", "Nom de la ville");
 
-    addHr($("#codePaysEditeur"), "hrVilleDebut");
-    addHr($("#nomVilleEditeur"), "hrVilleFin");
+    addHr($("#addPays"), "hrVilleEditeurDebut");
+    addHr($("#nomVilleEditeur"), "hrVilleEditeurFin");
+
+    addButtonAjax($("#nomVilleEditeur"), "addVilleEditeur", "Ajouter la ville", addVilleEditeur);
 }
 
-function addFieldDepartement() {
+
+function addFieldVilleEdition() {
+    addFieldText($("#villeEdition"), "nomVilleEdition", "Nom de la ville");
+
+    addHr($("#appbundle_collection_titreRef"), "hrVilleEditionDebut");
+    addHr($("#nomVilleEdition"), "hrVilleEditionFin");
+
+    addButtonAjax($("#nomVilleEdition"), "addVilleEdition", "Ajouter la ville", addVilleEdition);
+}
+
+function addFieldDepartementEditeur() {
     addFieldText($("#departementEditeur"), "nomDepartementEditeur", "Nom du département");
 
-    addHr($("#villeEditeur"), "hrDepartementDebut");
-    addHr($("#nomDepartementEditeur"), "hrDepartementFin");
+    addHr($("#nomVilleEditeur"), "hrDepartementEditeurDebut");
+    addHr($("#nomDepartementEditeur"), "hrDepartementEditeurFin");
+
+    addButtonAjax($("#nomDepartementEditeur"), "addDepartementEditeur", "Ajouter le département", addDepartementEditeur);
 }
 
-function addFieldCommune() {
+function addFieldCommuneEditeur() {
     addFieldText($("#communeEditeur"), "nomCommuneEditeur", "Nom de la commune");
 
-    addHr($("#departementEditeur"), "hrCommuneDebut");
-    addHr($("#nomCommuneEditeur"), "hrCommuneFin");
+    addHr($("#nomDepartementEditeur"), "hrCommuneEditeurDebut");
+    addHr($("#nomCommuneEditeur"), "hrCommuneEditeurFin");
+
+    addButtonAjax($("#nomCommuneEditeur"), "addCommuneEditeur", "Ajouter la commune", addCommuneEditeur);
 }
 
-function addFieldLieuDits() {
+function addFieldLieuDitsEditeur() {
     addFieldText($("#lieuDitsEditeur"), "nomLieuDitsEditeur", "Nom du lieu dits");
 
-    addHr($("#communeEditeur"), "hrLieuDitsDebut");
+    addHr($("#appbundle_collection_communeEditeur"), "hrLieuDitsEditeurDebut");
+
+    addButtonAjax($("#nomLieuDitsEditeur"), "addLieuDitsEditeur", "Ajouter le lieu-dit", addLieuDitsEditeur);
 }
 
 function addFieldPlusEditeur() {
@@ -216,16 +128,38 @@ function addFieldPlusVilleEditeur() {
 
     buttonAdd.click(function () {
         if ($("#nomVilleEditeur").is(":visible")) {
-            villeFieldHide();
+            villeEditeurFieldHide();
         }
         else {
-            villeFieldShow();
+            villeEditeurFieldShow();
         }
     });
 
     $("#appbundle_collection_villeEditeur").after(buttonAdd);
 
-    villeFieldHide();
+    villeEditeurFieldHide();
+}
+
+function addFieldPlusVilleEdition() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter une nouvelle ville");
+
+    buttonAdd.click(function () {
+        if ($("#nomVilleEdition").is(":visible")) {
+            villeEditionFieldHide();
+        }
+        else {
+            villeEditionFieldShow();
+        }
+    });
+
+    $("#appbundle_collection_villeEdition").after(buttonAdd);
+
+    villeEditionFieldHide();
 }
 
 function addFieldPlusDepartementEditeur() {
@@ -292,133 +226,4 @@ function addFieldPlusLieuDitsEditeur() {
     $("#appbundle_collection_lieuDitsEditeur").after(buttonAdd);
 
     lieuDitsFieldHide();
-}
-
-function editeurFieldHide() {
-    $("#appbundle_collection_paysEditeur").parent().parent().hide();
-    $("#appbundle_collection_villeEditeur").parent().parent().hide();
-    $("#appbundle_collection_departementEditeur").parent().parent().hide();
-    $("#appbundle_collection_communeEditeur").parent().parent().hide();
-    $("#appbundle_collection_lieuDitsEditeur").parent().parent().hide();
-
-    paysFieldHide();
-    villeFieldHide();
-    departementFieldHide();
-    communeFieldHide();
-    lieuDitsFieldHide();
-
-    $("#hrEditeur1").hide();
-    $("#hrEditeur2").hide();
-}
-
-function editeurFieldShow() {
-    $("#appbundle_collection_paysEditeur").parent().parent().show();
-    $("#appbundle_collection_villeEditeur").parent().parent().show();
-    $("#appbundle_collection_departementEditeur").parent().parent().show();
-    $("#appbundle_collection_communeEditeur").parent().parent().show();
-    $("#appbundle_collection_lieuDitsEditeur").parent().parent().show();
-
-    $("#hrEditeur1").show();
-    $("#hrEditeur2").show();
-}
-
-function paysFieldHide() {
-    $("#codePaysEditeur").parent().parent().hide();
-    $("#paysFREditeur").parent().parent().hide();
-    $("#paysGBEditeur").parent().parent().hide();
-    $("#paysDEEditeur").parent().parent().hide();
-    $("#paysESEditeur").parent().parent().hide();
-    $("#paysITEditeur").parent().parent().hide();
-
-    $("#hrPaysDebut").hide();
-    $("#hrPaysFin").hide();
-}
-
-function paysFieldShow() {
-    $("#codePaysEditeur").parent().parent().show();
-    $("#paysFREditeur").parent().parent().show();
-    $("#paysGBEditeur").parent().parent().show();
-    $("#paysDEEditeur").parent().parent().show();
-    $("#paysESEditeur").parent().parent().show();
-    $("#paysITEditeur").parent().parent().show();
-
-    $("#hrPaysDebut").show();
-
-    if (!$("#hrVilleDebut").is(":visible")) {
-        $("#hrPaysFin").show();
-    }
-
-    $("#addPays").show();
-}
-
-function villeFieldHide() {
-    $("#nomVilleEditeur").parent().parent().hide();
-
-    $("#hrVilleDebut").hide();
-    $("#hrVilleFin").hide();
-}
-
-function villeFieldShow() {
-    $("#nomVilleEditeur").parent().parent().show();
-
-    if (!$("#hrPaysFin").is(":visible")) {
-        $("#hrVilleDebut").show();
-    }
-
-    if (!$("#hrDepartementDebut").is(":visible")) {
-        $("#hrVilleFin").show();
-    }
-}
-
-function departementFieldHide() {
-    $("#nomDepartementEditeur").parent().parent().hide();
-
-    $("#hrDepartementDebut").hide();
-    $("#hrDepartementFin").hide();
-}
-
-function departementFieldShow() {
-    $("#nomDepartementEditeur").parent().parent().show();
-
-    if (!$("#hrVilleFin").is(":visible")) {
-        $("#hrDepartementDebut").show();
-    }
-
-    if (!$("#hrCommuneDebut").is(":visible")) {
-        $("#hrDepartementFin").show();
-    }
-}
-
-function communeFieldHide() {
-    $("#nomCommuneEditeur").parent().parent().hide();
-
-    $("#hrCommuneDebut").hide();
-    $("#hrCommuneFin").hide();
-}
-
-function communeFieldShow() {
-    $("#nomCommuneEditeur").parent().parent().show();
-
-    if (!$("#hrDepartementFin").is(":visible")) {
-        $("#hrCommuneDebut").show();
-    }
-
-    if (!$("#hrLieuDitsDebut").is(":visible")) {
-        $("#hrCommuneFin").show();
-    }
-}
-
-function lieuDitsFieldHide() {
-    $("#nomLieuDitsEditeur").parent().parent().hide();
-
-    $("#hrLieuDitsDebut").hide();
-    $("#hrLieuDitsFin").hide();
-}
-
-function lieuDitsFieldShow() {
-    $("#nomLieuDitsEditeur").parent().parent().show();
-
-    if (!$("#hrCommuneFin").is(":visible")) {
-        $("#hrLieuDitsDebut").show();
-    }
 }

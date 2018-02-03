@@ -2,38 +2,37 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Ville;
+use AppBundle\Entity\Departement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/ville")
+ * @Route("/departement")
  */
-class VilleController extends Controller
+class DepartementController extends Controller
 {
     /**
-     * @Route("/add", name="createVille")
+     * @Route("/add", name="createDepartement")
      */
     public function addAction(Request $request) {
-        $ville = new Ville();
-        $VilleManager = $this->get('VilleManager');
+        $departement = new Departement();
+        $departementManager = $this->get('DepartementManager');
 
         //GET Datas
         $data = $request->request->get("nom");
 
         //Setters
-        $ville->setNom($data);
+        $departement->setNom($data);
 
         //add
-        $VilleManager->addVille($ville);
+        $departementManager->addDepartement($departement);
 
         $serializer = $this->get('SerializerJSON');
-        $villeJson = $serializer->serializeJSON($ville);
+        $departementJson = $serializer->serializeJSON($departement);
 
-        $response = new Response($villeJson);
+        $response = new Response($departementJson);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;

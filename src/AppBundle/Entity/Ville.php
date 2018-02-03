@@ -17,7 +17,7 @@ class Ville
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
-    private $nom;
+    public $nom;
 
     /**
      * @var integer
@@ -26,7 +26,7 @@ class Ville
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idVille;
+    public $idVille;
 
     /**
      * @return string

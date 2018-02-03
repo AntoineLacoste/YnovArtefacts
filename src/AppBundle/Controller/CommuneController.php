@@ -2,38 +2,37 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Ville;
+use AppBundle\Entity\Commune;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/ville")
+ * @Route("/commune")
  */
-class VilleController extends Controller
+class CommuneController extends Controller
 {
     /**
-     * @Route("/add", name="createVille")
+     * @Route("/add", name="createCommune")
      */
     public function addAction(Request $request) {
-        $ville = new Ville();
-        $VilleManager = $this->get('VilleManager');
+        $commune = new Commune();
+        $communeManager = $this->get('CommuneManager');
 
         //GET Datas
         $data = $request->request->get("nom");
 
         //Setters
-        $ville->setNom($data);
+        $commune->setNom($data);
 
         //add
-        $VilleManager->addVille($ville);
+        $communeManager->addCommune($commune);
 
         $serializer = $this->get('SerializerJSON');
-        $villeJson = $serializer->serializeJSON($ville);
+        $communeJson = $serializer->serializeJSON($commune);
 
-        $response = new Response($villeJson);
+        $response = new Response($communeJson);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;

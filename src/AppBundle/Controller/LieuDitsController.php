@@ -2,38 +2,37 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Ville;
+use AppBundle\Entity\LieuDits;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/ville")
+ * @Route("/lieuDits")
  */
-class VilleController extends Controller
+class LieuDitsController extends Controller
 {
     /**
-     * @Route("/add", name="createVille")
+     * @Route("/add", name="createLieuDits")
      */
     public function addAction(Request $request) {
-        $ville = new Ville();
-        $VilleManager = $this->get('VilleManager');
+        $lieuDit = new LieuDits();
+        $lieuDitManager = $this->get('LieuDitsManager');
 
         //GET Datas
         $data = $request->request->get("nom");
 
         //Setters
-        $ville->setNom($data);
+        $lieuDit->setNom($data);
 
         //add
-        $VilleManager->addVille($ville);
+        $lieuDitManager->addLieuDits($lieuDit);
 
         $serializer = $this->get('SerializerJSON');
-        $villeJson = $serializer->serializeJSON($ville);
+        $lieuDitJson = $serializer->serializeJSON($lieuDit);
 
-        $response = new Response($villeJson);
+        $response = new Response($lieuDitJson);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;

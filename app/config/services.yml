@@ -29,7 +29,57 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    BibliographieManager:
+      class: AppBundle\Services\BibliographieManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    CollectionManager:
+      class: AppBundle\Services\CollectionManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    CommuneManager:
+      class: AppBundle\Services\CommuneManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    CoordonneesManager:
+      class: AppBundle\Services\CoordonneesManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    DepartementManager:
+      class: AppBundle\Services\DepartementManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    EditeurManager:
+      class: AppBundle\Services\EditeurManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    LieuDitsManager:
+      class: AppBundle\Services\LieuDitsManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    PaysManager:
+      class: AppBundle\Services\PaysManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    PeriodiqueManager:
+      class: AppBundle\Services\PeriodiqueManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    VilleManager:
+      class: AppBundle\Services\VilleManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    SerializerJSON:
+      class: AppBundle\Services\SerializerJSON
+      arguments: []
+      public: true

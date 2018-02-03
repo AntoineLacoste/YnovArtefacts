@@ -28,4 +28,32 @@ class Commune {
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
+
+    /**
+     * @return int
+     */
+    public function getIdCommune(): int {
+        return $this->idCommune;
+    }
+
+    /**
+     * @param int $idCommune
+     */
+    public function setIdCommune(int $idCommune) {
+        $this->idCommune = $idCommune;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom) {
+        $this->nom = $nom;
+    }
 }

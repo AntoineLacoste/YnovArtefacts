@@ -28,4 +28,32 @@ class Departement {
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
+
+    /**
+     * @return int
+     */
+    public function getIdDepartement(): int {
+        return $this->idDepartement;
+    }
+
+    /**
+     * @param int $idDepartement
+     */
+    public function setIdDepartement(int $idDepartement) {
+        $this->idDepartement = $idDepartement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom) {
+        $this->nom = $nom;
+    }
 }

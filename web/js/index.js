@@ -6,9 +6,13 @@ $(document).ready(function () {
     addFieldCommuneEditeur();
     addFieldLieuDitsEditeur();
     addFieldEditeur();
+    addFieldCollection();
+    addFieldPeriodique();
 
     addEditeurButton();
     addFieldPlusVilleEdition();
+    addFieldPlusCollection();
+    addFieldPlusPeriodique();
     addFieldPlusEditeur();
     addFieldPlusPaysEditeur();
     addFieldPlusVilleEditeur();
@@ -16,10 +20,25 @@ $(document).ready(function () {
     addFieldPlusCommuneEditeur();
     addFieldPlusLieuDitsEditeur();
 
+    addHrAll();
     hideAll();
     $("#appbundle_collection_TypeBib").change(displayField);
+    displayField();
 });
 
+function addHrAll() {
+    addHr($("#appbundle_collection_bibliographieParent"), "hrVilleEdition1");
+    addHr($("#addVilleEdition"), "hrVilleEdition2");
+    addHr($("#nomEditeur"), "hrPaysEditeur1");
+    addHr($("#addPaysEditeur"), "hrPaysEditeur2");
+    addHr($("#addPaysEditeur"), "hrVilleEditeur1");
+    addHr($("#addVilleEditeur"), "hrVilleEditeur2");
+    addHr($("#addVilleEditeur"), "hrDepartementEditeur1");
+    addHr($("#addDepartementEditeur"), "hrDepartementEditeur2");
+    addHr($("#addDepartementEditeur"), "hrCommuneEditeur1");
+    addHr($("#addCommuneEditeur"), "hrCommuneEditeur2");
+    addHr($("#addCommuneEditeur"), "hrLieuDitsEditeur1");
+}
 function addFieldPaysEditeur() {
     addFieldText($("#paysEditeur"), "codePaysEditeur", "Code du pays");
     addFieldText($("#paysEditeur"), "paysFREditeur", "Pays en français");
@@ -28,17 +47,11 @@ function addFieldPaysEditeur() {
     addFieldText($("#paysEditeur"), "paysESEditeur", "Pays en espagnol");
     addFieldText($("#paysEditeur"), "paysITEditeur", "Pays en italien");
 
-    addHr($("#appbundle_collection_editeur"), "hrPaysEditeurDebut");
-    addHr($("#codePaysEditeur"), "hrPaysEditeurFin");
-
     addButtonAjax($("#codePaysEditeur"), "addPaysEditeur", "Ajouter le pays", addPaysEditeur);
 }
 
 function addFieldVilleEditeur() {
     addFieldText($("#villeEditeur"), "nomVilleEditeur", "Nom de la ville");
-
-    addHr($("#addPays"), "hrVilleEditeurDebut");
-    addHr($("#nomVilleEditeur"), "hrVilleEditeurFin");
 
     addButtonAjax($("#nomVilleEditeur"), "addVilleEditeur", "Ajouter la ville", addVilleEditeur);
 }
@@ -47,17 +60,11 @@ function addFieldVilleEditeur() {
 function addFieldVilleEdition() {
     addFieldText($("#villeEdition"), "nomVilleEdition", "Nom de la ville");
 
-    addHr($("#appbundle_collection_titreRef"), "hrVilleEditionDebut");
-    addHr($("#nomVilleEdition"), "hrVilleEditionFin");
-
     addButtonAjax($("#nomVilleEdition"), "addVilleEdition", "Ajouter la ville", addVilleEdition);
 }
 
 function addFieldDepartementEditeur() {
     addFieldText($("#departementEditeur"), "nomDepartementEditeur", "Nom du département");
-
-    addHr($("#nomVilleEditeur"), "hrDepartementEditeurDebut");
-    addHr($("#nomDepartementEditeur"), "hrDepartementEditeurFin");
 
     addButtonAjax($("#nomDepartementEditeur"), "addDepartementEditeur", "Ajouter le département", addDepartementEditeur);
 }
@@ -65,24 +72,27 @@ function addFieldDepartementEditeur() {
 function addFieldCommuneEditeur() {
     addFieldText($("#communeEditeur"), "nomCommuneEditeur", "Nom de la commune");
 
-    addHr($("#nomDepartementEditeur"), "hrCommuneEditeurDebut");
-    addHr($("#nomCommuneEditeur"), "hrCommuneEditeurFin");
-
     addButtonAjax($("#nomCommuneEditeur"), "addCommuneEditeur", "Ajouter la commune", addCommuneEditeur);
 }
 
 function addFieldLieuDitsEditeur() {
     addFieldText($("#lieuDitsEditeur"), "nomLieuDitsEditeur", "Nom du lieu dits");
 
-    addHr($("#appbundle_collection_communeEditeur"), "hrLieuDitsEditeurDebut");
-
     addButtonAjax($("#nomLieuDitsEditeur"), "addLieuDitsEditeur", "Ajouter le lieu-dit", addLieuDitsEditeur);
 }
 
 function addFieldEditeur() {
     addFieldText($("#editeur"), "nomEditeur", "Nom de l'éditeur");
+}
 
-    addButtonAjax($("#addLieuDitsEditeur"), "addEditeur", "Ajouter l'éditeur", addEditeur);
+function addFieldCollection() {
+    addFieldText($("#collection"), "nomCollection", "Nom de la collection");
+    addButtonAjax($("#nomCollection"), "addCollection", "Ajouter la collection", addCollection);
+}
+
+function addFieldPeriodique() {
+    addFieldText($("#periodique"), "nomPeriodique", "Nom du périodique");
+    addButtonAjax($("#nomPeriodique"), "addPeriodique", "Ajouter le périodique", addPeriodique);
 }
 
 function addFieldPlusEditeur() {
@@ -105,6 +115,50 @@ function addFieldPlusEditeur() {
     $("#appbundle_collection_editeur").after(buttonAdd);
 
     editeurFieldHide();
+}
+
+function addFieldPlusCollection() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter une nouvelle collection");
+
+    buttonAdd.click(function () {
+        if ($("#nomCollection").is(":visible")) {
+            collectionFieldHide();
+        }
+        else {
+            collectionFieldShow();
+        }
+    });
+
+    $("#appbundle_collection_collection").after(buttonAdd);
+
+    collectionFieldHide();
+}
+
+function addFieldPlusPeriodique() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter un nouveau périodique");
+
+    buttonAdd.click(function () {
+        if ($("#nomPeriodique").is(":visible")) {
+            periodiqueFieldHide();
+        }
+        else {
+            periodiqueFieldShow();
+        }
+    });
+
+    $("#appbundle_collection_periodique").after(buttonAdd);
+
+    periodiqueFieldHide();
 }
 
 function addFieldPlusPaysEditeur() {

@@ -6,12 +6,11 @@
 
 
     <div class="row">
-        <!-- begin col-6 -->
-        <div class="col-md-6">
+        <div class="col-md-8">
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                 <div class="panel-body">
-                    <form name="appbundle_collection" method="post" class="form-horizontal col-lg-offset-4 col-lg-12">
+                    <form name="appbundle_collection" method="post" class="form-horizontal col-lg-12">
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">
@@ -45,6 +44,7 @@
                             </label>
                             <div class="col-sm-8 col-sm-pad">
                                 {{ form_widget(form.villeEdition) }}
+                                {#<hr id="hrVilleEdition2"/>#}
                             </div>
                         </div>
                         <div class="form-group form-inline">
@@ -114,10 +114,10 @@
                             </div>
                         </div>
                         <div class="form-group form-inline" id="paysEditeur">
+                            <div class="col-sm-12 col-sm-pad">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.paysEditeur) }}
                             </label>
-                            <div class="col-sm-8 col-sm-pad">
                                 {{ form_widget(form.paysEditeur) }}
                             </div>
                         </div>
@@ -129,6 +129,7 @@
                                 {{ form_widget(form.villeEditeur) }}
                             </div>
                         </div>
+
                         <div class="form-group form-inline" id="departementEditeur">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.departementEditeur) }}
@@ -153,9 +154,9 @@
                                 {{ form_widget(form.lieuDitsEditeur) }}
                             </div>
                         </div>
-
                         <hr id="hrEditeur2"/>
-                        <div class="form-group form-inline">
+                        <hr id="hrCollection1"/>
+                        <div class="form-group form-inline" id="collection">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.collection) }}
                             </label>
@@ -163,6 +164,7 @@
                                 {{ form_widget(form.collection) }}
                             </div>
                         </div>
+                        <hr id="hrCollection2"/>
                         <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.num_collection) }}
@@ -172,7 +174,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-inline">
+                        <hr id="hrPeriodique1"/>
+                        <div class="form-group form-inline" id="periodique">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.periodique) }}
                             </label>
@@ -180,6 +183,7 @@
                                 {{ form_widget(form.periodique) }}
                             </div>
                         </div>
+                        <hr id="hrPeriodique2"/>
 
                     </form>
                 </div>

@@ -53,7 +53,8 @@ function addEditeurButton() {
     divField.append(buttonAdd);
     div.append(divField);
 
-    $("#lieuDitsEditeur").after(div);
+    $("#nomLieuDitsEditeur").parent().parent().after(div);
+
 
     editeurFieldHide();
 }

@@ -1,3 +1,7 @@
 hr{
     border-top: 1px solid #050404 !important;
 }
+
+#appbundle_collection_collection, #appbundle_collection_TypeBib, #appbundle_collection_periodique{
+    width: inherit !important;
+}

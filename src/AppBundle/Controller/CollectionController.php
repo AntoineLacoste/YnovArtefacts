@@ -2,38 +2,37 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Commune;
-use AppBundle\Entity\Periodique;
+use AppBundle\Entity\Collection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/periodique")
+ * @Route("/collection")
  */
-class PeriodiqueController extends Controller
+class CollectionController extends Controller
 {
     /**
-     * @Route("/add", name="createPeriodique")
+     * @Route("/add", name="createCollection")
      */
     public function addAction(Request $request) {
-        $periodique = new Periodique();
-        $periodiqueManager = $this->get('PeriodiqueManager');
+        $collection = new Collection();
+        $collectionManager = $this->get('CollectionManager');
 
         //GET Datas
         $data = $request->request->get("nom");
 
         //Setters
-        $periodique->setNom($data);
+        $collection->setNom($data);
 
         //add
-        $periodiqueManager->addPeriodique($periodique);
+        $collectionManager->addCollection($collection);
 
         $serializer = $this->get('SerializerJSON');
-        $periodiqueJson = $serializer->serializeJSON($periodique);
+        $collectionJson = $serializer->serializeJSON($collection);
 
-        $response = new Response($periodiqueJson);
+        $response = new Response($collectionJson);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;

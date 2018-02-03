@@ -151,6 +151,57 @@ function addCommuneEditeur() {
     });
 }
 
+function addCollection() {
+    $.ajax({
+        url: window.location + "collection/add",
+        type: 'POST',
+        data: {
+            nom: $("#nomCollection").val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idCollection
+            });
+
+            opt.append(response.nom);
+
+            $("#appbundle_collection_collection").append(opt);
+            $("#appbundle_collection_collection").val(response.idCollection);
+
+
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addPeriodique() {
+    $.ajax({
+        url: window.location + "periodique/add",
+        type: 'POST',
+        data: {
+            nom: $("#nomPeriodique").val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idPeriodique
+            });
+
+            opt.append(response.nom);
+
+            $("#appbundle_collection_periodique").append(opt);
+            $("#appbundle_collection_periodique").val(response.idPeriodique);
+
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
 function addLieuDitsEditeur() {
     $.ajax({
         url: window.location + "lieuDits/add",

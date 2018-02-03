@@ -27,7 +27,9 @@ function editeurFieldShow() {
     $("#nomEditeur").parent().parent().show();
 
     $("#hrEditeur1").show();
-    $("#hrEditeur2").show();
+    if (!$("#hrCollection1").is(":visible")) {
+        $("#hrEditeur2").show();
+    }
 
     $("#addEditeur").show();
 }
@@ -40,8 +42,8 @@ function paysFieldHide() {
     $("#paysESEditeur").parent().parent().hide();
     $("#paysITEditeur").parent().parent().hide();
 
-    $("#hrPaysEditeurDebut").hide();
-    $("#hrPaysEditeurFin").hide();
+    $("#hrPaysEditeur1").hide();
+    $("#hrPaysEditeur2").hide();
 }
 
 function paysFieldShow() {
@@ -52,10 +54,10 @@ function paysFieldShow() {
     $("#paysESEditeur").parent().parent().show();
     $("#paysITEditeur").parent().parent().show();
 
-    $("#hrPaysEditeurDebut").show();
+    $("#hrPaysEditeur1").show();
 
-    if (!$("#hrVilleEditeurDebut").is(":visible")) {
-        $("#hrPaysEditeurFin").show();
+    if (!$("#hrVilleEditeur1").is(":visible")) {
+        $("#hrPaysEditeur2").show();
     }
 
     $("#addPaysEditeur").show();
@@ -64,8 +66,8 @@ function paysFieldShow() {
 function villeEditeurFieldHide() {
     $("#nomVilleEditeur").parent().parent().hide();
 
-    $("#hrVilleEditeurDebut").hide();
-    $("#hrVilleEditeurFin").hide();
+    $("#hrVilleEditeur1").hide();
+    $("#hrVilleEditeur2").hide();
 
     $("#addVilleEditeur").show();
 }
@@ -73,12 +75,12 @@ function villeEditeurFieldHide() {
 function villeEditeurFieldShow() {
     $("#nomVilleEditeur").parent().parent().show();
 
-    if (!$("#hrPaysFin").is(":visible")) {
-        $("#hrVilleEditeurDebut").show();
+    if (!$("#hrPaysEditeur2").is(":visible")) {
+        $("#hrVilleEditeur1").show();
     }
 
-    if (!$("#hrDepartementDebut").is(":visible")) {
-        $("#hrVilleEditeurFin").show();
+    if (!$("#hrDepartementEditeur1").is(":visible")) {
+        $("#hrVilleEditeur2").show();
     }
 
     $("#addVilleEditeur").show();
@@ -87,8 +89,8 @@ function villeEditeurFieldShow() {
 function villeEditionFieldHide() {
     $("#nomVilleEdition").parent().parent().hide();
 
-    $("#hrVilleEditionDebut").hide();
-    $("#hrVilleEditionFin").hide();
+    $("#hrVilleEdition1").hide();
+    $("#hrVilleEdition2").hide();
 
     $("#addVilleEdition").hide();
 }
@@ -96,8 +98,8 @@ function villeEditionFieldHide() {
 function villeEditionFieldShow() {
     $("#nomVilleEdition").parent().parent().show();
 
-    $("#hrVilleEditionDebut").show();
-    $("#hrVilleEditionFin").show();
+    $("#hrVilleEdition1").show();
+    $("#hrVilleEdition2").show();
 
     $("#addVilleEdition").show();
 }
@@ -105,8 +107,8 @@ function villeEditionFieldShow() {
 function departementFieldHide() {
     $("#nomDepartementEditeur").parent().parent().hide();
 
-    $("#hrDepartementEditeurDebut").hide();
-    $("#hrDepartementEditeurFin").hide();
+    $("#hrDepartementEditeur1").hide();
+    $("#hrDepartementEditeur2").hide();
 
     $("#addDepartementEditeur").hide();
 }
@@ -114,22 +116,60 @@ function departementFieldHide() {
 function departementFieldShow() {
     $("#nomDepartementEditeur").parent().parent().show();
 
-    if (!$("#hrVilleEditeurFin").is(":visible")) {
-        $("#hrDepartementEditeurDebut").show();
+    if (!$("#hrVilleEditeur2").is(":visible")) {
+        $("#hrDepartementEditeur1").show();
     }
 
-    if (!$("#hrCommuneEditeurDebut").is(":visible")) {
-        $("#hrDepartementEditeurFin").show();
+    if (!$("#hrCommuneEditeur1").is(":visible")) {
+        $("#hrDepartementEditeur2").show();
     }
 
     $("#addDepartementEditeur").show();
 }
 
+function collectionFieldHide() {
+    $("#nomCollection").parent().parent().hide();
+
+    $("#hrCollection1").hide();
+    $("#hrCollection2").hide();
+
+    $("#addCollection").hide();
+}
+
+function collectionFieldShow() {
+    $("#nomCollection").parent().parent().show();
+
+    if (!$("#hrEditeur2").is(":visible")) {
+        $("#hrCollection1").show();
+    }
+    $("#hrCollection2").show();
+
+    $("#addCollection").show();
+}
+
+function periodiqueFieldHide() {
+    $("#nomPeriodique").parent().parent().hide();
+
+    $("#hrPeriodique1").hide();
+    $("#hrPeriodique2").hide();
+
+    $("#addPeriodique").hide();
+}
+
+function periodiqueFieldShow() {
+    $("#nomPeriodique").parent().parent().show();
+
+    $("#hrPeriodique1").show();
+    $("#hrPeriodique2").show();
+
+    $("#addPeriodique").show();
+}
+
 function communeFieldHide() {
     $("#nomCommuneEditeur").parent().parent().hide();
 
-    $("#hrCommuneEditeurDebut").hide();
-    $("#hrCommuneEditeurFin").hide();
+    $("#hrCommuneEditeur1").hide();
+    $("#hrCommuneEditeur2").hide();
 
     $("#addCommuneEditeur").hide();
 }
@@ -137,12 +177,12 @@ function communeFieldHide() {
 function communeFieldShow() {
     $("#nomCommuneEditeur").parent().parent().show();
 
-    if (! $("#hrDepartementFin").is(":visible")) {
+    if (!$("#hrDepartement2").is(":visible")) {
         $("#hrCommuneDebut").show();
     }
 
-    if (! $("#hrLieuDitsEditeurDebut").is(":visible")) {
-        $("#hrCommuneEditeurFin").show();
+    if (!$("#hrLieuDitsEditeur1").is(":visible")) {
+        $("#hrCommuneEditeur2").show();
     }
 
     $("#addCommuneEditeur").show();
@@ -151,8 +191,8 @@ function communeFieldShow() {
 function lieuDitsFieldHide() {
     $("#nomLieuDitsEditeur").parent().parent().hide();
 
-    $("#hrLieuDitsEditeurDebut").hide();
-    $("#hrLieuDitsEditeurFin").hide();
+    $("#hrLieuDitsEditeur1").hide();
+    $("#hrLieuDitsEditeur2").hide();
 
     $("#addLieuDitsEditeur").hide();
 }
@@ -160,8 +200,8 @@ function lieuDitsFieldHide() {
 function lieuDitsFieldShow() {
     $("#nomLieuDitsEditeur").parent().parent().show();
 
-    if (!$("#hrCommuneEditeurFin").is(":visible")) {
-        $("#hrLieuDitsEditeurDebut").show();
+    if (!$("#hrCommuneEditeur2").is(":visible")) {
+        $("#hrLieuDitsEditeur1").show();
     }
 
     $("#addLieuDitsEditeur").show();
@@ -176,12 +216,12 @@ function hideAll() {
     $("#appbundle_collection_periodique").parent().parent().hide();
     $("#appbundle_collection_volume").parent().parent().hide();
 }
+
 function displayField() {
     var typeBib = $("#appbundle_collection_TypeBib").val();
 
-    console.log(typeBib);
     hideAll();
-    switch(typeBib){
+    switch (typeBib) {
         case "1":
             $("#appbundle_collection_tome").parent().parent().show();
             $("#appbundle_collection_editeur").parent().parent().show();

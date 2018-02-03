@@ -16,7 +16,5 @@ class CollectionManager extends Manager {
 
     public function addCollection($entity) {
         $this->add($entity);
-
-        $this->session->getFlashBag()->add('success', 'élément correctement ajouté !');
     }
 }

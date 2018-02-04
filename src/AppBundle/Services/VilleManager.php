@@ -16,4 +16,8 @@ class VilleManager extends Manager {
     public function addVille($ville) {
         $this->add($ville);
     }
+
+    public function getVille($id) {
+        return $this->getOne($id);
+    }
 }

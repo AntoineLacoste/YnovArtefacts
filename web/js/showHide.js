@@ -265,31 +265,31 @@ function displayFields() {
             $("#appbundle_collection_editeur").parent().parent().show();
             break;
         case "4":
-            $("#appbundle_collection_editeur").parent().parent().show();
-            $("#appbundle_collection_collection").parent().parent().show();
-            $("#appbundle_collection_num_collection").parent().parent().show();
             break;
         case "5":
-            $("#appbundle_collection_pagination").parent().parent().show();
             $("#appbundle_collection_editeur").parent().parent().show();
             $("#appbundle_collection_collection").parent().parent().show();
             $("#appbundle_collection_num_collection").parent().parent().show();
             break;
         case "6":
             $("#appbundle_collection_pagination").parent().parent().show();
-            $("#appbundle_collection_periodique").parent().parent().show();
+            $("#appbundle_collection_editeur").parent().parent().show();
+            $("#appbundle_collection_collection").parent().parent().show();
+            $("#appbundle_collection_num_collection").parent().parent().show();
             break;
         case "7":
             $("#appbundle_collection_tome").parent().parent().show();
-            $("#appbundle_collection_volume").parent().parent().show();
+            $("#appbundle_collection_pagination").parent().parent().show();
             break;
         case "8":
             $("#appbundle_collection_volume").parent().parent().show();
+            $("#appbundle_collection_periodique").parent().parent().show();
             break;
         case "9":
             $("#appbundle_collection_volume").parent().parent().show();
             break;
         case "10":
+            $("#appbundle_collection_volume").parent().parent().show();
             break;
     }
 }

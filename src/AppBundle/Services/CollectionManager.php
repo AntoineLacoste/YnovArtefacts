@@ -3,7 +3,6 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Entity\Payment;
 use Doctrine\ORM\EntityManager;
 
 
@@ -16,5 +15,9 @@ class CollectionManager extends Manager {
 
     public function addCollection($entity) {
         $this->add($entity);
+    }
+
+    public function getCollection($id){
+        return $this->getOne($id);
     }
 }

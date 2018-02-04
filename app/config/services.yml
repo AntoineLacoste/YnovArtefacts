@@ -29,6 +29,11 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    AuteurBibliographieManager:
+      class: AppBundle\Services\AuteurBibliographieManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
     BibliographieManager:
       class: AppBundle\Services\BibliographieManager
       arguments: ["@doctrine.orm.entity_manager"]
@@ -96,6 +101,11 @@ services:
 
     TypeOrganismeManager:
       class: AppBundle\Services\TypeOrganismeManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    TypeBibManager:
+      class: AppBundle\Services\TypeBibManager
       arguments: ["@doctrine.orm.entity_manager"]
       public: true
 

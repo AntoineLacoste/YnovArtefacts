@@ -14,6 +14,7 @@ $(document).ready(function () {
     addFieldAuteur();
 
     auteurFieldHide(1);
+    addPlusBiblio();
 
     hideAll();
     $("#appbundle_collection_TypeBib").change(displayFields);
@@ -115,6 +116,7 @@ function addFieldAuteur() {
     addFieldText($("#auteur1 #auteur"), "nomAuteur", "Nom de l'auteur");
     addAuteurButton();
     addFieldPlusAuteur();
+    addFieldPlusAuteurBiblio();
 }
 
 function addFieldPlusEditeur() {
@@ -160,6 +162,32 @@ function addFieldPlusAuteur() {
     $("#appbundle_collection_auteur").after(buttonAdd);
 
     auteurFieldHide(1);
+}
+
+function addFieldPlusAuteurBiblio() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-info",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter un nouvel auteur au document");
+
+    buttonAdd.click(addAuteurGroup);
+
+    $("#auteurHeader").append(buttonAdd);
+}
+
+function addPlusBiblio() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-info",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Valider le document");
+
+    buttonAdd.click(addBibliographie);
+
+    $("#migrationHeader").append(buttonAdd);
 }
 
 function addFieldPlusCollection() {

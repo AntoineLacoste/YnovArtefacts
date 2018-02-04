@@ -138,3 +138,13 @@ function addHrBefore(parent, name) {
     parent.before(field);
     field.hide();
 }
+
+function addAuteurGroup() {
+    var currentAuteurGroup = $(".auteurGroup").last();
+    var nextAuteurGroup = currentAuteurGroup.clone(true, true);
+    var currentAuteurGroupId = parseInt(currentAuteurGroup.attr("id").slice(-1));
+    var nextAuteurGroupId = "auteur" + (currentAuteurGroupId + 1);
+
+    nextAuteurGroup.attr("id", nextAuteurGroupId);
+    currentAuteurGroup.after(nextAuteurGroup);
+}

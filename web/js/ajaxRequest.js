@@ -260,6 +260,54 @@ function addTypeOrganisme(event) {
     });
 }
 
+function addBibliographie() {
+    var data = setBibliographieData();
+    console.log(data);
+    $.ajax({
+        url: window.location + "bibliographie/add",
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function setBibliographieData() {
+    var data = {};
+
+    data.titre = $("#appbundle_collection_titreRef").val();
+    data.abvSiteMarchand = $("#appbundle_collection_abvSiteMarchande").val();
+    data.tome = $("#appbundle_collection_tome").val();
+    data.volume = $("#appbundle_collection_volume").val();
+    data.numCollection = $("#appbundle_collection_num_collection").val()
+    data.collection = $("#appbundle_collection_collection").val();
+    data.pagination = $("#appbundle_collection_pagination").val();
+
+    var yearDate = $("#appbundle_collection_dateEdition_year").val();
+    var monthDate = $("#appbundle_collection_dateEdition_month").val();
+    var dayDate = $("#appbundle_collection_dateEdition_day").val();
+
+    data.dateEdition = dayDate + "-" + monthDate + "-" + yearDate;
+    data.ISSN = $("#appbundle_collection_issn").val();
+    data.ISBN = $("#appbundle_collection_isbn").val();
+    data.typeBib = $("#appbundle_collection_TypeBib").val();
+    data.villeEdition = $("#appbundle_collection_villeEdition").val();
+    data.editeur = $("#appbundle_collection_editeur").val();
+    data.periodique = $("#appbundle_collection_periodique").val();
+
+    var auteurs = [];
+    $("#auteurs > div").each(function (index, div) {
+        auteurs.push($("#" + $(div).attr("id") + " #appbundle_collection_auteur").val());
+    });
+
+    data.auteurs = auteurs;
+    return data;
+}
+
 function addAuteur(event) {
     var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
     $.ajax({
@@ -272,7 +320,7 @@ function addAuteur(event) {
             note: $("#auteur" + auteurNumber + " #noteAuteur").val(),
             nationalite: $("#auteur" + auteurNumber + " #appbundle_collection_directeur").val(),
             organisme: $("#auteur" + auteurNumber + " #appbundle_collection_organisme").val(),
-            directeur:$("#auteur" + auteurNumber + " #appbundle_collection_nationalite").val()
+            directeur: $("#auteur" + auteurNumber + " #appbundle_collection_nationalite").val()
         },
         success: function (response) {
             console.log(response);

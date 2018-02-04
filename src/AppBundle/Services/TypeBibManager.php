@@ -3,21 +3,22 @@
 
 namespace AppBundle\Services;
 
+use AppBundle\Entity\TypeBib;
 use Doctrine\ORM\EntityManager;
 
 
-class EditeurManager extends Manager {
+class TypeBibManager extends Manager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);
-        $this->repository = $this->em->getRepository('AppBundle:Editeur');
+        $this->repository = $this->em->getRepository('AppBundle:TypeBib');
     }
 
-    public function addEditeur($entity) {
+    public function addTypeBib(TypeBib $entity) {
         $this->add($entity);
     }
 
-    public function getEditeur($id){
+    public function getTypeBib($id) {
         return $this->getOne($id);
     }
 }

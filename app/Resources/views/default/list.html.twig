@@ -2,7 +2,7 @@
 
 {% block body %}
     <body>
-    <h1 class="panel-header">Migration bibliographie V2</h1>
+    <h1 class="panel-header" id="migrationHeader">Migration bibliographie V2</h1>
 
 
     <div class="row">
@@ -246,91 +246,93 @@
                         </div>
                         <hr id="hrPersonne"/>
 
-                        <h3 class="panel-header">Auteur</h3>
+                        <h3 class="panel-header" id="auteurHeader">Auteur</h3>
 
-                        <div id="auteur1">
-                            <div class="form-group form-inline" id="auteur">
-                                <label class="col-md-3 control-label">
-                                    {{ form_label(form.auteur) }}
-                                </label>
-                                <div class="col-sm-8 col-sm-pad">
-                                    {{ form_widget(form.auteur) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group form-inline" id="hrDirecteur1Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline" id="directeurAuteur">
-                                <div class="col-sm-12 col-sm-pad">
+                        <div id="auteurs">
+                            <div id="auteur1" class="auteurGroup">
+                                <div class="form-group form-inline" id="auteur">
                                     <label class="col-md-3 control-label">
-                                        {{ form_label(form.directeur) }}
+                                        {{ form_label(form.auteur) }}
                                     </label>
-                                    {{ form_widget(form.directeur) }}
+                                    <div class="col-sm-8 col-sm-pad">
+                                        {{ form_widget(form.auteur) }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="hrDirecteur2Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
-                                </div>
-                            </div>
 
-                            <div class="form-group form-inline" id="hrOrganisme1Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
+                                <div class="form-group form-inline" id="hrDirecteur1Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="organismeAuteur">
-                                <label class="col-md-3 control-label">
-                                    {{ form_label(form.organisme) }}
-                                </label>
-                                <div class="col-sm-8 col-sm-pad">
-                                    {{ form_widget(form.organisme) }}
+                                <div class="form-group form-inline" id="directeurAuteur">
+                                    <div class="col-sm-12 col-sm-pad">
+                                        <label class="col-md-3 control-label">
+                                            {{ form_label(form.directeur) }}
+                                        </label>
+                                        {{ form_widget(form.directeur) }}
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group form-inline" id="hrDirecteur2Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
+                                </div>
 
-                            <div class="form-group form-inline" id="hrTypeOrganisme1Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
+                                <div class="form-group form-inline" id="hrOrganisme1Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="typeOrganismeAuteur">
-                                <label class="col-md-3 control-label">
-                                    {{ form_label(form.typeOrganisme) }}
-                                </label>
-                                <div class="col-sm-8 col-sm-pad">
-                                    {{ form_widget(form.typeOrganisme) }}
+                                <div class="form-group form-inline" id="organismeAuteur">
+                                    <label class="col-md-3 control-label">
+                                        {{ form_label(form.organisme) }}
+                                    </label>
+                                    <div class="col-sm-8 col-sm-pad">
+                                        {{ form_widget(form.organisme) }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="hrTypeOrganisme2Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline" id="hrOrganisme2Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
-                                </div>
-                            </div>
 
-                            <div class="form-group form-inline" id="hrNationalite1Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
+                                <div class="form-group form-inline" id="hrTypeOrganisme1Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="nationaliteAuteur">
-                                <label class="col-md-3 control-label">
-                                    {{ form_label(form.nationalite) }}
-                                </label>
-                                <div class="col-sm-8 col-sm-pad">
-                                    {{ form_widget(form.nationalite) }}
+                                <div class="form-group form-inline" id="typeOrganismeAuteur">
+                                    <label class="col-md-3 control-label">
+                                        {{ form_label(form.typeOrganisme) }}
+                                    </label>
+                                    <div class="col-sm-8 col-sm-pad">
+                                        {{ form_widget(form.typeOrganisme) }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group form-inline" id="hrNationalite2Auteur">
-                                <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
-                                    <hr/>
+                                <div class="form-group form-inline" id="hrTypeOrganisme2Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline" id="hrOrganisme2Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-inline" id="hrNationalite1Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline" id="nationaliteAuteur">
+                                    <label class="col-md-3 control-label">
+                                        {{ form_label(form.nationalite) }}
+                                    </label>
+                                    <div class="col-sm-8 col-sm-pad">
+                                        {{ form_widget(form.nationalite) }}
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline" id="hrNationalite2Auteur">
+                                    <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                        <hr/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

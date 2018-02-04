@@ -3,7 +3,6 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Entity\Payment;
 use Doctrine\ORM\EntityManager;
 
 
@@ -11,7 +10,7 @@ class BibliographieManager extends Manager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);
-        $this->repository = $this->em->getRepository('AppBundle:Bibliogrpahie');
+        $this->repository = $this->em->getRepository('AppBundle:BibliographieV2');
     }
 
     public function addBibliographie($entity) {

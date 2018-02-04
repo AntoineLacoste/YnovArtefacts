@@ -29,7 +29,7 @@ class AuteurBibliographie
      *   @ORM\JoinColumn(name="id_bibliographie", referencedColumnName="id_bibliographie")
      * })
      */
-    private $idBibliographie;
+    private $Bibliographie;
 
     /**
      * @var \AppBundle\Entity\Personne
@@ -39,48 +39,48 @@ class AuteurBibliographie
      *   @ORM\JoinColumn(name="id_auteur", referencedColumnName="id_personne")
      * })
      */
-    private $idAuteur;
+    private $Auteur;
 
     /**
      * @return int
      */
-    public function getIdAuteurBibliographie() {
+    public function getIdAuteurBibliographie(): int {
         return $this->idAuteurBibliographie;
     }
 
     /**
      * @param int $idAuteurBibliographie
      */
-    public function setIdAuteurBibliographie($idAuteurBibliographie) {
+    public function setIdAuteurBibliographie(int $idAuteurBibliographie) {
         $this->idAuteurBibliographie = $idAuteurBibliographie;
     }
 
     /**
      * @return BibliographieV2
      */
-    public function getIdBibliographie() {
-        return $this->idBibliographie;
+    public function getBibliographie() {
+        return $this->Bibliographie;
     }
 
     /**
-     * @param BibliographieV2 $idBibliographie
+     * @param BibliographieV2 $Bibliographie
      */
-    public function setIdBibliographie($idBibliographie) {
-        $this->idBibliographie = $idBibliographie;
+    public function setBibliographie(BibliographieV2 $Bibliographie) {
+        $this->Bibliographie = $Bibliographie;
     }
 
     /**
      * @return Personne
      */
-    public function getIdAuteur() {
-        return $this->idAuteur;
+    public function getAuteur() {
+        return $this->Auteur;
     }
 
     /**
-     * @param Personne $idAuteur
+     * @param Personne $Auteur
      */
-    public function setIdAuteur($idAuteur) {
-        $this->idAuteur = $idAuteur;
+    public function setAuteur(Personne $Auteur) {
+        $this->Auteur = $Auteur;
     }
 
 

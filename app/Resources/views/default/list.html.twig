@@ -38,15 +38,26 @@
                                 {{ form_widget(form.bibliographieParent) }}
                             </div>
                         </div>
+
+                        <div class="form-group form-inline" id="hrVilleEdition1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
                         <div class="form-group form-inline" id ="villeEdition">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.villeEdition) }}
                             </label>
                             <div class="col-sm-8 col-sm-pad">
                                 {{ form_widget(form.villeEdition) }}
-                                {#<hr id="hrVilleEdition2"/>#}
                             </div>
                         </div>
+                        <div class="form-group form-inline" id="hrVilleEdition2">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
                         <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.abvSiteMarchande) }}
@@ -113,12 +124,29 @@
                                 {{ form_widget(form.editeur) }}
                             </div>
                         </div>
+
+                        <div class="form-group form-inline" id="hrPaysEditeur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
                         <div class="form-group form-inline" id="paysEditeur">
                             <div class="col-sm-12 col-sm-pad">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.paysEditeur) }}
                             </label>
                                 {{ form_widget(form.paysEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="hrPaysEditeur2">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" id="hrVilleEditeur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
                             </div>
                         </div>
                         <div class="form-group form-inline" id="villeEditeur">
@@ -129,13 +157,34 @@
                                 {{ form_widget(form.villeEditeur) }}
                             </div>
                         </div>
+                        <div class="form-group form-inline" id="hrVilleEditeur2">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
 
+                        <div class="form-group form-inline" id="hrDepartementEditeur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
                         <div class="form-group form-inline" id="departementEditeur">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.departementEditeur) }}
                             </label>
                             <div class="col-sm-8 col-sm-pad">
                                 {{ form_widget(form.departementEditeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="hrDepartementEditeur2">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" id="hrCommuneEditeur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
                             </div>
                         </div>
                         <div class="form-group form-inline" id="communeEditeur">
@@ -146,6 +195,17 @@
                                 {{ form_widget(form.communeEditeur) }}
                             </div>
                         </div>
+                        <div class="form-group form-inline" id="hrCommuneEditeur2">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" id="hrLieuDitsEditeur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
                         <div class="form-group form-inline" id="lieuDitsEditeur">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.lieuDitsEditeur) }}
@@ -154,6 +214,7 @@
                                 {{ form_widget(form.lieuDitsEditeur) }}
                             </div>
                         </div>
+
                         <hr id="hrEditeur2"/>
                         <hr id="hrCollection1"/>
                         <div class="form-group form-inline" id="collection">
@@ -183,8 +244,84 @@
                                 {{ form_widget(form.periodique) }}
                             </div>
                         </div>
-                        <hr id="hrPeriodique2"/>
+                        <hr id="hrPersonne"/>
 
+                        <h3 class="panel-header">Auteur</h3>
+
+                        <div class="form-group form-inline" id="periodique">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.auteur) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.auteur) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-inline" id="hrDirecteur1Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="directeurAuteur1">
+                            <div class="col-sm-12 col-sm-pad">
+                                <label class="col-md-3 control-label">
+                                    {{ form_label(form.directeur) }}
+                                </label>
+                                {{ form_widget(form.directeur) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="hrDirecteur2Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" id="hrOrganisme1Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="organismeAuteur1">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.organisme) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.organisme) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="typeOrganismeAuteur1">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.typeOrganisme) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.typeOrganisme) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="hrOrganisme2Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" id="hrNationalite1Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="nationaliteAuteur1">
+                            <label class="col-md-3 control-label">
+                                {{ form_label(form.nationalite) }}
+                            </label>
+                            <div class="col-sm-8 col-sm-pad">
+                                {{ form_widget(form.nationalite) }}
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="hrNationalite2Auteur1">
+                            <div class="col-sm-offset-3 col-sm-8 col-sm-pad">
+                                <hr/>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

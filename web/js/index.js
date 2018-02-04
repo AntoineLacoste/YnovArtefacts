@@ -8,8 +8,13 @@ $(document).ready(function () {
     addFieldEditeur();
     addFieldCollection();
     addFieldPeriodique();
+    addFieldOrganisme();
+    addFieldNationalite();
 
+    auteur1FieldHide();
     addEditeurButton();
+    addFieldPlusOrganisme();
+    addFieldPlusNationalite();
     addFieldPlusVilleEdition();
     addFieldPlusCollection();
     addFieldPlusPeriodique();
@@ -20,25 +25,11 @@ $(document).ready(function () {
     addFieldPlusCommuneEditeur();
     addFieldPlusLieuDitsEditeur();
 
-    addHrAll();
     hideAll();
-    $("#appbundle_collection_TypeBib").change(displayField);
-    displayField();
+    $("#appbundle_collection_TypeBib").change(displayFields);
+    displayFields();
 });
 
-function addHrAll() {
-    addHr($("#appbundle_collection_bibliographieParent"), "hrVilleEdition1");
-    addHr($("#addVilleEdition"), "hrVilleEdition2");
-    addHr($("#nomEditeur"), "hrPaysEditeur1");
-    addHr($("#addPaysEditeur"), "hrPaysEditeur2");
-    addHr($("#addPaysEditeur"), "hrVilleEditeur1");
-    addHr($("#addVilleEditeur"), "hrVilleEditeur2");
-    addHr($("#addVilleEditeur"), "hrDepartementEditeur1");
-    addHr($("#addDepartementEditeur"), "hrDepartementEditeur2");
-    addHr($("#addDepartementEditeur"), "hrCommuneEditeur1");
-    addHr($("#addCommuneEditeur"), "hrCommuneEditeur2");
-    addHr($("#addCommuneEditeur"), "hrLieuDitsEditeur1");
-}
 function addFieldPaysEditeur() {
     addFieldText($("#paysEditeur"), "codePaysEditeur", "Code du pays");
     addFieldText($("#paysEditeur"), "paysFREditeur", "Pays en français");
@@ -95,6 +86,17 @@ function addFieldPeriodique() {
     addButtonAjax($("#nomPeriodique"), "addPeriodique", "Ajouter le périodique", addPeriodique);
 }
 
+function addFieldOrganisme() {
+    addFieldText($("#typeOrganismeAuteur1"), "nomOrganismeAuteur1", "Nom de l'organisme");
+    addButtonAjax($("#nomOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter l'organisme", addPeriodique);
+}
+
+function addFieldNationalite() {
+    addFieldText($("#nationaliteAuteur1"), "codeNationaliteAuteur1", "Code de la nationalité");
+    addFieldText($("#nationaliteAuteur1"), "nomNationaliteAuteur1", "Nom de la nationalite");
+    addButtonAjax($("#codeNationaliteAuteur1"), "addNationaliteAuteur1", "Ajouter la nationalite", addPeriodique);
+}
+
 function addFieldPlusEditeur() {
     var buttonAdd = $('<div>').attr({
         class: "btn btn-success",
@@ -137,6 +139,52 @@ function addFieldPlusCollection() {
     $("#appbundle_collection_collection").after(buttonAdd);
 
     collectionFieldHide();
+}
+
+function addFieldPlusOrganisme() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter un nouvel organisme");
+
+    buttonAdd.click(function () {
+        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
+        if ($("#nomOrganismeAuteur" + auteurNumber).is(":visible")) {
+            organismeFieldHide(auteurNumber);
+        }
+        else {
+            organismeFieldShow(auteurNumber);
+        }
+    });
+
+    $("#appbundle_collection_organisme").after(buttonAdd);
+
+    organismeFieldHide();
+}
+
+function addFieldPlusNationalite() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter une nouvelle nationalite");
+
+    buttonAdd.click(function () {
+        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
+        if ($("#nomNationaliteAuteur" + auteurNumber).is(":visible")) {
+            nationaliteFieldHide(auteurNumber);
+        }
+        else {
+            nationaliteFieldShow(auteurNumber);
+        }
+    });
+
+    $("#appbundle_collection_nationalite").after(buttonAdd);
+
+    nationaliteFieldHide();
 }
 
 function addFieldPlusPeriodique() {

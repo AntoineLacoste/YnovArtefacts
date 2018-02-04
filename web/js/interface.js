@@ -58,6 +58,7 @@ function addEditeurButton() {
 
     editeurFieldHide();
 }
+
 function addButtonAjax(parent, name, label, callback) {
     var buttonAdd = $('<div>').attr({
         class: "btn btn-primary",

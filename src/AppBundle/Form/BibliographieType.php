@@ -8,9 +8,13 @@ use AppBundle\Entity\Commune;
 use AppBundle\Entity\Departement;
 use AppBundle\Entity\Editeur;
 use AppBundle\Entity\LieuDits;
+use AppBundle\Entity\Nationalite;
+use AppBundle\Entity\Organisme;
 use AppBundle\Entity\Pays;
 use AppBundle\Entity\Periodique;
+use AppBundle\Entity\Personne;
 use AppBundle\Entity\TypeBib;
+use AppBundle\Entity\TypeOrganisme;
 use AppBundle\Entity\Ville;
 
 use function Sodium\add;
@@ -158,12 +162,53 @@ class BibliographieType extends AbstractType {
                 'class' => Periodique::class,
                 'choice_label' => function ($periodique) {
                     return $periodique->getNom();
+                }))
+
+            ->add('auteur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'class' => Personne::class,
+                'choice_label' => function ($personne) {
+                    return $personne->getNom() . " " . $personne->getPrenom();
+                }))
+
+            ->add('directeur', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'class' => Personne::class,
+                'choice_label' => function ($personne) {
+                    return $personne->getNom() . " " . $personne->getPrenom();
+                }))
+
+            ->add('nationalite', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'class' => Nationalite::class,
+                'choice_label' => function ($nationalite) {
+                    return $nationalite->getNom() . " (" . $nationalite->getAbv() . ")";
+                }))
+
+            ->add('organisme', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'class' => Organisme::class,
+                'choice_label' => function ($organisme) {
+                    $organismeStr = $organisme->getNom();
+                    if ($organisme->getTypeOrganisme()) {
+                        $organismeStr .= " (" . $organisme->getTypeOrganisme()->getDescription() . ")";
+                    }
+                    return $organismeStr;
+                }))
+
+            ->add('typeOrganisme', EntityType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'),
+                'class' => TypeOrganisme::class,
+                'choice_label' => function ($typeOrganisme) {
+                    return $typeOrganisme->getDescription();
                 }));
     }
-    /*->add('survey', CollectionType::class, array(
-        'entry_type' => SurveyType::class,
-        'allow_add' => true
-    ))*/
+
     /**
      * {@inheritdoc}
      */

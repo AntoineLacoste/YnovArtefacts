@@ -38,7 +38,7 @@ class Organisme
     /**
      * @return TypeOrganisme
      */
-    public function getTypeOrganisme(): TypeOrganisme
+    public function getTypeOrganisme()
     {
         return $this->typeOrganisme;
     }

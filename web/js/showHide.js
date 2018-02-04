@@ -18,6 +18,12 @@ function editeurFieldHide() {
     $("#addEditeur").hide();
 }
 
+function auteur1FieldHide() {
+    organismeFieldHide(1);
+    nationaliteFieldHide(1);
+    directeurFieldHide(1);
+}
+
 function editeurFieldShow() {
     $("#appbundle_collection_paysEditeur").parent().parent().show();
     $("#appbundle_collection_villeEditeur").parent().parent().show();
@@ -151,7 +157,6 @@ function periodiqueFieldHide() {
     $("#nomPeriodique").parent().parent().hide();
 
     $("#hrPeriodique1").hide();
-    $("#hrPeriodique2").hide();
 
     $("#addPeriodique").hide();
 }
@@ -160,7 +165,6 @@ function periodiqueFieldShow() {
     $("#nomPeriodique").parent().parent().show();
 
     $("#hrPeriodique1").show();
-    $("#hrPeriodique2").show();
 
     $("#addPeriodique").show();
 }
@@ -177,8 +181,8 @@ function communeFieldHide() {
 function communeFieldShow() {
     $("#nomCommuneEditeur").parent().parent().show();
 
-    if (!$("#hrDepartement2").is(":visible")) {
-        $("#hrCommuneDebut").show();
+    if (!$("#hrDepartementEditeur2").is(":visible")) {
+        $("#hrCommuneEditeur1").show();
     }
 
     if (!$("#hrLieuDitsEditeur1").is(":visible")) {
@@ -217,7 +221,7 @@ function hideAll() {
     $("#appbundle_collection_volume").parent().parent().hide();
 }
 
-function displayField() {
+function displayFields() {
     var typeBib = $("#appbundle_collection_TypeBib").val();
 
     hideAll();
@@ -266,4 +270,45 @@ function displayField() {
         case "10":
             break;
     }
+}
+
+function directeurFieldHide(auteurNumber) {
+    $("#hrDirecteur1Auteur" + auteurNumber).hide();
+    $("#hrDirecteur2Auteur" + auteurNumber).hide();
+}
+
+function organismeFieldHide(auteurNumber) {
+    $("#typeOrganismeAuteur" + auteurNumber).hide();
+    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().hide();
+
+    $("#hrOrganisme1Auteur" + auteurNumber).hide();
+    $("#hrOrganisme2Auteur" + auteurNumber).hide();
+}
+
+function organismeFieldShow(auteurNumber) {
+    $("#typeOrganismeAuteur" + auteurNumber).parent().parent().show();
+    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().show();
+
+    $("#hrOrganisme1Auteur" + auteurNumber).show();
+    if (!$("#hrNationalite1Auteur" + auteurNumber).is(":visible")) {
+        $("#hrOrganisme2Auteur" + auteurNumber).show();
+    }
+}
+
+function nationaliteFieldHide(auteurNumber) {
+    $("#nomNationaliteAuteur" + auteurNumber).parent().parent().hide();
+    $("#codeNationaliteAuteur" + auteurNumber).parent().parent().hide();
+
+    $("#hrNationalite1Auteur" + auteurNumber).hide();
+    $("#hrNationalite2Auteur" + auteurNumber).hide();
+}
+
+function nationaliteFieldShow(auteurNumber) {
+    $("#nomNationaliteAuteur" + auteurNumber).parent().parent().show();
+    $("#codeNationaliteAuteur" + auteurNumber).parent().parent().show();
+
+    if (!$("#hrOrganisme2Auteur" + auteurNumber).is(":visible")) {
+        $("#hrNationalite1Auteur" + auteurNumber).show();
+    }
+    $("#hrNationalite2Auteur" + auteurNumber).show();
 }

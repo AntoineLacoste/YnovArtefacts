@@ -18,10 +18,32 @@ function editeurFieldHide() {
     $("#addEditeur").hide();
 }
 
-function auteur1FieldHide() {
-    organismeFieldHide(1);
-    nationaliteFieldHide(1);
-    directeurFieldHide(1);
+function auteurFieldHide(auteurNumber) {
+    $("#auteur" + auteurNumber + " #nomAuteur").parent().parent().hide();
+    $("#auteur" + auteurNumber + " #prenomAuteur").parent().parent().hide();
+    $("#auteur" + auteurNumber + " #noteAuteur").parent().parent().hide();
+    $("#auteur" + auteurNumber + " #dateVieAuteur").parent().parent().hide();
+
+    $("#auteur" + auteurNumber + " #directeurAuteur").hide();
+    $("#auteur" + auteurNumber + " #organismeAuteur").hide();
+    $("#auteur" + auteurNumber + " #nationaliteAuteur").hide();
+    $("#auteur" + auteurNumber + " #addAuteur").hide();
+
+    organismeFieldHide(auteurNumber);
+    nationaliteFieldHide(auteurNumber);
+    directeurFieldHide(auteurNumber);
+}
+
+function auteurFieldShow(auteurNumber) {
+    $("#auteur" + auteurNumber + " #nomAuteur").parent().parent().show();
+    $("#auteur" + auteurNumber + " #prenomAuteur").parent().parent().show();
+    $("#auteur" + auteurNumber + " #noteAuteur").parent().parent().show();
+    $("#auteur" + auteurNumber + " #dateVieAuteur").parent().parent().show();
+
+    $("#auteur" + auteurNumber + " #directeurAuteur").show();
+    $("#auteur" + auteurNumber + " #organismeAuteur").show();
+    $("#auteur" + auteurNumber + " #nationaliteAuteur").show();
+    $("#auteur" + auteurNumber + " #addAuteur").show();
 }
 
 function editeurFieldShow() {
@@ -273,57 +295,57 @@ function displayFields() {
 }
 
 function directeurFieldHide(auteurNumber) {
-    $("#hrDirecteur1Auteur" + auteurNumber).hide();
-    $("#hrDirecteur2Auteur" + auteurNumber).hide();
+    $("#auteur" + auteurNumber + " #hrDirecteur1Auteur").hide();
+    $("#auteur" + auteurNumber + " #hrDirecteur2Auteur").hide();
 }
 
 function organismeFieldHide(auteurNumber) {
-    $("#typeOrganismeAuteur" + auteurNumber).hide();
-    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().hide();
+    $("#auteur" + auteurNumber + " #typeOrganismeAuteur").hide();
+    $("#auteur" + auteurNumber + " #nomOrganismeAuteur").parent().parent().hide();
 
-    $("#hrOrganisme1Auteur" + auteurNumber).hide();
-    $("#hrOrganisme2Auteur" + auteurNumber).hide();
+    $("#auteur" + auteurNumber + " #hrOrganisme1Auteur").hide();
+    $("#auteur" + auteurNumber + " #hrOrganisme2Auteur").hide();
 }
 
 function organismeFieldShow(auteurNumber) {
-    $("#typeOrganismeAuteur" + auteurNumber).show();
-    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().show();
+    $("#auteur" + auteurNumber + " #typeOrganismeAuteur").show();
+    $("#auteur" + auteurNumber + " #nomOrganismeAuteur").parent().parent().show();
 
-    $("#hrOrganisme1Auteur" + auteurNumber).show();
-    if (!$("#hrNationalite1Auteur" + auteurNumber).is(":visible")) {
-        $("#hrOrganisme2Auteur" + auteurNumber).show();
+    $("#auteur" + auteurNumber + " #hrOrganisme1Auteur").show();
+    if (!$("#auteur" + auteurNumber + " #hrNationalite1Auteur").is(":visible")) {
+        $("#auteur" + auteurNumber + " #hrOrganisme2Auteur").show();
     }
 }
 
 function typeOrganismeFieldHide(auteurNumber) {
-    $("#descriptionTypeOrganismeAuteur" + auteurNumber).parent().parent().hide();
+    $("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").parent().parent().hide();
 
-    $("#hrTypeOrganisme1Auteur" + auteurNumber).hide();
-    $("#hrTypeOrganisme2Auteur" + auteurNumber).hide();
+    $("#auteur" + auteurNumber + " #hrTypeOrganisme1Auteur").hide();
+    $("#auteur" + auteurNumber + " #hrTypeOrganisme2Auteur").hide();
 }
 
 function typeOrganismeFieldShow(auteurNumber) {
-    $("#descriptionTypeOrganismeAuteur" + auteurNumber).parent().parent().show();
-    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().show();
+    $("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").parent().parent().show();
+    $("#auteur" + auteurNumber + " #nomOrganismeAuteur").parent().parent().show();
 
-    $("#hrTypeOrganisme1Auteur" + auteurNumber).show();
-    $("#hrTypeOrganisme2Auteur" + auteurNumber).show();
+    $("#auteur" + auteurNumber + " #hrTypeOrganisme1Auteur").show();
+    $("#auteur" + auteurNumber + " #hrTypeOrganisme2Auteur").show();
 }
 
 function nationaliteFieldHide(auteurNumber) {
-    $("#nomNationaliteAuteur" + auteurNumber).parent().parent().hide();
-    $("#codeNationaliteAuteur" + auteurNumber).parent().parent().hide();
+    $("#auteur" + auteurNumber + " #nomNationaliteAuteur").parent().parent().hide();
+    $("#auteur" + auteurNumber + " #codeNationaliteAuteur").parent().parent().hide();
 
-    $("#hrNationalite1Auteur" + auteurNumber).hide();
-    $("#hrNationalite2Auteur" + auteurNumber).hide();
+    $("#auteur" + auteurNumber + " #hrNationalite1Auteur").hide();
+    $("#auteur" + auteurNumber + " #hrNationalite2Auteur").hide();
 }
 
 function nationaliteFieldShow(auteurNumber) {
-    $("#nomNationaliteAuteur" + auteurNumber).parent().parent().show();
-    $("#codeNationaliteAuteur" + auteurNumber).parent().parent().show();
+    $("#auteur" + auteurNumber + " #nomNationaliteAuteur").parent().parent().show();
+    $("#auteur" + auteurNumber + " #codeNationaliteAuteur").parent().parent().show();
 
-    if (!$("#hrOrganisme2Auteur" + auteurNumber).is(":visible")) {
-        $("#hrNationalite1Auteur" + auteurNumber).show();
+    if (!$("#auteur" + auteurNumber + " #hrOrganisme2Auteur").is(":visible")) {
+        $("#auteur" + auteurNumber + " #hrNationalite1Auteur").show();
     }
-    $("#hrNationalite2Auteur" + auteurNumber).show();
+    $("#auteur" + auteurNumber + " #hrNationalite2Auteur").show();
 }

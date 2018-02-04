@@ -27,8 +27,6 @@ class OrganismeController extends Controller
         //Setters
         $organisme->setNom($data->get("nom"));
 
-        $logger = $this->get('logger');
-        $logger->info(print_r($data, true));
         $typeOrganisme = $typeOrganismeManager->getTypeOrganisme($data->get("typeOrganisme"));
         $organisme->setTypeOrganisme($typeOrganisme);
 

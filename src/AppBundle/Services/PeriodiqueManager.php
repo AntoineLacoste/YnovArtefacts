@@ -3,7 +3,6 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Entity\Payment;
 use Doctrine\ORM\EntityManager;
 
 

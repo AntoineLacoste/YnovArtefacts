@@ -50,6 +50,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'label' => "Document parent : ",
                     'id' => 'editeur'),
+                'placeholder' => "Choisissez un document parent",
                 'class' => BibliographieV2::class,
                 'choice_label' => function ($biblioParent) {
                     return $biblioParent->getTitreRef();
@@ -93,6 +94,7 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Ville::class,
+                'placeholder' => "Choisissez une ville",
                 'choice_label' => function ($ville) {
                     return $ville->getNom();
                 }))
@@ -100,6 +102,7 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control',
                     'id' => 'editeur'),
+                'placeholder' => "Choisissez un éditeur",
                 'class' => Editeur::class,
                 'choice_label' => function ($editeur) {
                     return $editeur->getNom();
@@ -109,6 +112,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'id' => 'paysEditeur'),
                 'class' => Pays::class,
+                'placeholder' => "Choisissez un pays",
                 'choice_label' => function ($pays) {
                     return $pays->getPaysFr();
                 }))
@@ -117,6 +121,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'id' => 'villeEditeur'),
                 'class' => Ville::class,
+                'placeholder' => "Choisissez une ville",
                 'choice_label' => function ($ville) {
                     return $ville->getNom();
                 }))
@@ -125,6 +130,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'id' => 'departementEditeur'),
                 'class' => Departement::class,
+                'placeholder' => "Choisissez un departement",
                 'choice_label' => function ($departement) {
                     return $departement->getNom();
                 }))
@@ -133,6 +139,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'id' => 'communeEditeur'),
                 'class' => Commune::class,
+                'placeholder' => "Choisissez une commune",
                 'choice_label' => function ($commune) {
                     return $commune->getNom();
                 }))
@@ -141,6 +148,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control',
                     'id' => 'lieuDitsEditeur'),
                 'class' => LieuDits::class,
+                'placeholder' => "Choisissez un leiu-dit",
                 'choice_label' => function ($lieuDits) {
                     return $lieuDits->getNom();
                 }))
@@ -148,6 +156,7 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Collection::class,
+                'placeholder' => "Choisissez une collection",
                 'choice_label' => function ($collection) {
                     return $collection->getNom();
                 }))
@@ -160,6 +169,7 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Periodique::class,
+                'placeholder' => "Choisissez un périodique",
                 'choice_label' => function ($periodique) {
                     return $periodique->getNom();
                 }))
@@ -168,22 +178,25 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Personne::class,
+                'placeholder' => "Choisissez un auteur",
                 'choice_label' => function ($personne) {
-                    return $personne->getNom() . " " . $personne->getPrenom();
+                    return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
                 }))
 
             ->add('directeur', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Personne::class,
+                'placeholder' => "Choisissez un directeur",
                 'choice_label' => function ($personne) {
-                    return $personne->getNom() . " " . $personne->getPrenom();
+                    return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
                 }))
 
             ->add('nationalite', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Nationalite::class,
+                'placeholder' => "Choisissez une nationalité",
                 'choice_label' => function ($nationalite) {
                     return $nationalite->getNom() . " (" . $nationalite->getAbv() . ")";
                 }))
@@ -192,6 +205,7 @@ class BibliographieType extends AbstractType {
                 'attr' => array(
                     'class' => 'form-control'),
                 'class' => Organisme::class,
+                'placeholder' => "Choisissez un organisme",
                 'choice_label' => function ($organisme) {
                     $organismeStr = $organisme->getNom();
                     if ($organisme->getTypeOrganisme()) {
@@ -203,6 +217,7 @@ class BibliographieType extends AbstractType {
             ->add('typeOrganisme', EntityType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
+                'placeholder' => "Choisissez un type d'organisme",
                 'class' => TypeOrganisme::class,
                 'choice_label' => function ($typeOrganisme) {
                     return $typeOrganisme->getDescription();

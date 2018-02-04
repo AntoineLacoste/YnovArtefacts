@@ -79,6 +79,11 @@ services:
       arguments: ["@doctrine.orm.entity_manager"]
       public: true
 
+    PersonneManager:
+      class: AppBundle\Services\PersonneManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
     NationaliteManager:
       class: AppBundle\Services\NationaliteManager
       arguments: ["@doctrine.orm.entity_manager"]

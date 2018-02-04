@@ -89,7 +89,7 @@ class Personne
     /**
      * @param string $nom
      */
-    public function setNom($nom) {
+    public function setNom(string $nom) {
         $this->nom = $nom;
     }
 
@@ -103,7 +103,7 @@ class Personne
     /**
      * @param string $prenom
      */
-    public function setPrenom($prenom) {
+    public function setPrenom(string $prenom) {
         $this->prenom = $prenom;
     }
 
@@ -117,7 +117,7 @@ class Personne
     /**
      * @param string $dateVie
      */
-    public function setDateVie($dateVie) {
+    public function setDateVie(string $dateVie) {
         $this->dateVie = $dateVie;
     }
 
@@ -131,7 +131,7 @@ class Personne
     /**
      * @param string $note
      */
-    public function setNote($note) {
+    public function setNote(string $note) {
         $this->note = $note;
     }
 
@@ -145,50 +145,50 @@ class Personne
     /**
      * @param int $idPersonne
      */
-    public function setIdPersonne($idPersonne) {
+    public function setIdPersonne(int $idPersonne) {
         $this->idPersonne = $idPersonne;
     }
 
     /**
      * @return Nationalite
      */
-    public function getIdNationalite() {
-        return $this->idNationalite;
+    public function getNationalite() {
+        return $this->Nationalite;
     }
 
     /**
-     * @param Nationalite $idNationalite
+     * @param Nationalite $Nationalite
      */
-    public function setIdNationalite($idNationalite) {
-        $this->idNationalite = $idNationalite;
+    public function setNationalite(Nationalite $Nationalite) {
+        $this->Nationalite = $Nationalite;
     }
 
     /**
      * @return Organisme
      */
-    public function getIdOrganisme() {
-        return $this->idOrganisme;
+    public function getOrganisme() {
+        return $this->Organisme;
     }
 
     /**
-     * @param Organisme $idOrganisme
+     * @param Organisme $Organisme
      */
-    public function setIdOrganisme($idOrganisme) {
-        $this->idOrganisme = $idOrganisme;
+    public function setOrganisme(Organisme $Organisme) {
+        $this->Organisme = $Organisme;
     }
 
     /**
      * @return Personne
      */
-    public function getIdDirecteur() {
-        return $this->idDirecteur;
+    public function getDirecteur() {
+        return $this->Directeur;
     }
 
     /**
-     * @param Personne $idDirecteur
+     * @param Personne $Directeur
      */
-    public function setIdDirecteur($idDirecteur) {
-        $this->idDirecteur = $idDirecteur;
+    public function setDirecteur(Personne $Directeur) {
+        $this->Directeur = $Directeur;
     }
 
 

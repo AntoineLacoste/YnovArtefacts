@@ -11,8 +11,9 @@ $(document).ready(function () {
     addFieldOrganisme();
     addFieldTypeOrganisme();
     addFieldNationalite();
+    addFieldAuteur();
 
-    auteur1FieldHide();
+    auteurFieldHide(1);
 
     hideAll();
     $("#appbundle_collection_TypeBib").change(displayFields);
@@ -87,24 +88,33 @@ function addFieldPeriodique() {
 }
 
 function addFieldTypeOrganisme() {
-    addFieldText($("#typeOrganismeAuteur1"), "descriptionTypeOrganismeAuteur1", "Description du type");
-    addButtonAjax($("#descriptionTypeOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter le type d'organisme", addTypeOrganisme);
+    addFieldText($("#typeOrganismeAuteur"), "descriptionTypeOrganismeAuteur", "Description du type");
+    addButtonAjax($("#descriptionTypeOrganismeAuteur"), "addOrganismeAuteur", "Ajouter le type d'organisme", addTypeOrganisme);
 
     addFieldPlusTypeOrganisme();
 }
 
 function addFieldOrganisme() {
-    addFieldText($("#hrTypeOrganisme2Auteur1"), "nomOrganismeAuteur1", "Nom de l'organisme");
-    addButtonAjax($("#nomOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter l'organisme", addOrganisme);
+    addFieldText($("#hrTypeOrganisme2Auteur"), "nomOrganismeAuteur", "Nom de l'organisme");
+    addButtonAjax($("#nomOrganismeAuteur"), "addOrganismeAuteur", "Ajouter l'organisme", addOrganisme);
     addFieldPlusOrganisme();
 }
 
 function addFieldNationalite() {
-    addFieldText($("#nationaliteAuteur1"), "codeNationaliteAuteur1", "Code de la nationalité");
-    addFieldText($("#nationaliteAuteur1"), "nomNationaliteAuteur1", "Nom de la nationalite");
-    addButtonAjax($("#codeNationaliteAuteur1"), "addNationaliteAuteur1", "Ajouter la nationalite", addNationalite);
+    addFieldText($("#nationaliteAuteur"), "codeNationaliteAuteur", "Code de la nationalité");
+    addFieldText($("#nationaliteAuteur"), "nomNationaliteAuteur", "Nom de la nationalite");
+    addButtonAjax($("#codeNationaliteAuteur"), "addNationaliteAuteur", "Ajouter la nationalite", addNationalite);
 
     addFieldPlusNationalite();
+}
+
+function addFieldAuteur() {
+    addFieldText($("#auteur1 #auteur"), "dateVieAuteur", "Date de vie de l'auteur");
+    addFieldText($("#auteur1 #auteur"), "noteAuteur", "Note sur l'auteur");
+    addFieldText($("#auteur1 #auteur"), "prenomAuteur", "Prenom de l'auteur");
+    addFieldText($("#auteur1 #auteur"), "nomAuteur", "Nom de l'auteur");
+    addAuteurButton();
+    addFieldPlusAuteur();
 }
 
 function addFieldPlusEditeur() {
@@ -127,6 +137,29 @@ function addFieldPlusEditeur() {
     $("#appbundle_collection_editeur").after(buttonAdd);
 
     editeurFieldHide();
+}
+
+function addFieldPlusAuteur() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter un nouvel auteur");
+
+    buttonAdd.click(function () {
+        var auteurNumber = $(this).parent().parent().parent().attr("id").slice(-1);
+        if ($("#auteur" + auteurNumber + " #nomAuteur").is(":visible")) {
+            auteurFieldHide(auteurNumber);
+        }
+        else {
+            auteurFieldShow(auteurNumber);
+        }
+    });
+
+    $("#appbundle_collection_auteur").after(buttonAdd);
+
+    auteurFieldHide(1);
 }
 
 function addFieldPlusCollection() {
@@ -160,8 +193,8 @@ function addFieldPlusOrganisme() {
     buttonAdd.append("Ajouter un nouvel organisme");
 
     buttonAdd.click(function () {
-        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
-        if ($("#nomOrganismeAuteur" + auteurNumber).is(":visible")) {
+        var auteurNumber = $(this).parent().parent().parent().attr("id").slice(-1);
+        if ($("#auteur" + auteurNumber + " #nomOrganismeAuteur").is(":visible")) {
             organismeFieldHide(auteurNumber);
         }
         else {
@@ -183,8 +216,8 @@ function addFieldPlusTypeOrganisme() {
     buttonAdd.append("Ajouter un nouveau type d'organisme");
 
     buttonAdd.click(function () {
-        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
-        if ($("#descriptionTypeOrganismeAuteur" + auteurNumber).is(":visible")) {
+        var auteurNumber = $(this).parent().parent().parent().attr("id").slice(-1);
+        if ($("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").is(":visible")) {
             typeOrganismeFieldHide(auteurNumber);
         }
         else {
@@ -206,8 +239,8 @@ function addFieldPlusNationalite() {
     buttonAdd.append("Ajouter une nouvelle nationalite");
 
     buttonAdd.click(function () {
-        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
-        if ($("#nomNationaliteAuteur" + auteurNumber).is(":visible")) {
+        var auteurNumber = $(this).parent().parent().parent().attr("id").slice(-1);
+        if ($("#auteur" + auteurNumber + " #nomNationaliteAuteur").is(":visible")) {
             nationaliteFieldHide(auteurNumber);
         }
         else {

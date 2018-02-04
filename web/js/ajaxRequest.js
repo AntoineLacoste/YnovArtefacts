@@ -178,13 +178,13 @@ function addCollection() {
 }
 
 function addOrganisme(event) {
-    var auteurNumber = event.target.id.slice(-1);
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
     $.ajax({
         url: window.location + "organisme/add",
         type: 'POST',
         data: {
-            nom: $("#nomOrganismeAuteur" + auteurNumber).val(),
-            typeOrganisme: $("#typeOrganismeAuteur" + auteurNumber + " select").val()
+            nom: $("#auteur" + auteurNumber + " #nomOrganismeAuteur").val(),
+            typeOrganisme: $("#auteur" + auteurNumber + " #typeOrganismeAuteur" + " select").val()
         },
         success: function (response) {
             console.log(response);
@@ -197,6 +197,7 @@ function addOrganisme(event) {
             $("#appbundle_collection_organisme").append(opt);
             $("#appbundle_collection_organisme").val(response.idOrganisme);
 
+            organismeFieldHide(auteurNumber);
         },
         error: function (err) {
             console.log(err);
@@ -205,13 +206,13 @@ function addOrganisme(event) {
 }
 
 function addNationalite(event) {
-    var auteurNumber = event.target.id.slice(-1);
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
     $.ajax({
         url: window.location + "nationalite/add",
         type: 'POST',
         data: {
-            nom: $("#nomNationaliteAuteur" + auteurNumber).val(),
-            abv: $("#codeNationaliteAuteur" + auteurNumber).val()
+            nom: $("#auteur" + auteurNumber + " #nomNationaliteAuteur").val(),
+            abv: $("#auteur" + auteurNumber + " #codeNationaliteAuteur").val()
         },
         success: function (response) {
             console.log(response);
@@ -224,6 +225,7 @@ function addNationalite(event) {
             $("#appbundle_collection_nationalite").append(opt);
             $("#appbundle_collection_nationalite").val(response.idNationalite);
 
+            nationaliteFieldHide(auteurNumber);
         },
         error: function (err) {
             console.log(err);
@@ -232,12 +234,12 @@ function addNationalite(event) {
 }
 
 function addTypeOrganisme(event) {
-    var auteurNumber = event.target.id.slice(-1);
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
     $.ajax({
         url: window.location + "typeOrganisme/add",
         type: 'POST',
         data: {
-            description: $("#descriptionTypeOrganismeAuteur" + auteurNumber).val()
+            description: $("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").val()
         },
         success: function (response) {
             console.log(response);
@@ -250,6 +252,40 @@ function addTypeOrganisme(event) {
             $("#appbundle_collection_typeOrganisme").append(opt);
             $("#appbundle_collection_typeOrganisme").val(response.idTypeOrganisme);
 
+            typeOrganismeFieldHide(auteurNumber);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addAuteur(event) {
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
+    $.ajax({
+        url: window.location + "personne/add",
+        type: 'POST',
+        data: {
+            nom: $("#auteur" + auteurNumber + " #nomAuteur").val(),
+            prenom: $("#auteur" + auteurNumber + " #prenomAuteur").val(),
+            dateVie: $("#auteur" + auteurNumber + " #dateVieAuteur").val(),
+            note: $("#auteur" + auteurNumber + " #noteAuteur").val(),
+            nationalite: $("#auteur" + auteurNumber + " #appbundle_collection_directeur").val(),
+            organisme: $("#auteur" + auteurNumber + " #appbundle_collection_organisme").val(),
+            directeur:$("#auteur" + auteurNumber + " #appbundle_collection_nationalite").val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idPersonne
+            });
+
+            opt.append(response.nom + " " + response.prenom);
+
+            $("#auteur" + auteurNumber + "#appbundle_collection_auteur").append(opt);
+            $("#auteur" + auteurNumber + "#appbundle_collection_auteur").val(response.idPersonne);
+
+            typeOrganismeFieldHide(auteurNumber);
         },
         error: function (err) {
             console.log(err);

@@ -59,7 +59,41 @@ function addEditeurButton() {
     editeurFieldHide();
 }
 
-function addButtonAjax(parent, name, label, callback, auteur) {
+function addAuteurButton() {
+    var div = $('<div>').attr({
+        class: "form-group",
+        id: "addAuteur"
+    });
+
+    var label = $('<label>').attr({
+        class: "col-md-6 control-label"
+    });
+
+    var divField = $('<div>').attr({
+        class: "col-sm-8 col-sm-pad"
+    });
+
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-primary",
+        style: "margin-left: 10px; margin-top: 10px;"
+    });
+
+    buttonAdd.append("Ajouter l'auteur");
+    buttonAdd.append(label);
+
+    buttonAdd.click(addAuteur);
+
+    divField.append(label);
+    divField.append(buttonAdd);
+    div.append(divField);
+
+    $("#addNationaliteAuteur").parent().parent().after(div);
+
+
+    editeurFieldHide();
+}
+
+function addButtonAjax(parent, name, label, callback) {
     var buttonAdd = $('<div>').attr({
         class: "btn btn-primary",
         style: "margin-left: 10px; margin-top: 10px;",

@@ -286,13 +286,28 @@ function organismeFieldHide(auteurNumber) {
 }
 
 function organismeFieldShow(auteurNumber) {
-    $("#typeOrganismeAuteur" + auteurNumber).parent().parent().show();
+    $("#typeOrganismeAuteur" + auteurNumber).show();
     $("#nomOrganismeAuteur" + auteurNumber).parent().parent().show();
 
     $("#hrOrganisme1Auteur" + auteurNumber).show();
     if (!$("#hrNationalite1Auteur" + auteurNumber).is(":visible")) {
         $("#hrOrganisme2Auteur" + auteurNumber).show();
     }
+}
+
+function typeOrganismeFieldHide(auteurNumber) {
+    $("#descriptionTypeOrganismeAuteur" + auteurNumber).parent().parent().hide();
+
+    $("#hrTypeOrganisme1Auteur" + auteurNumber).hide();
+    $("#hrTypeOrganisme2Auteur" + auteurNumber).hide();
+}
+
+function typeOrganismeFieldShow(auteurNumber) {
+    $("#descriptionTypeOrganismeAuteur" + auteurNumber).parent().parent().show();
+    $("#nomOrganismeAuteur" + auteurNumber).parent().parent().show();
+
+    $("#hrTypeOrganisme1Auteur" + auteurNumber).show();
+    $("#hrTypeOrganisme2Auteur" + auteurNumber).show();
 }
 
 function nationaliteFieldHide(auteurNumber) {

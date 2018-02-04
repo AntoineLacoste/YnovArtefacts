@@ -6,28 +6,41 @@ use AppBundle\Entity\Organisme;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * @Route("/organisme")
  */
 class OrganismeController extends Controller
 {
     /**
-     * @Route("/", name="organisme")
+     * @Route("/add", name="organismeAdd")
      */
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
         $organisme = new Organisme();
-        $OrganismeManager = $this->get('OrganismeManager');
+        $organismeManager = $this->get('OrganismeManager');
+        $typeOrganismeManager = $this->get('TypeOrganismeManager');
 
-        //GET Datas
-        $data = $request->request->get("nom");
+        $data = $request->request;
 
         //Setters
-        $organisme->setNom($data);
+        $organisme->setNom($data->get("nom"));
+
+        $logger = $this->get('logger');
+        $logger->info(print_r($data, true));
+        $typeOrganisme = $typeOrganismeManager->getTypeOrganisme($data->get("typeOrganisme"));
+        $organisme->setTypeOrganisme($typeOrganisme);
 
         //add
-        $OrganismeManager->addVille($organisme);
+        $organismeManager->addOrganisme($organisme);
 
-        return $this->json(array('organisme'=>$organisme));
+        $serializer = $this->get('SerializerJSON');
+        $organismeJson = $serializer->serializeJSON($organisme);
+
+        $response = new Response($organismeJson);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }

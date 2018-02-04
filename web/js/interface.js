@@ -59,7 +59,21 @@ function addEditeurButton() {
     editeurFieldHide();
 }
 
-function addButtonAjax(parent, name, label, callback) {
+function addButtonAjax(parent, name, label, callback, auteur) {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-primary",
+        style: "margin-left: 10px; margin-top: 10px;",
+        id: name
+    });
+
+    buttonAdd.append(label);
+
+    buttonAdd.click(callback);
+
+    parent.after(buttonAdd);
+}
+
+function addButtonAjaxAuteur(parent, name, label, callback) {
     var buttonAdd = $('<div>').attr({
         class: "btn btn-primary",
         style: "margin-left: 10px; margin-top: 10px;",

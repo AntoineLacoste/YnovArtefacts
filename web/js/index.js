@@ -9,21 +9,10 @@ $(document).ready(function () {
     addFieldCollection();
     addFieldPeriodique();
     addFieldOrganisme();
+    addFieldTypeOrganisme();
     addFieldNationalite();
 
     auteur1FieldHide();
-    addEditeurButton();
-    addFieldPlusOrganisme();
-    addFieldPlusNationalite();
-    addFieldPlusVilleEdition();
-    addFieldPlusCollection();
-    addFieldPlusPeriodique();
-    addFieldPlusEditeur();
-    addFieldPlusPaysEditeur();
-    addFieldPlusVilleEditeur();
-    addFieldPlusDepartementEditeur();
-    addFieldPlusCommuneEditeur();
-    addFieldPlusLieuDitsEditeur();
 
     hideAll();
     $("#appbundle_collection_TypeBib").change(displayFields);
@@ -39,62 +28,83 @@ function addFieldPaysEditeur() {
     addFieldText($("#paysEditeur"), "paysITEditeur", "Pays en italien");
 
     addButtonAjax($("#codePaysEditeur"), "addPaysEditeur", "Ajouter le pays", addPaysEditeur);
+    addFieldPlusPaysEditeur();
 }
 
 function addFieldVilleEditeur() {
     addFieldText($("#villeEditeur"), "nomVilleEditeur", "Nom de la ville");
 
     addButtonAjax($("#nomVilleEditeur"), "addVilleEditeur", "Ajouter la ville", addVilleEditeur);
+    addFieldPlusVilleEditeur();
 }
 
 
 function addFieldVilleEdition() {
     addFieldText($("#villeEdition"), "nomVilleEdition", "Nom de la ville");
-
     addButtonAjax($("#nomVilleEdition"), "addVilleEdition", "Ajouter la ville", addVilleEdition);
+
+    addFieldPlusVilleEdition();
 }
 
 function addFieldDepartementEditeur() {
     addFieldText($("#departementEditeur"), "nomDepartementEditeur", "Nom du département");
 
     addButtonAjax($("#nomDepartementEditeur"), "addDepartementEditeur", "Ajouter le département", addDepartementEditeur);
+    addFieldPlusDepartementEditeur();
 }
 
 function addFieldCommuneEditeur() {
     addFieldText($("#communeEditeur"), "nomCommuneEditeur", "Nom de la commune");
 
     addButtonAjax($("#nomCommuneEditeur"), "addCommuneEditeur", "Ajouter la commune", addCommuneEditeur);
+    addFieldPlusCommuneEditeur();
 }
 
 function addFieldLieuDitsEditeur() {
     addFieldText($("#lieuDitsEditeur"), "nomLieuDitsEditeur", "Nom du lieu dits");
 
     addButtonAjax($("#nomLieuDitsEditeur"), "addLieuDitsEditeur", "Ajouter le lieu-dit", addLieuDitsEditeur);
+    addFieldPlusLieuDitsEditeur();
 }
 
 function addFieldEditeur() {
     addFieldText($("#editeur"), "nomEditeur", "Nom de l'éditeur");
+    addEditeurButton();
+    addFieldPlusEditeur();
 }
 
 function addFieldCollection() {
     addFieldText($("#collection"), "nomCollection", "Nom de la collection");
     addButtonAjax($("#nomCollection"), "addCollection", "Ajouter la collection", addCollection);
+
+    addFieldPlusCollection();
 }
 
 function addFieldPeriodique() {
     addFieldText($("#periodique"), "nomPeriodique", "Nom du périodique");
     addButtonAjax($("#nomPeriodique"), "addPeriodique", "Ajouter le périodique", addPeriodique);
+    addFieldPlusPeriodique();
+}
+
+function addFieldTypeOrganisme() {
+    addFieldText($("#typeOrganismeAuteur1"), "descriptionTypeOrganismeAuteur1", "Description du type");
+    addButtonAjax($("#descriptionTypeOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter le type d'organisme", addTypeOrganisme);
+
+    addFieldPlusTypeOrganisme();
 }
 
 function addFieldOrganisme() {
-    addFieldText($("#typeOrganismeAuteur1"), "nomOrganismeAuteur1", "Nom de l'organisme");
-    addButtonAjax($("#nomOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter l'organisme", addPeriodique);
+    addFieldText($("#hrTypeOrganisme2Auteur1"), "nomOrganismeAuteur1", "Nom de l'organisme");
+    addButtonAjax($("#nomOrganismeAuteur1"), "addOrganismeAuteur1", "Ajouter l'organisme", addOrganisme);
+    addFieldPlusOrganisme();
 }
 
 function addFieldNationalite() {
     addFieldText($("#nationaliteAuteur1"), "codeNationaliteAuteur1", "Code de la nationalité");
     addFieldText($("#nationaliteAuteur1"), "nomNationaliteAuteur1", "Nom de la nationalite");
-    addButtonAjax($("#codeNationaliteAuteur1"), "addNationaliteAuteur1", "Ajouter la nationalite", addPeriodique);
+    addButtonAjax($("#codeNationaliteAuteur1"), "addNationaliteAuteur1", "Ajouter la nationalite", addNationalite);
+
+    addFieldPlusNationalite();
 }
 
 function addFieldPlusEditeur() {
@@ -161,7 +171,30 @@ function addFieldPlusOrganisme() {
 
     $("#appbundle_collection_organisme").after(buttonAdd);
 
-    organismeFieldHide();
+    organismeFieldHide(1);
+}
+
+function addFieldPlusTypeOrganisme() {
+    var buttonAdd = $('<div>').attr({
+        class: "btn btn-success",
+        style: "margin-left: 10px;"
+    });
+
+    buttonAdd.append("Ajouter un nouveau type d'organisme");
+
+    buttonAdd.click(function () {
+        var auteurNumber = $(this).parent().parent().attr("id").slice(-1);
+        if ($("#descriptionTypeOrganismeAuteur" + auteurNumber).is(":visible")) {
+            typeOrganismeFieldHide(auteurNumber);
+        }
+        else {
+            typeOrganismeFieldShow(auteurNumber);
+        }
+    });
+
+    $("#appbundle_collection_typeOrganisme").after(buttonAdd);
+
+    typeOrganismeFieldHide(1);
 }
 
 function addFieldPlusNationalite() {
@@ -184,7 +217,7 @@ function addFieldPlusNationalite() {
 
     $("#appbundle_collection_nationalite").after(buttonAdd);
 
-    nationaliteFieldHide();
+    nationaliteFieldHide(1);
 }
 
 function addFieldPlusPeriodique() {

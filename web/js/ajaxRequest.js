@@ -177,24 +177,78 @@ function addCollection() {
     });
 }
 
-function addCollection() {
+function addOrganisme(event) {
+    var auteurNumber = event.target.id.slice(-1);
     $.ajax({
-        url: window.location + "collection/add",
+        url: window.location + "organisme/add",
         type: 'POST',
         data: {
-            nom: $("#nomCollection").val()
+            nom: $("#nomOrganismeAuteur" + auteurNumber).val(),
+            typeOrganisme: $("#typeOrganismeAuteur" + auteurNumber + " select").val()
         },
         success: function (response) {
             console.log(response);
             var opt = $('<option>').attr({
-                value: response.idCollection
+                value: response.idOrganisme
             });
 
             opt.append(response.nom);
 
-            $("#appbundle_collection_collection").append(opt);
-            $("#appbundle_collection_collection").val(response.idCollection);
+            $("#appbundle_collection_organisme").append(opt);
+            $("#appbundle_collection_organisme").val(response.idOrganisme);
 
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addNationalite(event) {
+    var auteurNumber = event.target.id.slice(-1);
+    $.ajax({
+        url: window.location + "nationalite/add",
+        type: 'POST',
+        data: {
+            nom: $("#nomNationaliteAuteur" + auteurNumber).val(),
+            abv: $("#codeNationaliteAuteur" + auteurNumber).val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idNationalite
+            });
+
+            opt.append(response.nom + " (" + response.abv + ")");
+
+            $("#appbundle_collection_nationalite").append(opt);
+            $("#appbundle_collection_nationalite").val(response.idNationalite);
+
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function addTypeOrganisme(event) {
+    var auteurNumber = event.target.id.slice(-1);
+    $.ajax({
+        url: window.location + "typeOrganisme/add",
+        type: 'POST',
+        data: {
+            description: $("#descriptionTypeOrganismeAuteur" + auteurNumber).val()
+        },
+        success: function (response) {
+            console.log(response);
+            var opt = $('<option>').attr({
+                value: response.idTypeOrganisme
+            });
+
+            opt.append(response.description);
+
+            $("#appbundle_collection_typeOrganisme").append(opt);
+            $("#appbundle_collection_typeOrganisme").val(response.idTypeOrganisme);
 
         },
         error: function (err) {

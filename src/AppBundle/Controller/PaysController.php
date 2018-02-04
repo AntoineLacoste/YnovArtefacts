@@ -33,7 +33,6 @@ class PaysController extends Controller {
         //add
         $paysManager->addPays($pays);
 
-
         $serializer = $this->get('SerializerJSON');
         $paysJson = $serializer->serializeJSON($pays);
 

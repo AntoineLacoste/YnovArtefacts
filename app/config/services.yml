@@ -79,6 +79,21 @@ services:
       arguments: ["@doctrine.orm.entity_manager"]
       public: true
 
+    NationaliteManager:
+      class: AppBundle\Services\NationaliteManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    OrganismeManager:
+      class: AppBundle\Services\OrganismeManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    TypeOrganismeManager:
+      class: AppBundle\Services\TypeOrganismeManager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
     VilleManager:
       class: AppBundle\Services\VilleManager
       arguments: ["@doctrine.orm.entity_manager"]

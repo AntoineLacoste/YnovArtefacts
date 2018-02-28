@@ -94,7 +94,7 @@ class Location {
     /**
      * @param Departement $Departement
      */
-    public function setDepartement(Departement $Departement) {
+    public function setDepartement($Departement) {
         $this->Departement = $Departement;
     }
 
@@ -108,7 +108,7 @@ class Location {
     /**
      * @param Commune $Commune
      */
-    public function setCommune(Commune $Commune) {
+    public function setCommune($Commune) {
         $this->Commune = $Commune;
     }
 
@@ -122,7 +122,7 @@ class Location {
     /**
      * @param LieuDits $LieuDits
      */
-    public function setLieuDits(LieuDits $LieuDits) {
+    public function setLieuDits($LieuDits) {
         $this->LieuDits = $LieuDits;
     }
 
@@ -136,7 +136,7 @@ class Location {
     /**
      * @param Coordonnees $Coords
      */
-    public function setCoords(Coordonnees $Coords) {
+    public function setCoords($Coords) {
         $this->Coords = $Coords;
     }
 
@@ -150,7 +150,7 @@ class Location {
     /**
      * @param int $id
      */
-    public function setId(int $id) {
+    public function setId($id) {
         $this->id = $id;
     }
 

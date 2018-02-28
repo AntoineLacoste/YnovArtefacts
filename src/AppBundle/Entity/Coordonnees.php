@@ -56,6 +56,48 @@ class Coordonnees
         $this->lon = $lon;
     }
 
+    /**
+     * @return string
+     */
+    public function getLat() {
+        return $this->lat;
+    }
+
+    /**
+     * @param string $lat
+     */
+    public function setLat($lat) {
+        $this->lat = $lat;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeCoord() {
+        return $this->typeCoord;
+    }
+
+    /**
+     * @param string $typeCoord
+     */
+    public function setTypeCoord($typeCoord) {
+        $this->typeCoord = $typeCoord;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id) {
+        $this->id = $id;
+    }
+
 
 }
 

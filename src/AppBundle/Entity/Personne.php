@@ -89,7 +89,7 @@ class Personne
     /**
      * @param string $nom
      */
-    public function setNom(string $nom) {
+    public function setNom($nom) {
         $this->nom = $nom;
     }
 
@@ -103,7 +103,7 @@ class Personne
     /**
      * @param string $prenom
      */
-    public function setPrenom(string $prenom) {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
     }
 
@@ -117,7 +117,7 @@ class Personne
     /**
      * @param string $dateVie
      */
-    public function setDateVie(string $dateVie) {
+    public function setDateVie($dateVie) {
         $this->dateVie = $dateVie;
     }
 
@@ -131,7 +131,7 @@ class Personne
     /**
      * @param string $note
      */
-    public function setNote(string $note) {
+    public function setNote($note) {
         $this->note = $note;
     }
 
@@ -145,7 +145,7 @@ class Personne
     /**
      * @param int $idPersonne
      */
-    public function setIdPersonne(int $idPersonne) {
+    public function setIdPersonne($idPersonne) {
         $this->idPersonne = $idPersonne;
     }
 
@@ -159,7 +159,7 @@ class Personne
     /**
      * @param Nationalite $Nationalite
      */
-    public function setNationalite(Nationalite $Nationalite) {
+    public function setNationalite($Nationalite) {
         $this->Nationalite = $Nationalite;
     }
 
@@ -173,7 +173,7 @@ class Personne
     /**
      * @param Organisme $Organisme
      */
-    public function setOrganisme(Organisme $Organisme) {
+    public function setOrganisme($Organisme) {
         $this->Organisme = $Organisme;
     }
 
@@ -187,7 +187,7 @@ class Personne
     /**
      * @param Personne $Directeur
      */
-    public function setDirecteur(Personne $Directeur) {
+    public function setDirecteur($Directeur) {
         $this->Directeur = $Directeur;
     }
 

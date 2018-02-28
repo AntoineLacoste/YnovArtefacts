@@ -77,7 +77,7 @@ class BibliographieController extends Controller {
 
         $bibliographieManager = $this->get("BibliographieManager");
         $bibliographieManager->addBibliographie($bibliographie);
-
+ 
         $serializer        = $this->get('SerializerJSON');
         $bibliographieJson = $serializer->serializeJSON($bibliographie);
 

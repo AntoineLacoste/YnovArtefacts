@@ -32,28 +32,28 @@ class Commune {
     /**
      * @return int
      */
-    public function getIdCommune(): int {
+    public function getIdCommune() {
         return $this->idCommune;
     }
 
     /**
      * @param int $idCommune
      */
-    public function setIdCommune(int $idCommune) {
+    public function setIdCommune($idCommune) {
         $this->idCommune = $idCommune;
     }
 
     /**
      * @return string
      */
-    public function getNom(): string {
+    public function getNom() {
         return $this->nom;
     }
 
     /**
      * @param string $nom
      */
-    public function setNom(string $nom) {
+    public function setNom($nom) {
         $this->nom = $nom;
     }
 }

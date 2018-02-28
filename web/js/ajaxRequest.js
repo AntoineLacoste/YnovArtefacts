@@ -318,9 +318,9 @@ function addAuteur(event) {
             prenom: $("#auteur" + auteurNumber + " #prenomAuteur").val(),
             dateVie: $("#auteur" + auteurNumber + " #dateVieAuteur").val(),
             note: $("#auteur" + auteurNumber + " #noteAuteur").val(),
-            nationalite: $("#auteur" + auteurNumber + " #appbundle_collection_directeur").val(),
+            directeur: $("#auteur" + auteurNumber + " #appbundle_collection_directeur").val(),
             organisme: $("#auteur" + auteurNumber + " #appbundle_collection_organisme").val(),
-            directeur: $("#auteur" + auteurNumber + " #appbundle_collection_nationalite").val()
+            nationalite: $("#auteur" + auteurNumber + " #appbundle_collection_nationalite").val()
         },
         success: function (response) {
             console.log(response);
@@ -328,12 +328,12 @@ function addAuteur(event) {
                 value: response.idPersonne
             });
 
-            opt.append(response.nom + " " + response.prenom);
+            opt.append(response.nom + " " + response.prenom + " (" + response.Nationalite.abv + ")");
 
-            $("#auteur" + auteurNumber + "#appbundle_collection_auteur").append(opt);
-            $("#auteur" + auteurNumber + "#appbundle_collection_auteur").val(response.idPersonne);
+            $("#auteur" + auteurNumber + " #appbundle_collection_auteur").append(opt);
+            $("#auteur" + auteurNumber + " #appbundle_collection_auteur").val(response.idPersonne);
 
-            typeOrganismeFieldHide(auteurNumber);
+            auteurFieldHide(auteurNumber);
         },
         error: function (err) {
             console.log(err);

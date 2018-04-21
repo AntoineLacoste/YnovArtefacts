@@ -1,5 +1,37 @@
+delete from bibliographie_v2;
 DELETE FROM repertoire;
 DELETE FROM personne;
+
+DELETE FROM nationalite;
+ALTER TABLE nationalite AUTO_INCREMENT = 1;
+INSERT INTO nationalite(nom, abv) VALUES ("Français", "FR");
+INSERT INTO nationalite(nom, abv) VALUES ("Espagnol", "ES");
+INSERT INTO nationalite(nom, abv) VALUES ("Égyptien", "EG");
+INSERT INTO nationalite(nom, abv) VALUES ("Allemand", "DE");
+INSERT INTO nationalite(nom, abv) VALUES ("Néerlandais", "NL");
+INSERT INTO nationalite(nom, abv) VALUES ("Britannique", "GB");
+INSERT INTO nationalite(nom, abv) VALUES ("Hongrois", "HU");
+INSERT INTO nationalite(nom, abv) VALUES ("Polonais", "PL");
+INSERT INTO nationalite(nom, abv) VALUES ("Roumain", "RO");
+INSERT INTO nationalite(nom, abv) VALUES ("Américain", "US");
+INSERT INTO nationalite(nom, abv) VALUES ("Croate", "HR");
+INSERT INTO nationalite(nom, abv) VALUES ("Suisse", "CH");
+INSERT INTO nationalite(nom, abv) VALUES ("Dannois", "DK");
+INSERT INTO nationalite(nom, abv) VALUES ("Slovène", "SI");
+INSERT INTO nationalite(nom, abv) VALUES ("Belge", "BE");
+INSERT INTO nationalite(nom, abv) VALUES ("Tongien", "TN");
+INSERT INTO nationalite(nom, abv) VALUES ("Autriche", "AT");
+INSERT INTO nationalite(nom, abv) VALUES ("Turque", "TR");
+INSERT INTO nationalite(nom, abv) VALUES ("Luxembourgois", "LU");
+INSERT INTO nationalite(nom, abv) VALUES ("Russe", "RU");
+INSERT INTO nationalite(nom, abv) VALUES ("Tchèque", "CZ");
+INSERT INTO nationalite(nom, abv) VALUES ("Grec", "GR");
+INSERT INTO nationalite(nom, abv) VALUES ("Israëlien", "IL");
+INSERT INTO nationalite(nom, abv) VALUES ("Bulgare", "BW");
+INSERT INTO nationalite(nom, abv) VALUES ("Ukraine", "UA");
+INSERT INTO nationalite(nom, abv) VALUES ("Sebre", "RS");
+INSERT INTO nationalite(nom, abv) VALUES ("Bosniaque", "BA");
+
 INSERT INTO `personne` (`id_personne`, `id_nationalite`, `id_organisme`, `id_directeur`, `nom`, `prenom`, `date_vie`, `note`) VALUES (2, 2, NULL, NULL, 'Abad Casal', 'Lorenzo', '', '');
 INSERT INTO `personne` (`id_personne`, `id_nationalite`, `id_organisme`, `id_directeur`, `nom`, `prenom`, `date_vie`, `note`) VALUES (3, 2, NULL, NULL, 'Abascal Palazón', 'Juan Manuel', '', '');
 INSERT INTO `personne` (`id_personne`, `id_nationalite`, `id_organisme`, `id_directeur`, `nom`, `prenom`, `date_vie`, `note`) VALUES (4, 2, NULL, NULL, 'Abásolo Alvarez', 'José Antonio', '', '');
@@ -1567,36 +1599,6 @@ Insert into editeur (nom) VALUES('Verlag der Österreichischen Akademie der Wiss
 Insert into editeur (nom) VALUES('Verlag Marie Leidorf');
 Insert into editeur (nom) VALUES('Wachholtz Verlag');
 Insert into editeur (nom) VALUES('Wasmuth Verlag');
-
-DELETE FROM nationalite;
-ALTER TABLE nationalite AUTO_INCREMENT = 1;
-INSERT INTO nationalite(nom, abv) VALUES ("Français", "FR");
-INSERT INTO nationalite(nom, abv) VALUES ("Espagnol", "ES");
-INSERT INTO nationalite(nom, abv) VALUES ("Égyptien", "EG");
-INSERT INTO nationalite(nom, abv) VALUES ("Allemand", "DE");
-INSERT INTO nationalite(nom, abv) VALUES ("Néerlandais", "NL");
-INSERT INTO nationalite(nom, abv) VALUES ("Britannique", "GB");
-INSERT INTO nationalite(nom, abv) VALUES ("Hongrois", "HU");
-INSERT INTO nationalite(nom, abv) VALUES ("Polonais", "PL");
-INSERT INTO nationalite(nom, abv) VALUES ("Roumain", "RO");
-INSERT INTO nationalite(nom, abv) VALUES ("Américain", "US");
-INSERT INTO nationalite(nom, abv) VALUES ("Croate", "HR");
-INSERT INTO nationalite(nom, abv) VALUES ("Suisse", "CH");
-INSERT INTO nationalite(nom, abv) VALUES ("Dannois", "DK");
-INSERT INTO nationalite(nom, abv) VALUES ("Slovène", "SI");
-INSERT INTO nationalite(nom, abv) VALUES ("Belge", "BE");
-INSERT INTO nationalite(nom, abv) VALUES ("Tongien", "TN");
-INSERT INTO nationalite(nom, abv) VALUES ("Autriche", "AT");
-INSERT INTO nationalite(nom, abv) VALUES ("Turque", "TR");
-INSERT INTO nationalite(nom, abv) VALUES ("Luxembourgois", "LU");
-INSERT INTO nationalite(nom, abv) VALUES ("Russe", "RU");
-INSERT INTO nationalite(nom, abv) VALUES ("Tchèque", "CZ");
-INSERT INTO nationalite(nom, abv) VALUES ("Grec", "GR");
-INSERT INTO nationalite(nom, abv) VALUES ("Israëlien", "IL");
-INSERT INTO nationalite(nom, abv) VALUES ("Bulgare", "BW");
-INSERT INTO nationalite(nom, abv) VALUES ("Ukraine", "UA");
-INSERT INTO nationalite(nom, abv) VALUES ("Sebre", "RS");
-INSERT INTO nationalite(nom, abv) VALUES ("Bosniaque", "BA");
 
 DELETE FROM organisme;
 ALTER TABLE organisme AUTO_INCREMENT = 1;
@@ -3264,7 +3266,7 @@ INSERT INTO repertoire (id_repertoire, id_personne, description, reference) VALU
   (240, 511, 'ISNI', '0000 0000 5026 5390'),
   (241, 541, 'ISNI', '0000 0000 3067 7830'),
   (243, 85, 'wikipedia', 'https://fr.wikipedia.org/wiki/Michel_de_Boüard');
-  
+
 DELETE FROM theme;
 INSERT INTO theme (id_theme, description) VALUES
   (1, 'Généralités'),

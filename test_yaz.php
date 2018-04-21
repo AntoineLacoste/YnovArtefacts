@@ -1,4 +1,5 @@
 <?php
+phpinfo();
 $host      = $_REQUEST ["host"];
 $query     = $_REQUEST ["query"];
 $num_hosts = count($host);

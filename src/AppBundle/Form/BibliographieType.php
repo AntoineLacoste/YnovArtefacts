@@ -34,7 +34,7 @@ class BibliographieType extends AbstractType {
             ->add('TypeBib', EntityType::class, array(
                 'class' => TypeBib::class,
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'label' => "Type du document : ",
                 'choice_label' => function ($typeBib) {
                     return $typeBib->getType();
@@ -47,7 +47,8 @@ class BibliographieType extends AbstractType {
             ))
             ->add('bibliographieParent', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
+                    'data-live-search' => "true",
                     'label' => "Document parent : ",
                     'id' => 'editeur'),
                 'placeholder' => "Choisissez un document parent",
@@ -92,7 +93,7 @@ class BibliographieType extends AbstractType {
             ))
             ->add('villeEdition', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Ville::class,
                 'placeholder' => "Choisissez une ville",
                 'choice_label' => function ($ville) {
@@ -100,7 +101,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('editeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'editeur'),
                 'placeholder' => "Choisissez un éditeur",
                 'class' => Editeur::class,
@@ -109,7 +110,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('paysEditeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'paysEditeur'),
                 'class' => Pays::class,
                 'placeholder' => "Choisissez un pays",
@@ -118,7 +119,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('villeEditeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'villeEditeur'),
                 'class' => Ville::class,
                 'placeholder' => "Choisissez une ville",
@@ -127,7 +128,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('departementEditeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'departementEditeur'),
                 'class' => Departement::class,
                 'placeholder' => "Choisissez un departement",
@@ -136,7 +137,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('communeEditeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'communeEditeur'),
                 'class' => Commune::class,
                 'placeholder' => "Choisissez une commune",
@@ -145,7 +146,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('lieuDitsEditeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control',
+                    'class' => 'form-control selectpicker',
                     'id' => 'lieuDitsEditeur'),
                 'class' => LieuDits::class,
                 'placeholder' => "Choisissez un leiu-dit",
@@ -154,7 +155,7 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('collection', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Collection::class,
                 'placeholder' => "Choisissez une collection",
                 'choice_label' => function ($collection) {
@@ -167,43 +168,39 @@ class BibliographieType extends AbstractType {
             ))
             ->add('periodique', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Periodique::class,
                 'placeholder' => "Choisissez un périodique",
                 'choice_label' => function ($periodique) {
                     return $periodique->getNom();
                 }))
-
             ->add('auteur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Personne::class,
                 'placeholder' => "Choisissez un auteur",
                 'choice_label' => function ($personne) {
                     return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
                 }))
-
             ->add('directeur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Personne::class,
                 'placeholder' => "Choisissez un directeur",
                 'choice_label' => function ($personne) {
                     return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
                 }))
-
             ->add('nationalite', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Nationalite::class,
                 'placeholder' => "Choisissez une nationalité",
                 'choice_label' => function ($nationalite) {
                     return $nationalite->getNom() . " (" . $nationalite->getAbv() . ")";
                 }))
-
             ->add('organisme', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'class' => Organisme::class,
                 'placeholder' => "Choisissez un organisme",
                 'choice_label' => function ($organisme) {
@@ -213,10 +210,9 @@ class BibliographieType extends AbstractType {
                     }
                     return $organismeStr;
                 }))
-
             ->add('typeOrganisme', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control'),
+                    'class' => 'form-control selectpicker'),
                 'placeholder' => "Choisissez un type d'organisme",
                 'class' => TypeOrganisme::class,
                 'choice_label' => function ($typeOrganisme) {

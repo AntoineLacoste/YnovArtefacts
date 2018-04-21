@@ -19,6 +19,12 @@ $(document).ready(function () {
     hideAll();
     $("#appbundle_collection_TypeBib").change(displayFields);
     displayFields();
+
+    // $('.selectpicker').selectpicker({
+    //     style: 'btn-info',
+    //     size: 4
+    // });
+    $('.selectpicker').select2({});
 });
 
 function addFieldPaysEditeur() {
@@ -433,4 +439,13 @@ function addFieldPlusLieuDitsEditeur() {
     $("#appbundle_collection_lieuDitsEditeur").after(buttonAdd);
 
     lieuDitsFieldHide();
+}
+
+function checkSelectHasValue(selectId, value) {
+    for (var i = 0; i < document.getElementById(selectId).options.length; i++) {
+        if (document.getElementById(selectId).options[i].text === value) {
+            return true;
+        }
+    }
+    return false;
 }

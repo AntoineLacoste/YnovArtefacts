@@ -1,93 +1,44 @@
+function persee() {
+    var title = $("#book_title").val();
+    $.ajax({
+        url: "http://data.persee.fr/sparql?default-graph-uri=http%3A%2F%2Fdata.persee.fr&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0APREFIX+n2%3A+%3Chttp%3A%2F%2Fpurl.org%2Fontology%2Fbibo%2F%3E%0D%0ASELECT+DISTINCT+%3FBook_1+%3Ftitle_34%0D%0AWHERE+%7B+%3FBook_1+a+n2%3ABook+.%0D%0A++++++++%7B+%3FBook_1+dcterms%3Atitle+%3Ftitle_34+.%0D%0A++++++++++%3Ftitle_34+rdfs%3Alabel+%3Fconstr_label+.%0D%0A++++++++++FILTER+%28+REGEX%28str%28%3Fconstr_label%29%2C+%22" + title + "%22%2C+%27i%27%29+%29+%7D%0D%0A++++++++UNION+%7B+%3FBook_1+dcterms%3Atitle+%3Ftitle_34+.%0D%0A++++++++++++++++FILTER+%28+REGEX%28str%28%3Ftitle_34%29%2C+%22" + title + "%22%2C+%27i%27%29+%29+%7D+%7D%0D%0ALIMIT+200&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on",
+        success: function (response) {
+            var ul = $("#book_results");
+            ul.html("");
+            for (var i = 0; i < response.results.bindings.length; i++) {
+                console.log(response.results.bindings[i].Book_1.value);
+                var li = $('<li>').attr({
+                    class: "form-group",
+                    url: response.results.bindings[i].Book_1.value
+                });
 
-var xml ="<bibo:Document rdf:about=\"http://data.persee.fr/doc/coloc_0291-4700_1981_num_1_1_871#Web\">\n" +
-    "\t<rdf:type rdf:resource=\"http://data.perse.fr/ontology/persee-ontology/Article\" />\n" +
-    "\t<rdf:type rdf:resource=\"http://rdaregistry.info/Elements/c/Manifestation\"/>\n" +
-    "\t<rdam:mediaType>electronic</rdam:mediaType>\n" +
-    "\t<rdfs:label>Jacquemart Sylvie, Palard Jacques, Sorbets Claude. Chapitre I. — La vie des institutions régionales et locales en France. In: Annuaire des collectivités locales. Tome 1, 1981. pp. 3-49. [Online]</rdfs:label>\n" +
-    "\t<rdam:dateOfPublication>2009-06-22 15:57:44.677</rdam:dateOfPublication>\n" +
-    "\t<persee:dateOfPrintPublication rdf:datatype=\"&xsd;gYear\">1981</persee:dateOfPrintPublication>\n" +
-    "\t<dcterms:modified>2016-03-16 14:43:38.26</dcterms:modified>\n" +
-    "\t<dcterms:title>Chapitre I. — La vie des institutions régionales et locales en France</dcterms:title>\n" +
-    "\t<dcterms:bibliographicCitation>Jacquemart Sylvie, Palard Jacques, Sorbets Claude. Chapitre I. — La vie des institutions régionales et locales en France. In: Annuaire des collectivités locales. Tome 1, 1981. pp. 3-49. [En ligne] Disponible sur : http://www.persee.fr/doc/coloc_0291-4700_1981_num_1_1_871</dcterms:bibliographicCitation>\n" +
-    "\t<dcterms:accessRights>http://creativecommons.org/licenses/by-nc-sa/3.0/fr/</dcterms:accessRights>\n" +
-    "\t<dcterms:identifier>http://www.persee.fr/doc/coloc_0291-4700_1981_num_1_1_871</dcterms:identifier>\n" +
-    "\t<dcterms:publisher>PERSÉE : Université de Lyon, CNRS &amp; ENS de Lyon</dcterms:publisher>\n" +
-    "\t<rdam:isElectronicReproduction rdf:resource=\"http://data.persee.fr/doc/coloc_0291-4700_1981_num_1_1_871#Print\" />\n" +
-    "\t<dcterms:isPartOf rdf:resource=\"http://data.persee.fr/issue/coloc_0291-4700_1981_num_1_1#Web\" />\n" +
-    "\t<bibo:pageStart>3</bibo:pageStart>\n" +
-    "\t<bibo:pageEnd>49</bibo:pageEnd>\n" +
-    "\t<bibo:numPages>47</bibo:numPages>\n" +
-    "\t<marcrel:aut rdf:resource=\"http://data.persee.fr/person/145976#Person\"/>\n" +
-    "\t<marcrel:aut rdf:resource=\"http://data.persee.fr/person/284942#Person\"/>\n" +
-    "\t<marcrel:aut rdf:resource=\"http://data.persee.fr/person/222816#Person\"/>\n" +
-    "\t<dcterms:creator rdf:resource=\"http://data.persee.fr/person/145976#Person\"/>\n" +
-    "\t<dcterms:creator rdf:resource=\"http://data.persee.fr/person/284942#Person\"/>\n" +
-    "\t<dcterms:creator rdf:resource=\"http://data.persee.fr/person/222816#Person\"/>\n" +
-    "\t<dcterms:language>fr</dcterms:language>\n" +
-    "\t<bibo:doi>10.3406/coloc.1981.871</bibo:doi>\n" +
-    "<dcterms:tableOfContents rdf:parseType=\"Literal\"><!---->\n" +
-    "<ol><li>I. 1977-1980... 1983 Les nouvelles municipalités a mi-chemin de leur mandat<ol><li>I. — La recherche d'une base d'action</li>\n" +
-    "<li>II. — La recherche d'un espace d'action</li>\n" +
-    "<li>III. — La recherche d'une assise politique</li>\n" +
-    "</ol></li>\n" +
-    "\n" +
-    "<li>II. Les institutions régionales en 1980 par J. Palard<ol><li>A. — La physionomie politique des conseils régionaux</li>\n" +
-    "<li>B. — Le renforcement des politiques économiques régionales</li>\n" +
-    "<li>C. — La poursuite du débat sur les compétences régionales</li>\n" +
-    "</ol></li>\n" +
-    "\n" +
-    "<li>III. Les territoires et les départements d'outre-mer par S. Jacquemart<ol><li>A. — Les nouvelles structures de l'administration centrale des D.T.O.M.</li>\n" +
-    "<li>B. — Les élections cantonales et l'élection de l'assemblée européenne dans les D.O.M. et les T.O.M.</li>\n" +
-    "<li>C. — Les mesures prises en faveur des D.O.M.</li>\n" +
-    "</ol></li>\n" +
-    "\n" +
-    "</ol>\n" +
-    "</dcterms:tableOfContents>\n" +
-    "<rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image>\n" +
-    "\t\t<dcterms:accessRights>This image is not available online</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/DataArray\" />\n" +
-    "<dcterms:title>Budgets primitifs votés par les E.P.R. — Exercice 1980</dcterms:title><marcrel:aut>Interrégions</marcrel:aut><marcrel:aut>D. G. C. L</marcrel:aut>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent><rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image rdf:about=\"http://www.persee.fr/renderIllustration/coloc_0291-4700_1981_num_1_1_T1_0040_0000_2.png\">\n" +
-    "\t\t<foaf:thumbnail rdf:resource=\"http://www.persee.fr/renderIllustrationThumbnail/coloc_0291-4700_1981_num_1_1_T1_0040_0000_2.png\" />\n" +
-    "\t\t<dcterms:accessRights>http://creativecommons.org/licenses/by-nc-sa/3.0/fr/</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/Diagram\" />\n" +
-    "<dcterms:title>Organigramme du secrétariat d'Etat au D.O.M-T..M (selon le décret du 3 octobre 1979)</dcterms:title>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent><rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image>\n" +
-    "\t\t<dcterms:accessRights>This image is not available online</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/DataArray\" />\n" +
-    "<dcterms:title>L'évolution du budget est la suivante (3) :</dcterms:title>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent><rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image>\n" +
-    "\t\t<dcterms:accessRights>This image is not available online</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/DataArray\" />\n" +
-    "<dcterms:title>Les résultats globaux ont été enregistrés pour tous les cantons des D.O.M. et de Mayotte intéressés (4) :</dcterms:title>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent><rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image>\n" +
-    "\t\t<dcterms:accessRights>This image is not available online</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/DataArray\" />\n" +
-    "<dcterms:title>Résultats des élections européennes dans les D.O.M.-T.O.M. (en pourcentage)</dcterms:title>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent><rdau:hasIllustrativeContent>\n" +
-    "\t<foaf:Image>\n" +
-    "\t\t<dcterms:accessRights>This image is not available online</dcterms:accessRights>\n" +
-    "\t\t<rdf:type rdf:resource=\"http://data.persee.fr/ontology/persee-ontology/DataArray\" />\n" +
-    "<dcterms:title>Résultats du scrutin du 10 juin 1979 dans les D.O.M - T.O.M</dcterms:title><marcrel:aut>U.D.I.P. -F.I.D.E.S.</marcrel:aut><marcrel:aut>Journal officiel</marcrel:aut>\t</foaf:Image>\n" +
-    "\t</rdau:hasIllustrativeContent>\n" +
-    "</bibo:Document>";
+                var a = $('<a>').attr({
+                    class: "form-group",
+                    url: response.results.bindings[i].Book_1.value
+                });
 
-/*$(xml).find("ml").text();*/
-function machin() {
-    $(xml).each(function (index, element) {
+                li.append(a);
+                a.append(response.results.bindings[i].title_34.value);
+                li.click(function () {
+                    perseeByBook($(this).attr("url"));
+                });
+                ul.append(li);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
+};
 
-        var test =  $(element).find("dcterms:title").text();
-
-
-
-        /*var result = $(element).text();*/
-        console.log(test);
-    });
+function perseeByBook(url) {
+    $.ajax({
+        url: url,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
 }
-
-/*$("#migrationHeader").val("toto");*/

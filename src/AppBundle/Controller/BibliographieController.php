@@ -19,12 +19,12 @@ class BibliographieController extends Controller {
 
         $form = $this->createForm(BibliographieType::class);
         $form->handleRequest($request);
-        /*require_once('vendor/autoload.php');*/
-        $books = new GoogleBooks(['key' => 'AIzaSyDdyWQg4UFB9kNBWVakw60daORsokZn0p0']);
-
-        foreach ($books->volumes->search('Le Grand Livre du Bois') as $vol) {
-            echo $vol->title . "\n";
-        }
+//        /*require_once('vendor/autoload.php');*/
+//        $books = new GoogleBooks(['key' => 'AIzaSyDdyWQg4UFB9kNBWVakw60daORsokZn0p0']);
+//
+//        foreach ($books->volumes->search('Le Grand Livre du Bois') as $vol) {
+//            echo $vol->title . "\n";
+//        }
         return $this->render('default/list.html.twig', array('form' => $form->createView()));
     }
 

@@ -12,6 +12,11 @@
                 <div class="panel-body">
                     <form name="appbundle_collection" method="post" class="form-horizontal col-lg-12">
 
+                        <input id="book_title" type="text">
+                        <button onclick="persee()">Persee</button>
+                        <div class="form-group" id="book_results">
+
+                        </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">
                                 {{ form_label(form.TypeBib) }}

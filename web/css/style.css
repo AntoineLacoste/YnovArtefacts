@@ -22,7 +22,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
+.title{
+    text-align: center;
+    width: 100%;
+}
+.rowcenter{
+    float: none;
+    margin: 0 auto;
+}
+#conteneur {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1400px;
+    text-align: left; /* on rétablit l'alignement normal du texte */
+    background-color:#FFF;
+    }
 /* Modal Content */
 .modal {
     z-index: 1072;
@@ -30,4 +44,47 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .select2-container {
     max-width: 375px;
+}
+
+
+/* MODIF JULIEN */
+
+.header-body
+{
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 100;
+
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.row
+{
+    background-color: #aaa;
+    margin-top: 75px;
+    height: 100%;
+}
+
+.rowcenter
+{
+    background-color: white;
+    height: -webkit-fill-available;
+}
+
+.header-logo-ynov
+{
+    width: 120px;
+    height: auto;
+    margin-left: 30px;
 }

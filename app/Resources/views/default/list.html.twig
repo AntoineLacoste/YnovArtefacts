@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <body>
-    <h1 class="panel-header" id="migrationHeader">Migration bibliographie V2</h1>
+
+
+    <header class="header-body" id="migrationHeader">
+        <img class="header-logo-ynov" src="{{ asset('images/Ynov-logo.jpg') }}" alt="Logo Ynov">
+        <img class="header-logo-ynov" src="{{ asset('images/artefacts.jpg') }}" alt="Logo Artefacts">
+        <h1 class="panel-header title" >Migration bibliographie V2</h1>
+    </header>
 
     {{ bibliographie.titreref }}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 rowcenter">
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                 <div class="panel-body">
@@ -368,5 +373,4 @@
             </div>
         </div>
     </div>
-    </body>
 {% endblock %}

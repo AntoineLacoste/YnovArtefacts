@@ -71,7 +71,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .row
 {
-    margin-top: 80px;
+    background-color: #aaa;
+    margin-top: 75px;
+    height: 100%;
+}
+
+.rowcenter
+{
+    background-color: white;
+    height: -webkit-fill-available;
 }
 
 .header-logo-ynov

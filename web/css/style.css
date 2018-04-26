@@ -22,7 +22,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
+#conteneur {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1400px;
+    text-align: left; /* on rétablit l'alignement normal du texte */
+    background-color:#FFF;
+    }
 /* Modal Content */
 .modal {
     z-index: 1072;

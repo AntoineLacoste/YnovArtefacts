@@ -1,6 +1,6 @@
 function addFieldText(parent, name, labelStr) {
     var div = $('<div>').attr({
-        class: "form-group"
+        class: "form-group form-inline"
     });
 
     var label = $('<label>').attr({

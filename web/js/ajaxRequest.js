@@ -1,4 +1,13 @@
 function addVilleEditeur() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter la ville " + $("#nomVilleEditeur").val() + " ?");
+
+    $("#addButton").click(addVilleEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addVilleEditeurAjax() {
     $.ajax({
         url: window.location + "ville/add",
         type: 'POST',
@@ -24,6 +33,7 @@ function addVilleEditeur() {
             $("#appbundle_collection_villeEditeur").append(opt);
             $("#appbundle_collection_villeEditeur").val(response.idVille);
 
+            $("#cancelButton").click();
             villeEditeurFieldHide();
         },
         error: function (err) {
@@ -33,7 +43,15 @@ function addVilleEditeur() {
 }
 
 function addVilleEdition() {
-    console.log($("#nomVilleEdition").val());
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter la ville " + $("#nomVilleEdition").val() + " ?");
+
+    $("#addButton").click(addVilleEditionAjax);
+
+    $("#modalButton").click();
+}
+
+function addVilleEditionAjax() {
     $.ajax({
         url: window.location + "ville/add",
         type: 'POST',
@@ -59,6 +77,7 @@ function addVilleEdition() {
 
             $("#appbundle_collection_villeEditeur").append(opt);
 
+            $("#cancelButton").click();
             villeEditionFieldHide();
         },
         error: function (err) {
@@ -68,6 +87,15 @@ function addVilleEdition() {
 }
 
 function addPaysEditeur() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter le pays " + $("#paysFREditeur").val() + " ?");
+
+    $("#addButton").click(addPaysEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addPaysEditeurAjax() {
     $.ajax({
         url: window.location + "pays/add",
         type: 'POST',
@@ -89,6 +117,9 @@ function addPaysEditeur() {
 
             $("#appbundle_collection_paysEditeur").append(opt);
             $("#appbundle_collection_paysEditeur").val(response.idPays);
+
+            $("#cancelButton").click();
+            paysFieldHide();
         },
         error: function (err) {
             console.log(err);
@@ -97,6 +128,15 @@ function addPaysEditeur() {
 }
 
 function addEditeur() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter l'éditeur " + $("#nomEditeur").val() + " ?");
+
+    $("#addButton").click(addEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addEditeurAjax() {
     $.ajax({
         url: window.location + "editeur/add",
         type: 'POST',
@@ -119,6 +159,7 @@ function addEditeur() {
             $("#appbundle_collection_editeur").append(opt);
             $("#appbundle_collection_editeur").val(response.idEditeur);
 
+            $("#cancelButton").click();
             editeurFieldHide();
         },
         error: function (err) {
@@ -128,6 +169,15 @@ function addEditeur() {
 }
 
 function addCommuneEditeur() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter la commune " + $("#nomCommuneEditeur").val() + " ?");
+
+    $("#addButton").click(addCommuneEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addCommuneEditeurAjax() {
     $.ajax({
         url: window.location + "commune/add",
         type: 'POST',
@@ -144,6 +194,9 @@ function addCommuneEditeur() {
 
             $("#appbundle_collection_communeEditeur").append(opt);
             $("#appbundle_collection_communeEditeur").val(response.idCommune);
+
+            $("#cancelButton").click();
+            communeFieldHide();
         },
         error: function (err) {
             console.log(err);
@@ -152,6 +205,15 @@ function addCommuneEditeur() {
 }
 
 function addCollection() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter la collection " + $("#nomCollection").val() + " ?");
+
+    $("#addButton").click(addCollectionAjax);
+
+    $("#modalButton").click();
+}
+
+function addCollectionAjax() {
     $.ajax({
         url: window.location + "collection/add",
         type: 'POST',
@@ -169,7 +231,8 @@ function addCollection() {
             $("#appbundle_collection_collection").append(opt);
             $("#appbundle_collection_collection").val(response.idCollection);
 
-
+            $("#cancelButton").click();
+            collectionFieldHide();
         },
         error: function (err) {
             console.log(err);
@@ -178,7 +241,18 @@ function addCollection() {
 }
 
 function addOrganisme(event) {
-    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter l'organisme " + $("#auteur" + auteurNumber + " #nomOrganismeAuteur").val() + " ?");
+
+    $("#addButton").click(addOrganismeAjax);
+    $("#addButton").attr("data", auteurNumber);
+
+    $("#modalButton").click();
+}
+
+function addOrganismeAjax() {
+    var auteurNumber = $("addButton").attr("data");
     $.ajax({
         url: window.location + "organisme/add",
         type: 'POST',
@@ -197,6 +271,7 @@ function addOrganisme(event) {
             $("#appbundle_collection_organisme").append(opt);
             $("#appbundle_collection_organisme").val(response.idOrganisme);
 
+            $("#cancelButton").click();
             organismeFieldHide(auteurNumber);
         },
         error: function (err) {
@@ -206,7 +281,18 @@ function addOrganisme(event) {
 }
 
 function addNationalite(event) {
-    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter la nationalité " + $("#auteur" + auteurNumber + " #nomNationaliteAuteur").val() + " ?");
+
+    $("#addButton").click(addNationaliteAjax);
+    $("#addButton").attr("data", auteurNumber);
+
+    $("#modalButton").click();
+}
+
+function addNationaliteAjax() {
+    var auteurNumber = $("addButton").attr("data");
     $.ajax({
         url: window.location + "nationalite/add",
         type: 'POST',
@@ -225,6 +311,7 @@ function addNationalite(event) {
             $("#appbundle_collection_nationalite").append(opt);
             $("#appbundle_collection_nationalite").val(response.idNationalite);
 
+            $("#cancelButton").click();
             nationaliteFieldHide(auteurNumber);
         },
         error: function (err) {
@@ -234,7 +321,18 @@ function addNationalite(event) {
 }
 
 function addTypeOrganisme(event) {
-    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter le type d'organisme " + $("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").val() + " ?");
+
+    $("#addButton").click(addTypeOrganismeAjax);
+    $("#addButton").attr("data", auteurNumber);
+
+    $("#modalButton").click();
+}
+
+function addTypeOrganismeAjax() {
+    var auteurNumber = $("addButton").attr("data");
     $.ajax({
         url: window.location + "typeOrganisme/add",
         type: 'POST',
@@ -252,6 +350,7 @@ function addTypeOrganisme(event) {
             $("#appbundle_collection_typeOrganisme").append(opt);
             $("#appbundle_collection_typeOrganisme").val(response.idTypeOrganisme);
 
+            $("#cancelButton").click();
             typeOrganismeFieldHide(auteurNumber);
         },
         error: function (err) {
@@ -261,6 +360,15 @@ function addTypeOrganisme(event) {
 }
 
 function addBibliographie() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter le document " + $("#appbundle_collection_titreRef").val() + " ?");
+
+    $("#addButton").click(addBibliographieAjax);
+
+    $("#modalButton").click();
+}
+
+function addBibliographieAjax() {
     var data = setBibliographieData();
     console.log(data);
     $.ajax({
@@ -309,7 +417,17 @@ function setBibliographieData() {
 }
 
 function addAuteur(event) {
-    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1)
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter l'auteur " + $("#auteur" + auteurNumber + " #nomAuteur").val() + " ?");
+
+    $("#addButton").click(addAuteurAjax);
+    $("#addButton").attr("data", auteurNumber);
+
+    $("#modalButton").click();
+}
+
+function addAuteurAjax() {
+    var auteurNumber = $("addButton").attr("data");
     $.ajax({
         url: window.location + "personne/add",
         type: 'POST',
@@ -333,6 +451,7 @@ function addAuteur(event) {
             $("#auteur" + auteurNumber + " #appbundle_collection_auteur").append(opt);
             $("#auteur" + auteurNumber + " #appbundle_collection_auteur").val(response.idPersonne);
 
+            $("#cancelButton").click();
             auteurFieldHide(auteurNumber);
         },
         error: function (err) {
@@ -342,6 +461,15 @@ function addAuteur(event) {
 }
 
 function addPeriodique() {
+    $("#modalTitle").html("Ajouter la ville");
+    $("#modalContent").html("Etes-vous sur d'ajouter l'auteur " + $("#nomPeriodique").val() + " ?");
+
+    $("#addButton").click(addPeriodiqueAjax);
+
+    $("#modalButton").click();
+}
+
+function addPeriodiqueAjax() {
     $.ajax({
         url: window.location + "periodique/add",
         type: 'POST',
@@ -367,6 +495,15 @@ function addPeriodique() {
 }
 
 function addLieuDitsEditeur() {
+    $("#modalTitle").html("Ajouter le lieu-dits");
+    $("#modalContent").html("Etes-vous sur d'ajouter le lieu-dits " + $("#nomLieuDitsEditeur").val() + " ?");
+
+    $("#addButton").click(addLieuDitsEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addLieuDitsEditeurAjax() {
     $.ajax({
         url: window.location + "lieuDits/add",
         type: 'POST',
@@ -383,6 +520,9 @@ function addLieuDitsEditeur() {
 
             $("#appbundle_collection_lieuDitsEditeur").append(opt);
             $("#appbundle_collection_lieuDitsEditeur").val(response.idLieuDits);
+
+            $("#cancelButton").click();
+            lieuDitsFieldHide();
         },
         error: function (err) {
             console.log(err);

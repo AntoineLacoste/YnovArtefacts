@@ -149,7 +149,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control selectpicker',
                     'id' => 'lieuDitsEditeur'),
                 'class' => LieuDits::class,
-                'placeholder' => "Choisissez un leiu-dit",
+                'placeholder' => "Choisissez un lieu-dit",
                 'choice_label' => function ($lieuDits) {
                     return $lieuDits->getNom();
                 }))

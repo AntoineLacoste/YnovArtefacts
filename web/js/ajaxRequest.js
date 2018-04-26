@@ -87,7 +87,7 @@ function addVilleEditionAjax() {
 }
 
 function addPaysEditeur() {
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter le pays");
     $("#modalContent").html("Etes-vous sur d'ajouter le pays " + $("#paysFREditeur").val() + " ?");
 
     $("#addButton").click(addPaysEditeurAjax);
@@ -128,7 +128,7 @@ function addPaysEditeurAjax() {
 }
 
 function addEditeur() {
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter l'éditeur");
     $("#modalContent").html("Etes-vous sur d'ajouter l'éditeur " + $("#nomEditeur").val() + " ?");
 
     $("#addButton").click(addEditeurAjax);
@@ -169,7 +169,7 @@ function addEditeurAjax() {
 }
 
 function addCommuneEditeur() {
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter la commune");
     $("#modalContent").html("Etes-vous sur d'ajouter la commune " + $("#nomCommuneEditeur").val() + " ?");
 
     $("#addButton").click(addCommuneEditeurAjax);
@@ -205,7 +205,7 @@ function addCommuneEditeurAjax() {
 }
 
 function addCollection() {
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter la collection");
     $("#modalContent").html("Etes-vous sur d'ajouter la collection " + $("#nomCollection").val() + " ?");
 
     $("#addButton").click(addCollectionAjax);
@@ -242,7 +242,7 @@ function addCollectionAjax() {
 
 function addOrganisme(event) {
     var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter l'organisme");
     $("#modalContent").html("Etes-vous sur d'ajouter l'organisme " + $("#auteur" + auteurNumber + " #nomOrganismeAuteur").val() + " ?");
 
     $("#addButton").click(addOrganismeAjax);
@@ -252,7 +252,7 @@ function addOrganisme(event) {
 }
 
 function addOrganismeAjax() {
-    var auteurNumber = $("addButton").attr("data");
+    var auteurNumber = $("#addButton").attr("data");
     $.ajax({
         url: window.location + "organisme/add",
         type: 'POST',
@@ -282,7 +282,7 @@ function addOrganismeAjax() {
 
 function addNationalite(event) {
     var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter la nationalite");
     $("#modalContent").html("Etes-vous sur d'ajouter la nationalité " + $("#auteur" + auteurNumber + " #nomNationaliteAuteur").val() + " ?");
 
     $("#addButton").click(addNationaliteAjax);
@@ -292,7 +292,7 @@ function addNationalite(event) {
 }
 
 function addNationaliteAjax() {
-    var auteurNumber = $("addButton").attr("data");
+    var auteurNumber = $("#addButton").attr("data");
     $.ajax({
         url: window.location + "nationalite/add",
         type: 'POST',
@@ -322,7 +322,7 @@ function addNationaliteAjax() {
 
 function addTypeOrganisme(event) {
     var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter le type d'organisme");
     $("#modalContent").html("Etes-vous sur d'ajouter le type d'organisme " + $("#auteur" + auteurNumber + " #descriptionTypeOrganismeAuteur").val() + " ?");
 
     $("#addButton").click(addTypeOrganismeAjax);
@@ -332,7 +332,8 @@ function addTypeOrganisme(event) {
 }
 
 function addTypeOrganismeAjax() {
-    var auteurNumber = $("addButton").attr("data");
+    var auteurNumber = $("#addButton").attr("data");
+
     $.ajax({
         url: window.location + "typeOrganisme/add",
         type: 'POST',
@@ -360,7 +361,7 @@ function addTypeOrganismeAjax() {
 }
 
 function addBibliographie() {
-    $("#modalTitle").html("Ajouter la ville");
+    $("#modalTitle").html("Ajouter le document");
     $("#modalContent").html("Etes-vous sur d'ajouter le document " + $("#appbundle_collection_titreRef").val() + " ?");
 
     $("#addButton").click(addBibliographieAjax);
@@ -417,8 +418,9 @@ function setBibliographieData() {
 }
 
 function addAuteur(event) {
-    $("#modalTitle").html("Ajouter la ville");
-    $("#modalContent").html("Etes-vous sur d'ajouter l'auteur " + $("#auteur" + auteurNumber + " #nomAuteur").val() + " ?");
+    var auteurNumber = $(event.target).parent().parent().parent().attr("id").slice(-1);
+    $("#modalTitle").html("Ajouter l'auteur");
+    $("#modalContent").html("Etes-vous sur d'ajouter l'auteur " + $("#auteur" + auteurNumber + " #nomAuteur").val() + " " + $("#auteur" + auteurNumber + " #prenomAuteur").val() + " ?");
 
     $("#addButton").click(addAuteurAjax);
     $("#addButton").attr("data", auteurNumber);
@@ -427,7 +429,7 @@ function addAuteur(event) {
 }
 
 function addAuteurAjax() {
-    var auteurNumber = $("addButton").attr("data");
+    var auteurNumber = $("#addButton").attr("data");
     $.ajax({
         url: window.location + "personne/add",
         type: 'POST',
@@ -461,8 +463,8 @@ function addAuteurAjax() {
 }
 
 function addPeriodique() {
-    $("#modalTitle").html("Ajouter la ville");
-    $("#modalContent").html("Etes-vous sur d'ajouter l'auteur " + $("#nomPeriodique").val() + " ?");
+    $("#modalTitle").html("Ajouter le periodique");
+    $("#modalContent").html("Etes-vous sur d'ajouter le periodique " + $("#nomPeriodique").val() + " ?");
 
     $("#addButton").click(addPeriodiqueAjax);
 
@@ -487,6 +489,8 @@ function addPeriodiqueAjax() {
             $("#appbundle_collection_periodique").append(opt);
             $("#appbundle_collection_periodique").val(response.idPeriodique);
 
+            $("#cancelButton").click();
+            periodiqueFieldHide();
         },
         error: function (err) {
             console.log(err);
@@ -531,6 +535,15 @@ function addLieuDitsEditeurAjax() {
 }
 
 function addDepartementEditeur() {
+    $("#modalTitle").html("Ajouter le département");
+    $("#modalContent").html("Etes-vous sur d'ajouter le departement " + $("#nomDepartementEditeur").val() + " ?");
+
+    $("#addButton").click(addDepartementEditeurAjax);
+
+    $("#modalButton").click();
+}
+
+function addDepartementEditeurAjax() {
     $.ajax({
         url: window.location + "departement/add",
         type: 'POST',
@@ -547,6 +560,9 @@ function addDepartementEditeur() {
 
             $("#appbundle_collection_departementEditeur").append(opt);
             $("#appbundle_collection_departementEditeur").val(response.idDepartement);
+
+            $("#cancelButton").click();
+            departementFieldHide();
         },
         error: function (err) {
             console.log(err);

@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class Manager {
+class ServiceManager {
     protected $em;
     protected $repository;
     protected $session;

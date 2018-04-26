@@ -7,7 +7,7 @@ use AppBundle\Entity\Commune;
 use Doctrine\ORM\EntityManager;
 
 
-class CommuneManager extends Manager {
+class CommuneManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

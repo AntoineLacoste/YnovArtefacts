@@ -7,7 +7,7 @@ use AppBundle\Entity\TypeOrganisme;
 use Doctrine\ORM\EntityManager;
 
 
-class TypeOrganismeManager extends Manager {
+class TypeOrganismeManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

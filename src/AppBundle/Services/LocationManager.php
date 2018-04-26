@@ -7,7 +7,7 @@ use AppBundle\Entity\Location;
 use Doctrine\ORM\EntityManager;
 
 
-class LocationManager extends Manager {
+class LocationManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

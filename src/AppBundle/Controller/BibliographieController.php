@@ -25,7 +25,9 @@ class BibliographieController extends Controller {
 //        foreach ($books->volumes->search('Le Grand Livre du Bois') as $vol) {
 //            echo $vol->title . "\n";
 //        }
-        return $this->render('default/list.html.twig', array('form' => $form->createView()));
+
+        $bibliographie = $this->get("BibliographieV1Manager")->getBibliographieToConfirm();
+        return $this->render('default/list.html.twig', array('form' => $form->createView(), 'bibliographie' => $bibliographie));
     }
 
     /**
@@ -90,8 +92,6 @@ class BibliographieController extends Controller {
         $personneManager = $this->get("PersonneManager");
         $auteurBibliographieManager = $this->get("AuteurBibliographieManager");
 
-        $logger = $this->get("logger");
-        $logger->info(gettype($data->get("auteurs")));
         foreach ($data->get("auteurs") as $auteur){
             $auteurBibliographie = new AuteurBibliographie();
             $auteurEntity = $personneManager->getPersonne($auteur);

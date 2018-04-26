@@ -7,7 +7,7 @@ use AppBundle\Entity\Coordonnees;
 use Doctrine\ORM\EntityManager;
 
 
-class CoordonneesManager extends Manager {
+class CoordonneesManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

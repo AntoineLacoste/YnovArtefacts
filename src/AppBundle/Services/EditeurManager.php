@@ -6,7 +6,7 @@ namespace AppBundle\Services;
 use Doctrine\ORM\EntityManager;
 
 
-class EditeurManager extends Manager {
+class EditeurManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

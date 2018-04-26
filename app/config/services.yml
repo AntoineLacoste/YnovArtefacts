@@ -39,6 +39,11 @@ services:
       arguments: ["@doctrine.orm.entity_manager"]
       public: true
 
+    BibliographieV1Manager:
+      class: AppBundle\Services\BibliographieV1Manager
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
     CollectionManager:
       class: AppBundle\Services\CollectionManager
       arguments: ["@doctrine.orm.entity_manager"]

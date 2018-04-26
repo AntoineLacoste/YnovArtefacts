@@ -4,7 +4,7 @@
     <body>
     <h1 class="panel-header" id="migrationHeader">Migration bibliographie V2</h1>
 
-
+    {{ bibliographie.titreref }}
     <div class="row">
         <div class="col-md-8">
             <!-- begin panel -->
@@ -35,7 +35,7 @@
                         </div>
 
                         <input id="book_title" type="text">
-                        <button onclick="persee()">Persee</button>
+                        <button class="btn btn-primary" onclick="persee()">Rechercher sur Persee</button>
                         <div class="form-group" id="book_results">
 
                         </div>

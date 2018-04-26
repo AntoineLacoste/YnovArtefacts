@@ -7,7 +7,7 @@ use AppBundle\Entity\TypeBib;
 use Doctrine\ORM\EntityManager;
 
 
-class TypeBibManager extends Manager {
+class TypeBibManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

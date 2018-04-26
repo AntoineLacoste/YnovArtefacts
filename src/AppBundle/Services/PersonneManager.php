@@ -7,7 +7,7 @@ use AppBundle\Entity\Personne;
 use Doctrine\ORM\EntityManager;
 
 
-class PersonneManager extends Manager {
+class PersonneManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

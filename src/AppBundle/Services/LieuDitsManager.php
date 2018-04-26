@@ -7,7 +7,7 @@ use AppBundle\Entity\LieuDits;
 use Doctrine\ORM\EntityManager;
 
 
-class LieuDitsManager extends Manager {
+class LieuDitsManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

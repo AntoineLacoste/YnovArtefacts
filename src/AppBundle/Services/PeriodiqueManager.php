@@ -6,7 +6,7 @@ namespace AppBundle\Services;
 use Doctrine\ORM\EntityManager;
 
 
-class PeriodiqueManager extends Manager {
+class PeriodiqueManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

@@ -7,7 +7,7 @@ use AppBundle\Entity\Nationalite;
 use Doctrine\ORM\EntityManager;
 
 
-class NationaliteManager extends Manager {
+class NationaliteManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

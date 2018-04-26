@@ -8,7 +8,7 @@ use AppBundle\Entity\Pays;
 use Doctrine\ORM\EntityManager;
 
 
-class PaysManager extends Manager {
+class PaysManager extends ServiceManager {
 
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);

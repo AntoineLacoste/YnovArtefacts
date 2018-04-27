@@ -21,4 +21,8 @@ class BibliographieV1Manager extends ServiceManager {
     public function getBibliographieToConfirm() {
         return $this->repository->getBibliographieToConfirm();
     }
+
+    public function setConfirmed($id) {
+        return $this->repository->setConfirmed($id);
+    }
 }

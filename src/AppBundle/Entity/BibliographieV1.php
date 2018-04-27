@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Bibliographie
+ * BibliographieV1
  *
  * @ORM\Table(name="bibliographie")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BibliographieV1Repository")

@@ -84,10 +84,12 @@ class BibliographieController extends Controller {
             $bibliographie->setPeriodique($periodique);
         }
 
+        $serializer        = $this->get('SerializerJSON');
+        $this->get("BibliographieV1Manager")->setConfirmed(intval($data->get("idBibliographie")));
+
         $bibliographieManager = $this->get("BibliographieManager");
         $bibliographieManager->addBibliographie($bibliographie);
- 
-        $serializer        = $this->get('SerializerJSON');
+
         $bibliographieJson = $serializer->serializeJSON($bibliographie);
 
         $personneManager = $this->get("PersonneManager");
@@ -102,6 +104,7 @@ class BibliographieController extends Controller {
 
             $auteurBibliographieManager->addAuteurBibliographie($auteurBibliographie);
         }
+
 
         $response = new Response($bibliographieJson);
         $response->headers->set('Content-Type', 'application/json');

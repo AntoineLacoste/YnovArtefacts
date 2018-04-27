@@ -39,6 +39,7 @@ class BibliographieController extends Controller {
 
         $data = $request->request;
 
+        $bibliographie->setIdBibliographie(intval($data->get("idBibliographie")));
         $bibliographie->setTitreRef($data->get("titre"));
         $bibliographie->setAbvSiteMarchande($data->get("abvSiteMarchand"));
         $bibliographie->setTome($data->get("tome"));

@@ -9,7 +9,6 @@
         <h1 class="panel-header title" >Migration bibliographie V2</h1>
     </header>
 
-    {{ bibliographie.titreref }}
     <div class="row">
         <div class="col-md-8 rowcenter">
             <!-- begin panel -->
@@ -42,7 +41,8 @@
                         <input id="book_title" type="text">
                         <button class="btn btn-primary" onclick="persee()">Rechercher sur Persee</button>
                         <div class="form-group" id="book_results">
-
+                            Migration pour le document : <br> {{ bibliographie.titreref }}
+                            <input type="hidden" id="idBibliographie" value="{{ bibliographie.id }}">
                         </div>
                         <div class="form-group form-inline">
                             <label class="col-md-3 control-label">

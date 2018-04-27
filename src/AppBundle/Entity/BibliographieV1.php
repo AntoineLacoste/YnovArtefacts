@@ -21,8 +21,9 @@ class BibliographieV1
 
     /**
      * @var string
-     * @ORM\Column(name="titreref", type="string")
+     * @ORM\Column(name="titreref", type="text")
      */
+
     private $titreRef;
 
     /**
@@ -35,7 +36,7 @@ class BibliographieV1
     /**
      * @var string
      *
-     * @ORM\Column(name="www", type="string")
+     * @ORM\Column(name="www", type="text")
      */
     private $www;
 
@@ -92,21 +93,21 @@ class BibliographieV1
     /**
      * @var string
      *
-     * @ORM\Column(name="achat", type="string")
+     * @ORM\Column(name="achat", type="text")
      */
     private $achat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CR1", type="string")
+     * @ORM\Column(name="CR1", type="text")
      */
     private $CR1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CR2", type="string")
+     * @ORM\Column(name="CR2", type="text")
      */
     private $CR2;
 
@@ -114,7 +115,7 @@ class BibliographieV1
     /**
      * @var string
      *
-     * @ORM\Column(name="confirmed", type="integer")
+     * @ORM\Column(name="confirmed", type="integer", options={"default" : 0})
      */
     private $confirmed = 0;
 

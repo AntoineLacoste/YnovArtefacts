@@ -87,7 +87,7 @@ class BibliographieV2
      *
      * @ORM\Column(name="id_bibliographie", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idBibliographie;
 

@@ -371,13 +371,13 @@ function addBibliographie() {
 
 function addBibliographieAjax() {
     var data = setBibliographieData();
-    console.log(data);
     $.ajax({
         url: window.location + "bibliographie/add",
         type: 'POST',
         data: data,
         success: function (response) {
             console.log(response);
+            location.reload();
         },
         error: function (err) {
             console.log(err);
@@ -388,6 +388,7 @@ function addBibliographieAjax() {
 function setBibliographieData() {
     var data = {};
 
+    data.idBibliographie = $("#idBibliographie").val();
     data.titre = $("#appbundle_collection_titreRef").val();
     data.abvSiteMarchand = $("#appbundle_collection_abvSiteMarchande").val();
     data.tome = $("#appbundle_collection_tome").val();

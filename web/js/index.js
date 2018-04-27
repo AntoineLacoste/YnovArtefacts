@@ -25,6 +25,8 @@ $(document).ready(function () {
     //     size: 4
     // });
     $('.selectpicker').select2({});
+
+    $("#auteurBase").val($("#auteurs").html());
 });
 
 function addFieldPaysEditeur() {
@@ -443,7 +445,7 @@ function addFieldPlusLieuDitsEditeur() {
 
 function checkSelectHasValue(selectId, value) {
     for (var i = 0; i < document.getElementById(selectId).options.length; i++) {
-        if (document.getElementById(selectId).options[i].text === value) {
+        if (document.getElementById(selectId).options[i].text.indexOf(value) !== -1) {
             return true;
         }
     }

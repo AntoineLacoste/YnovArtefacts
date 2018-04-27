@@ -147,4 +147,11 @@ function addAuteurGroup() {
 
     nextAuteurGroup.attr("id", nextAuteurGroupId);
     currentAuteurGroup.after(nextAuteurGroup);
+
+    // $('.selectpicker').select2({});
+}
+
+function resetAuteurs() {
+    $("#auteurs").html("");
+    $("#auteurs").html($("#auteurBase").val());
 }

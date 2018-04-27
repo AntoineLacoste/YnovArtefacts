@@ -76,7 +76,7 @@ class BibliographieType extends AbstractType {
                     'class' => 'form-control'),
                 'label' => "Pagination : "
             ))
-            ->add('dateEdition', DateType::class, array(
+            ->add('dateEdition', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control'),
                 'label' => "Date d'édition : "
@@ -176,11 +176,16 @@ class BibliographieType extends AbstractType {
                 }))
             ->add('auteur', EntityType::class, array(
                 'attr' => array(
-                    'class' => 'form-control selectpicker'),
+                    'class' => 'form-control'),
                 'class' => Personne::class,
                 'placeholder' => "Choisissez un auteur",
                 'choice_label' => function ($personne) {
-                    return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
+                    if($personne->getNationalite() !== null) {
+                        return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
+                    }
+                    else{
+                        return $personne->getNom() . " " . $personne->getPrenom();
+                    }
                 }))
             ->add('directeur', EntityType::class, array(
                 'attr' => array(
@@ -188,7 +193,12 @@ class BibliographieType extends AbstractType {
                 'class' => Personne::class,
                 'placeholder' => "Choisissez un directeur",
                 'choice_label' => function ($personne) {
-                    return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
+                    if($personne->getNationalite() !== null) {
+                        return $personne->getNom() . " " . $personne->getPrenom() . " (" . $personne->getNationalite()->getAbv() . ")";
+                    }
+                    else{
+                        return $personne->getNom() . " " . $personne->getPrenom();
+                    }
                 }))
             ->add('nationalite', EntityType::class, array(
                 'attr' => array(

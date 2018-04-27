@@ -49,9 +49,7 @@ class BibliographieController extends Controller {
         $bibliographie->setIssn($data->get("ISSN"));
         $bibliographie->setIsbn($data->get("ISBN"));
         $bibliographie->setConfirmed(1);
-
-        $date = new \DateTime($data->get("dateEdition"));
-        $bibliographie->setDateEdition($date);
+        $bibliographie->setDateEdition($data->get("dateEdition"));
 
         $typeBibManager = $this->get("TypeBibManager");
         $typeBib        = $typeBibManager->getTypeBib($data->get("typeBib"));

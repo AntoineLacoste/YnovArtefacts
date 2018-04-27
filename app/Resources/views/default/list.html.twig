@@ -40,9 +40,11 @@
 
                         <input id="book_title" type="text">
                         <button class="btn btn-primary" onclick="persee()">Rechercher sur Persee</button>
+                        <div class="form-group" id="bibliographieV1" style="font-size: 15px !important">
+                            <b>Migration pour le document : <br> {{ bibliographie.titreref }}
+                                <input type="hidden" id="idBibliographie" value="{{ bibliographie.id }}"></b>
+                        </div>
                         <div class="form-group" id="book_results">
-                            Migration pour le document : <br> {{ bibliographie.titreref }}
-                            <input type="hidden" id="idBibliographie" value="{{ bibliographie.id }}">
                         </div>
                         <div class="form-group form-inline">
                             <label class="col-md-3 control-label">
@@ -280,6 +282,7 @@
 
                         <h3 class="panel-header" id="auteurHeader">Auteur</h3>
 
+                        <input type="hidden" value="" id="auteurBase">
                         <div id="auteurs">
                             <div id="auteur1" class="auteurGroup">
                                 <div class="form-group form-inline" id="auteur">

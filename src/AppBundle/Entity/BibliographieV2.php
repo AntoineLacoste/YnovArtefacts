@@ -62,9 +62,9 @@ class BibliographieV2
     private $pagination;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_edition", type="date", nullable=false)
+     * @ORM\Column(name="date_edition", type="string", nullable=false)
      */
     private $dateEdition;
 
@@ -266,7 +266,7 @@ class BibliographieV2
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getDateEdition()
     {
@@ -274,9 +274,9 @@ class BibliographieV2
     }
 
     /**
-     * @param \DateTime $dateEdition
+     * @param string $dateEdition
      */
-    public function setDateEdition(\DateTime $dateEdition): void
+    public function setDateEdition(string $dateEdition): void
     {
         $this->dateEdition = $dateEdition;
     }

@@ -396,12 +396,7 @@ function setBibliographieData() {
     data.numCollection = $("#appbundle_collection_num_collection").val()
     data.collection = $("#appbundle_collection_collection").val();
     data.pagination = $("#appbundle_collection_pagination").val();
-
-    var yearDate = $("#appbundle_collection_dateEdition_year").val();
-    var monthDate = $("#appbundle_collection_dateEdition_month").val();
-    var dayDate = $("#appbundle_collection_dateEdition_day").val();
-
-    data.dateEdition = dayDate + "-" + monthDate + "-" + yearDate;
+    data.dateEdition = $("#appbundle_collection_dateEdition").val();
     data.ISSN = $("#appbundle_collection_issn").val();
     data.ISBN = $("#appbundle_collection_isbn").val();
     data.typeBib = $("#appbundle_collection_TypeBib").val();
@@ -449,7 +444,12 @@ function addAuteurAjax() {
                 value: response.idPersonne
             });
 
-            opt.append(response.nom + " " + response.prenom + " (" + response.Nationalite.abv + ")");
+            if (response.Nationalite.abv) {
+                opt.append(response.nom + " " + response.prenom + " (" + response.Nationalite.abv + ")");
+            }
+            else {
+                opt.append(response.nom + " " + response.prenom);
+            }
 
             $("#auteur" + auteurNumber + " #appbundle_collection_auteur").append(opt);
             $("#auteur" + auteurNumber + " #appbundle_collection_auteur").val(response.idPersonne);

@@ -1,1 +1,1 @@
-Symfony website for CNRS Artefacts
+Symfony migration's interface for CNRS Artefacts
